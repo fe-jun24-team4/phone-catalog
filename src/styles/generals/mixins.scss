@@ -45,7 +45,7 @@
 
      color: $themePurplePrimary;
 
-     @mixin onTablet {
+     @include onTablet {
       font-size: 48px;
      }
   }
