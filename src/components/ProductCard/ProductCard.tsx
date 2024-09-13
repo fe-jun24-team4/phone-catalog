@@ -10,7 +10,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
   const { image, name, price, fullPrice, screen, capacity, ram } = card;
 
   return (
-    <div className={styles.card}>
+    <a href="#" className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
           <img src={image} alt={name} className={styles.image} />
@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
 
         <div className={styles.content}>
           <div className={styles.info}>
-            <h2 className={styles.title}>{name}</h2>
+            <h4 className={styles.title}>{name}</h4>
 
             <div className={styles.priceBlock}>
               <p className={styles.price}>${price}</p>
@@ -53,6 +53,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
           <button className="button-round button-round--heart"></button>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
