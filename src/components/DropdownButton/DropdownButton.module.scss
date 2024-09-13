@@ -1,24 +1,22 @@
+@import '../../styles/generals/variables.scss';
 
 .containerDropdown {
   display: flex;
   flex-direction: column;
-  color: black;
-  // font-family: Mont, sans-serif;
+  font-family: 'Mont', sans-serif;
 }
 
 .text {
-  color: #89939A;
+  color: $themePurpleSecondary;
   font-size: 12px;
-
-  font-weight: 700;
-  line-height: 15.34px;
+  line-height: $lineHeightAdditional;
+  margin-bottom: 5px;
 }
 
 .button {
-  border-radius: 3px;
-  // color:  #89939A;
-}
-
-.option {
-  color: black;
+  border-radius: 5px;
+  border: 1px solid $themePurpleSecondary;
+  padding: 5px 10px;
+  background-color: transparent;
+  cursor: pointer;
 }
