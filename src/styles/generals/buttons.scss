@@ -87,10 +87,10 @@
         }
 
         &--selected {
-            border: 2px solid $themePurpleAccent;
+            border-color: $themePurpleAccent;
+            background-color: $themePurpleAccent;
 
-            @include before {
-                content: '\e906';
+            &::before {
                 color: $themePurpleAccent;
             }
         }
