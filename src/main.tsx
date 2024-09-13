@@ -1,8 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-//import App from './components/app/App'
 import './index.scss';
-import { RootPage } from './components/pages/RootPage';
+import { RootPage } from './components/pages/RootMap';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
