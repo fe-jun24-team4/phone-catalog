@@ -1,3 +1,13 @@
+## GIT
+
+- do `git pull` regularly
+- follow the naming convention for the branches
+  - `feature-[task-name]` for implementing something new
+  - `fix-[something]` for major fixes
+  - `hotfix-[something]` for minor fixes
+  - `infrastructure-[feature-name]` for QoL or something that enables further work
+- don't commit files not related to whatever you are doing
+
 ## SCSS
 
 - **DO** use camelCase for class names.
