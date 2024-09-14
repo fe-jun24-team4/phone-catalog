@@ -1,0 +1,118 @@
+@import '../../styles/generals/index';
+
+.card {
+  max-width: 300px;
+  width: 100%;
+
+  display: block;
+
+  cursor: pointer;
+
+  transition: $transitionDuration;
+
+  @include onHover {
+    .image {
+      transform: $transformScale;
+    }
+
+    box-shadow: 0px 2px 16px 0px #0000001A;
+  }
+}
+
+.wrapper {
+  padding: 32px;
+
+  border: 1px solid $themePurpleElements;
+  border-radius: 8px;
+
+  background-color: $themePurpleWhite;
+}
+
+.imageContent {
+  max-width: 100%;
+  width: 100%;
+  height: 40vh;
+  max-height: 200px;
+
+  overflow: hidden;
+
+  @include lastChild {
+    margin-bottom: 24px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+
+  object-position: center;
+  object-fit: cover;
+
+  transition: $transitionDuration;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include lastChild {
+    margin-bottom: 16px;
+  }
+}
+
+.info {
+  padding-bottom: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  border-bottom: 1px solid $themePurpleElements;
+
+  color: $themePurplePrimary;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: $fontSizeMedium;
+}
+
+.price {
+  font-weight: $fontWeightSemiBlack;
+}
+
+.fullPrice {
+  color: $themePurpleSecondary;
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  font-size: $fontSizeSmall;
+  line-height: $lineHeightAdditional;
+}
+
+.specValue {
+  color: $themePurplePrimary;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
