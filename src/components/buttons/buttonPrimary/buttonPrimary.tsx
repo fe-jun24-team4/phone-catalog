@@ -1,23 +1,24 @@
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
 import styles from './buttonPrimary.module.scss';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 export interface Props {
-   title: string;
+  title: string;
 }
 
 const ButtonPrimary: FC<Props> = ({ title }) => {
-   const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
-     <button className={classNames(styles.buttonPrimary, {
-      [styles.selected] : isSelected,
-     })}
-     onClick={() => setIsSelected(true)}
-     >
+    <button
+      className={classNames(styles.buttonPrimary, {
+        [styles.selected]: isSelected,
+      })}
+      onClick={() => setIsSelected(true)}
+    >
       {title}
-      </button>
-  )
-}
+    </button>
+  );
+};
 
 export default ButtonPrimary;
