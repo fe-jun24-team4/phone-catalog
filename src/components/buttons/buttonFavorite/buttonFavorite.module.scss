@@ -1,0 +1,32 @@
+@import '../../../styles/generals/index.scss';
+
+.buttonFavorite {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid $themePurpleIcons;
+
+    background-color: transparent;
+    transition-duration: $transitionDuration;
+
+    @include onHover {
+        border-color: $themePurplePrimary;
+    }
+
+    &.selected {
+        border-color: $themePurplePrimary;
+        background-color: $themePurpleAccent;
+        color: $themePurpleWhite;
+
+        @include onHover {
+            box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
+        }
+    }
+}
