@@ -1,0 +1,22 @@
+@import '../../../../styles/generals/mixins.scss';
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.paginatedGridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include onTabletAndUp {
+    gap: 20px;
+  }
+}
+
+.paginationControlsContainer {
+  display: flex;
+  justify-content: center;
+}
