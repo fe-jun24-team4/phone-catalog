@@ -1,3 +1,4 @@
+import { Dropdown } from './DropdownButton/DropdownButton';
 import { ProductCard } from './ProductCard';
 
 function App() {
@@ -16,8 +17,8 @@ function App() {
       <header className="header">Header</header>
 
       <main className="page">
-        <div className="page__container">
-          <ProductCard card={test} />
+        <div className="page___container" style={{ width: 350 }}>
+          Content
         </div>
       </main>
 
