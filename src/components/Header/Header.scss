@@ -1,0 +1,114 @@
+@import './src/styles/generals/variables.scss';
+@import './src/styles/generals/mixins.scss';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    height: 48px;
+    border-bottom: 2px solid $themePurpleElements;
+    position: relative;
+
+    @include onLaptop {
+        height: 64px;
+    }
+}
+
+.nav-links {
+    display: none;
+
+    :hover {
+        color: $themePurplePrimary;
+        }
+
+    @include onTablet {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-left: 10px;
+
+        a {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -1em;
+                width: 100%;
+                height: 2px;
+                background-color: $themePurplePrimary;
+                transform: scaleX(0);
+                transition: transform 0.3s ease;
+            }
+
+
+            &:hover::after {
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    @include onTablet {
+        display: flex;
+         gap: 24px;
+     }
+
+    @include onLaptop {
+        gap: 64px;
+
+        &::after {
+            bottom: -1.2em;
+            width: 100%;
+            height: 2px;
+            background-color: $themePurplePrimary;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+    }
+}
+
+
+// .nav-links {
+//     display: none;
+
+//     :hover {
+//         color: $themePurplePrimary;
+//     }
+// }
+
+.icon-home {
+    display: flex;
+    padding: 10px 19px;
+    border-left: 2px solid $themePurpleElements;
+    line-height: 2;
+
+    @include onTablet {
+        display: none;
+    }
+}
+
+.separator {
+    width: 2px;
+    height: 48px;
+    background-color: $themePurpleElements;
+
+    @include onLaptop {
+        height: 64px;
+    }
+}
+
+.icon-group {
+    display: none;
+
+   @include onTablet {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 16px;
+        padding: 0 15px;
+    }
+}
