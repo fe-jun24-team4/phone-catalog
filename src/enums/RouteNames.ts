@@ -3,5 +3,7 @@ export enum RouteNames {
   phones = 'phones',
   tablets = 'tablets',
   accessories = 'accessories',
-  pageNotFound = '*',
+  cart = 'cart',
+  favorites = 'favorites',
+  pageNotFound = '*'
 }

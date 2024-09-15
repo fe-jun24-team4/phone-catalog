@@ -16,6 +16,8 @@ export const RootPage = () => {
                <Route path={RouteNames.phones} element={<p>PHONES</p>}/>
                <Route path={RouteNames.tablets} element={<p>TABLETS</p>}/>
                <Route path={RouteNames.accessories} element={<p>ACCESSORIES</p>}/>
+               <Route path={RouteNames.favorites} element={<p>Favorites</p>}/>
+               <Route path={RouteNames.cart} element={<p>CART</p>}/>
             </Route>
             <Route path={RouteNames.pageNotFound} element={<p>PAGE NOT FOUND</p>}/>
         </Routes>
