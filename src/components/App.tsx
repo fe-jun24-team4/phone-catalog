@@ -1,3 +1,4 @@
+import Footer from "../Footer/Footer";
 import { Dropdown } from './DropdownButton/DropdownButton';
 import { ProductCard } from './ProductCard';
 
@@ -22,10 +23,11 @@ function App() {
         </div>
       </main>
 
-      <footer className="footer">
-        <div className="footer__container">Footer</div>
-      </footer>
-    </div>
+      <div className="div__container">
+      <Footer />
+      </div>
+        
+    </div> 
   );
 }
 
