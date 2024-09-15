@@ -15,8 +15,13 @@
     }
 }
 
+.logo {
+    margin-right: 24px;
+}
+
 .nav-links {
     display: none;
+    height: 100%;
 
     :hover {
         color: $themePurplePrimary;
@@ -26,9 +31,11 @@
         display: flex;
         justify-content: space-between;
         gap: 16px;
-        margin-left: 10px;
+        margin-right: auto;
 
         a {
+            display: flex;
+            align-items: center;
             position: relative;
             text-decoration: none;
             color: inherit;
@@ -37,7 +44,7 @@
                 content: '';
                 position: absolute;
                 left: 0;
-                bottom: -1em;
+                bottom: -2px;
                 width: 100%;
                 height: 2px;
                 background-color: $themePurplePrimary;
@@ -61,7 +68,6 @@
         gap: 64px;
 
         &::after {
-            bottom: -1.2em;
             width: 100%;
             height: 2px;
             background-color: $themePurplePrimary;
@@ -70,19 +76,10 @@
         }
     }
 }
-
-
-// .nav-links {
-//     display: none;
-
-//     :hover {
-//         color: $themePurplePrimary;
-//     }
-// }
-
 .icon-home {
     display: flex;
-    padding: 10px 19px;
+    align-items: center;
+    justify-content: center;
     border-left: 2px solid $themePurpleElements;
     line-height: 2;
 
@@ -91,14 +88,27 @@
     }
 }
 
-.separator {
-    width: 2px;
-    height: 48px;
-    background-color: $themePurpleElements;
+// .separator {
+//     width: 2px;
+//     height: 48px;
+//     background-color: $themePurpleElements;
+
+//     @include onLaptop {
+//         height: 64px;
+//     }
+// }
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid $themePurpleElements;
+    padding: 16px;
 
     @include onLaptop {
-        height: 64px;
+        padding: 24px;
     }
+
 }
 
 .icon-group {
@@ -107,8 +117,7 @@
    @include onTablet {
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        gap: 16px;
-        padding: 0 15px;
+        justify-content: center;
+        //gap: 16px;
     }
 }

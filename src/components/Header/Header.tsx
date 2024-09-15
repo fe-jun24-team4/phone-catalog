@@ -8,17 +8,25 @@ export const Header: React.FC = () => {
         <img src="./src/images/nice-gadgets-logo.png" alt="" />
       </div>
       <nav className="nav-links">
-        <a href="#home">Home</a>
-        <a href="#phones">Phones</a>
-        <a href="#tablets">Tablets</a>
-        <a href="#accessories">Accessories</a>
+        <a href="#home">
+          <span>Home</span>
+        </a>
+        <a href="#phones">
+          <span>Phones</span>
+        </a>
+        <a href="#tablets">
+          <span>Tablets</span>
+        </a>
+        <a href="#accessories">
+          <span>Accessories</span>
+        </a>
       </nav>
       <div className="burger-menu icon-home" />
       <div className="icon-group">
-        <div className="separator" />
-        <div className="icon-heart" />
-        <div className="separator" />
-        <div className="icon-shopping-bag" />
+        {/* <div className="separator" /> */}
+        <div className="icon-heart icon" />
+        {/* <div className="separator" /> */}
+        <div className="icon-shopping-bag icon" />
       </div>
     </header>
   );
