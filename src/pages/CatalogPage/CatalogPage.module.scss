@@ -1,0 +1,33 @@
+@import '../../styles/generals/mixins.scss';
+@import '../../styles/generals/variables.scss';
+
+.container {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include onTabletAndUp {
+    padding-bottom: 80px;
+  }
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-top: 24px;
+  margin-bottom: 32px;
+
+  @include onTabletAndUp {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.titleText {
+  @include titleMain;
+}
+
+.titleSubscript {
+  font-weight: $fontWeightSemiBold;
+}

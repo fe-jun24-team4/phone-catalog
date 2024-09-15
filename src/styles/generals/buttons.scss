@@ -1,5 +1,6 @@
 .button-primary {
-    max-width: 160px;
+    max-width: 200px;
+    //Katya znaye
     width: 100%;
   
     padding: 10px;
@@ -91,7 +92,7 @@
             background-color: $themePurpleAccent;
 
             &::before {
-                color: $themePurpleAccent;
+                color: $themePurpleWhite;
             }
         }
     }

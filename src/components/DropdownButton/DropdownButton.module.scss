@@ -1,0 +1,22 @@
+@import '../../styles/generals/variables.scss';
+
+.containerDropdown {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Mont', sans-serif;
+}
+
+.text {
+  color: $themePurpleSecondary;
+  font-size: 12px;
+  line-height: $lineHeightAdditional;
+  margin-bottom: 5px;
+}
+
+.button {
+  border-radius: 5px;
+  border: 1px solid $themePurpleSecondary;
+  padding: 5px 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
