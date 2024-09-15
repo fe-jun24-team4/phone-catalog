@@ -23,9 +23,7 @@ export const Header: React.FC = () => {
       </nav>
       <div className="burger-menu icon-home" />
       <div className="icon-group">
-        {/* <div className="separator" /> */}
         <div className="icon-heart icon" />
-        {/* <div className="separator" /> */}
         <div className="icon-shopping-bag icon" />
       </div>
     </header>

@@ -88,16 +88,6 @@
     }
 }
 
-// .separator {
-//     width: 2px;
-//     height: 48px;
-//     background-color: $themePurpleElements;
-
-//     @include onLaptop {
-//         height: 64px;
-//     }
-// }
-
 .icon {
     display: flex;
     align-items: center;
@@ -118,6 +108,5 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        //gap: 16px;
     }
 }
