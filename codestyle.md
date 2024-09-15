@@ -17,10 +17,11 @@
   - [**BAD**] `.cardImage` `.footerLogo`
   - [**GOOD**] `.image` `.logo`
 - **DO** use blank lines to separate properties into distinct blocks.
+
   - Recommended order:
-    - `display`, `align-items`, `justify-content`, `gap` and so on
     - `width` and `height`
     - `padding` and `margin`
+    - `display`, `align-items`, `justify-content`, `gap` and so on
     - text properties
     - background properties
     - border properties
@@ -37,15 +38,20 @@
     }
     ```
   - [**GOOD**]
+
     ```css
     .myClass {
-      display: flex;
-      border-color: #00ff00;
-      gap: 16px;
-      transition-duration: 0.3s;
       height: 2rem;
+
+      display: flex;
+      gap: 16px;
+
+      border-color: #00ff00;
+
+      transition-duration: 0.3s;
     }
     ```
+
 - **DON`T** apply properties, that are already inherited from parent
 
   - [**BAD**]
@@ -73,7 +79,7 @@
     }
     ```
 
-- Remember to use mixins for responsive classes
+- Remember to use **MIXINS** and **VARIABLES**
 
 ## React
 
