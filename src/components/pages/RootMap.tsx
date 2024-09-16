@@ -4,7 +4,7 @@ import {
     Routes,
   } from 'react-router-dom'; 
 import { RouteNames } from '../../enums/RouteNames';
-import App from '../app/App';
+import App from '../App';
 
 
 export const RootPage = () => {
