@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
 import { ProductShort as Product } from '../../types/Product';
+import { HOST } from '../../utils/constants/host';
 
 interface ProductCardProps {
   product: Product;
@@ -13,11 +14,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <a href="#" className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
-          <img
-            src={`http://localhost:5173/phone-catalog/${image}`}
-            alt={name}
-            className={styles.image}
-          />
+          <img src={`${HOST}/${image}`} alt={name} className={styles.image} />
         </div>
 
         <div className={styles.content}>

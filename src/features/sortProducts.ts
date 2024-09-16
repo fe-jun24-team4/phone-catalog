@@ -9,9 +9,11 @@ export function sortProducts(products: Product[], sortBy: SortBy) {
       result.sort(({ year: a }, { year: b }) => b - a);
       break;
     case SortBy.topRated:
-      throw new Error('Not implemented');
+      //throw new Error('Not implemented');
+      break;
     case SortBy.topSales:
-      throw new Error('Not implemented');
+      //throw new Error('Not implemented');
+      break;
     case SortBy.biggestDiscount:
       result.sort((a, b) => {
         const aDiscount = 1 - a.price / a.fullPrice;

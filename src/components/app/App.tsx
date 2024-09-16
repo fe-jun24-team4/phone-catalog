@@ -1,19 +1,15 @@
-import { CatalogPage } from '../../pages/CatalogPage';
-import { ButtonFavorite, ButtonPrimary } from '../buttons';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
     <div className="wrapper">
-      <header className="header">
-        <ButtonFavorite icon="icon-heart" />
-        <ButtonPrimary title="test" />
-      </header>
+      <header className="header">HEADER</header>
 
       <main className="page page___container">
-        <CatalogPage />
+        <Outlet />
       </main>
 
-      <footer className="footer">Footer</footer>
+      <footer className="footer">FOOTER</footer>
     </div>
   );
 }

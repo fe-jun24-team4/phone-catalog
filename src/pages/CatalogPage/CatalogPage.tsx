@@ -1,32 +1,40 @@
 import styles from './CatalogPage.module.scss';
-import { BreadCrumbs } from '../../components/BreadCrumbs';
+
 import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
+import { CatalogContextProvider, useCatalogContext } from './context/CatalogContext';
+import { HOST } from '../../utils/constants/host';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-import cn from 'classnames';
+type CatalogPageProps = {
+  title: string;
+};
 
-import data from '../../api/products.json';
-import { useState } from 'react';
-import { ProductShort as Product } from '../../types/Product';
-
-const phones = data.filter(item => item.category === 'phones');
-
-export const CatalogPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    fetch();
-  });
+const CatalogPage = ({ title }: CatalogPageProps) => {
+  const { products } = useCatalogContext();
 
   return (
-    <div className={cn(styles.container)}>
-      <BreadCrumbs />
+    <div className={styles.container}>
+      <Breadcrumbs.View />
 
-      <div className={cn(styles.titleContainer)}>
-        <h1 className={cn(styles.titleText)}>Mobile phones</h1>
-        <p className={cn(styles.titleSubscript)}>{phones.length} models</p>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.titleText}>{title}</h1>
+        <p className={styles.titleSubscript}>{products.length} models</p>
       </div>
 
-      <ProductsGrid products={phones} />
+      <ProductsGrid products={products} />
     </div>
+  );
+};
+
+type CatalogPageWithContextProps = {
+  title: string;
+  source: string;
+};
+
+export const CatalogPageWithContext = ({ title, source }: CatalogPageWithContextProps) => {
+  return (
+    <CatalogContextProvider source={`${HOST}/${source}`}>
+      <CatalogPage title={title} />
+    </CatalogContextProvider>
   );
 };
