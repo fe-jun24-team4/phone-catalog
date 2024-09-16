@@ -5,5 +5,5 @@ export enum RouteNames {
   accessories = 'accessories',
   cart = 'cart',
   favorites = 'favorites',
-  pageNotFound = '*'
+  pageNotFound = '*',
 }
