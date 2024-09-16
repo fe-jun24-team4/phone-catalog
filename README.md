@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# Phone Catalog by team 4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What is this project?
 
-Currently, two official plugins are available:
+This is a group project, intended to practice teamwork and collective problem solving.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Technologies:
 
-## Expanding the ESLint configuration
+- Vite + React
+- SASS
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Codebase rules
 
-- Configure the top-level `parserOptions` property like this:
+- Keep it simple
+- Concise is better than verbose
+- Verbose is better than incomprehensible
+- Always wrap `<img />` with something
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+more rules coming soon...
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## How to contribute?
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+1. Clone the repository
+1. Run `npm i`
+1. Run `git checkout -b <my-feature-name>`
+1. Run `npm run dev` to start a server
+1. Implement your feature, following the [Codebase rules](##Codebase-rules)
+1. Commit and push your changes
+1. Move your task to `review` column on ClickUp
+1. Notify your team, that your task is ready for a review
+1. Implement changes if necessary
+1. If everything is approved, move on to the next task
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+## QoL stuff
+
+- Media mixins (work in progress)
+- Typographic mixins (work in progress)
+- Color palette (work in progress)
+
+## Authors
+
+| Name                 | Position              |
+| -------------------- | --------------------- |
+| Serhii Kozlov        | (team-lead)           |
+| Kateryna Stelmakhova | (front-end developer) |
+| Vadym Urbanovych     | (front-end developer) |
+| Tetiana Rudnytska    | (front-end developer) |
+| Yurii Yaremko        | (front-end developer) |
+| Yarik Kedrych        | (front-end developer) |

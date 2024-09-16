@@ -1,0 +1,31 @@
+@import '../../styles/generals/index.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: $fontWeightSemiBlack;
+    color: $themePurplePrimary;
+}
+
+.message {
+    text-transform: uppercase;
+}
+
+.link {
+    color: $themePurplePrimary;
+    text-decoration: none;
+    font-weight: $fontWeightSemiBlack;
+    transition-duration: $transitionDuration;
+
+    &:hover {
+        color: $themePurpleAccent;
+    }
+}
