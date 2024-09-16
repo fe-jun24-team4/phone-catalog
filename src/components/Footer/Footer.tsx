@@ -5,11 +5,11 @@ import logo from './Logo.svg';
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: 'smooth',
   });
 };
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -17,38 +17,50 @@ const Footer: React.FC = () => {
           <img src={logo} alt="Logo" className={styles.logoImg} />
         </a>
         <nav className={styles.nav}>
-        <ul className={styles.list}>
+          <ul className={styles.list}>
             <li className={styles.navItem}>
-            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className={styles.link}>
-        GITHUB
-        </a> 
+              <a
+                href="https://github.com/your-repo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                GITHUB
+              </a>
             </li>
             <li className={styles.navItem}>
-            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className={styles.link}>
-            CONTACTS
-        </a> 
+              <a
+                href="https://github.com/your-repo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                CONTACTS
+              </a>
             </li>
             <li className={styles.navItem}>
-            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className={styles.link}>
-            RIGHTS
-        </a> 
+              <a
+                href="https://github.com/your-repo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                RIGHTS
+              </a>
             </li>
-        </ul>
-        
-      </nav>
-        
+          </ul>
+        </nav>
+
         <div className={styles.sectionBack}>
-        <p className={styles.backText}>
-          Back to top
-        </p>
-        
-        <button className="button-round button-round--chevron" style={{transform:'rotate(-90deg)'}} onClick={scrollToTop}/>
-            
+          <p className={styles.backText}>Back to top</p>
+
+          <button
+            className="button-round button-round--chevron"
+            style={{ transform: 'rotate(-90deg)' }}
+            onClick={scrollToTop}
+          />
         </div>
-        
       </div>
     </footer>
   );
 };
-
-export default Footer;

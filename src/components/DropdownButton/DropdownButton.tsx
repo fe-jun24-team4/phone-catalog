@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { useEffect, useRef, useState } from 'react';
 import { Options } from '../../types/Option';
+import React from 'react';
 
 interface DropdownProps<T> {
   options: Options<T>;

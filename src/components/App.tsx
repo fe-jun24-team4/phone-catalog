@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from './Header/Header';
-import Footer from '../Footer/Footer';
+import { Header } from './Header';
+import { Footer } from './Footer';
 import { Outlet } from 'react-router-dom';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       </header>
 
       <main className="page">
-        <div className="page___container" style={{ width: 350 }}>
+        <div className="page___container" style={{ paddingTop: '48px' }}>
           <Outlet />
         </div>
       </main>

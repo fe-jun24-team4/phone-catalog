@@ -1,6 +1,7 @@
+import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { RouteNames } from '../enums/RouteNames';
-import App from '../components/app/App';
+import App from '../components/App';
 import { PhonesPage } from './PhonesPage';
 import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
