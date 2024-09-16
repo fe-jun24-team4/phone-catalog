@@ -1,0 +1,34 @@
+@import '../../../styles/generals/index.scss';
+
+.buttonRounded {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  border: 1px solid $themePurpleElements;
+  border-radius: 50%;
+  overflow: hidden;
+
+  background-color: transparent;
+
+  color: $themePurplePrimary;
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    border-color: $themePurplePrimary;
+  }
+
+  &.selected {
+    background-color: $themePurplePrimary;
+    color: $themePurpleWhite;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
