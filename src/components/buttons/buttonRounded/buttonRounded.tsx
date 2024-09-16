@@ -1,6 +1,6 @@
 import styles from './buttonRounded.module.scss';
 import classNames from 'classnames';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Direction } from '../../../enums/Direction';
 
 type Degrees = number;
@@ -26,24 +26,39 @@ export interface Props {
   title?: string;
   icon?: string;
   rotate?: Degrees | Direction;
+  onClick?: () => void;
+  disabled?: boolean;
+  selected?: boolean;
 }
 
-const ButtonRounded: FC<Props> = ({ title, icon, rotate }) => {
-  const [isSelected, setIsSelected] = useState(false);
-
+const ButtonRounded: FC<Props> = ({
+  title,
+  rotate,
+  onClick = () => {},
+  disabled = false,
+  selected = false,
+}) => {
   const rotationDegrees = getRotationDegrees(rotate ?? 0);
+
+  const handleClick = () => {
+    onClick();
+  };
 
   return (
     <button
       className={classNames(styles.buttonRounded, {
-        [styles.selected]: isSelected,
+        [styles.selected]: selected,
       })}
-      onClick={() => setIsSelected(true)}
+      onClick={handleClick}
+      disabled={disabled}
     >
       {title ? (
         `${title}`
       ) : (
-        <span className={icon} style={{ transform: `rotate(${rotationDegrees}deg)` }}></span>
+        <span
+          className={'icon-chevron-left'}
+          style={{ transform: `rotate(${rotationDegrees}deg)` }}
+        ></span>
       )}
     </button>
   );

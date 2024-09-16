@@ -1,51 +1,51 @@
 @import 'variables.scss';
 
-@mixin onTablet {
-    @media (min-width: 640px) {
-      @content;
-    }
+@mixin onTabletAndUp {
+  @media (min-width: 640px) {
+    @content;
   }
-  
-  @mixin onLaptop {
-    @media (min-width: 1200px) {
-      @content;
-    }
-  }
+}
 
-  @mixin lastChild {
-    &:not(:last-child) {
-      @content;
-    }
+@mixin onLaptopAndUp {
+  @media (min-width: 1200px) {
+    @content;
   }
-  
-  @mixin before {
-    &::before {
-      content: '';
-      @content;
-    }
-  }
-  
-  @mixin after {
-    &::after {
-      content: '';
-      @content;
-    }
-  }
-  
-  @mixin onHover {
-    &:hover {
-      @content;
-    }
-  }
+}
 
-  @mixin titleMain {
-     font-size: $fontSizeBig;
-     font-weight: $fontWeightSemiBlack;
-     line-height: $lineHeightAdditional;
-
-     color: $themePurplePrimary;
-
-     @include onTablet {
-      font-size: 48px;
-     }
+@mixin exceptLastChild {
+  &:not(:last-child) {
+    @content;
   }
+}
+
+@mixin before {
+  &::before {
+    content: '';
+    @content;
+  }
+}
+
+@mixin after {
+  &::after {
+    content: '';
+    @content;
+  }
+}
+
+@mixin onHover {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin titleMain {
+  font-size: $fontSizeBig;
+  font-weight: $fontWeightSemiBlack;
+  line-height: $lineHeightAdditional;
+
+  color: $themePurplePrimary;
+
+  @include onTabletAndUp {
+    font-size: 48px;
+  }
+}

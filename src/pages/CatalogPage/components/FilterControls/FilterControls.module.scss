@@ -1,5 +1,28 @@
+@import '../../../../styles/generals/mixins.scss';
+
 .container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  grid-template-columns: 1fr;
+
+  @include onTabletAndUp {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  @include onLaptopAndUp {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+
+.dropdowns {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
   column-gap: 16px;
+
+  @include onTabletAndUp {
+    grid-template-columns: minmax(200px, 3fr) minmax(100px, 2fr);
+  }
 }

@@ -1,20 +1,26 @@
-import { BreadCrumbs } from '../common/BreadCrumbs';
+import styles from './CatalogPage.module.scss';
+import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
-import style from './CatalogPage.module.scss';
 
 import cn from 'classnames';
 
+import data from '../../api/products.json';
+
+const phones = data.filter(item => item.category === 'phones');
+
 export const CatalogPage = () => {
+  useEffect(() => {});
+
   return (
-    <div className={cn(style.container)}>
+    <div className={cn(styles.container)}>
       <BreadCrumbs />
 
-      <div className={cn(style.titleContainer)}>
-        <h1 className={cn(style.titleText)}>Mobile phones</h1>
-        <p className={cn(style.titleSubscript)}>95 models</p>
+      <div className={cn(styles.titleContainer)}>
+        <h1 className={cn(styles.titleText)}>Mobile phones</h1>
+        <p className={cn(styles.titleSubscript)}>{phones.length} models</p>
       </div>
 
-      <ProductsGrid />
+      <ProductsGrid products={phones} />
     </div>
   );
 };
