@@ -5,11 +5,17 @@ import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
 import cn from 'classnames';
 
 import data from '../../api/products.json';
+import { useState } from 'react';
+import { ProductShort as Product } from '../../types/Product';
 
 const phones = data.filter(item => item.category === 'phones');
 
 export const CatalogPage = () => {
-  useEffect(() => {});
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetch();
+  });
 
   return (
     <div className={cn(styles.container)}>
