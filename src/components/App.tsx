@@ -11,7 +11,7 @@ function App() {
       </header>
 
       <main className="page">
-        <div className="page___container" style={{ paddingTop: '48px' }}>
+        <div className="page___container">
           <Outlet />
         </div>
       </main>
