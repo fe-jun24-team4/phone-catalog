@@ -1,5 +1,6 @@
 @import '../../styles/generals/variables.scss';
 @import '../../styles/generals/index.scss';
+@import '../../styles/generals/mixins.scss';
 
 .container {
   border: 1px solid $themePurpleElements;
@@ -43,40 +44,14 @@
   align-items: center;
 }
 
-.buttonPrimary {
-  margin: 24px;
-  max-width: 320px;
-  width: 100%;
-
-  padding: 13.5px;
-
+.buttonContainer {
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
+  padding: 24px ;
+  padding-top: 16px;
 
-  font-weight: $fontWeightBold;
-  text-align: center;
-
-  border: 1px solid transparent;
-
-  background-color: $themePurpleAccent;
-  color: $themePurpleWhite;
-
-  border-radius: 48px;
-
-  transition-duration: $transitionDuration;
-
-  @include onHover {
-    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  @include onLaptop {
+    padding-top: 24px;
   }
-
-  &.buttonSelected {
-      background-color: transparent;
-      color: $themePurpleAccent;
-      border-color: $themePurpleElements;
-
-      @include onHover {
-          box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
-        }
-    }
 }

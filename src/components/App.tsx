@@ -3,6 +3,7 @@ import { Header } from './Header/Header';
 import Footer from '../Footer/Footer';
 
 import React from 'react';
+import { TotalCost } from './CalculateCost';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           Content
         </div>
       </main>
+      <TotalCost products={[]} />
 
       <div className="div__container">
         <Footer />

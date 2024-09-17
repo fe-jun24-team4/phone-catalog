@@ -1,33 +1,23 @@
 import { FC, useState, useEffect } from 'react';
 import styles from './CalculateCost.module.scss';
 import React from 'react';
-import classNames from 'classnames';
+import { ButtonPrimary } from '../buttons';
 
-// interface Props {
-//   title: string;
-//   count: number;
-//   cost: number;
-// }
+interface Product {
+  title: string;
+  count: number;
+  cost: number;
+}
 
-const test = [
-  {
-    title: 'name',
-    count: 3,
-    cost: 800,
-  },
-  {
-    title: 'name',
-    count: 1,
-    cost: 800,
-  },
-];
+type TotalCostProps = {
+  products: Product[];
+};
 
-export const TotalCost: FC = ({}) => {
+export const TotalCost: FC<TotalCostProps> = ({ products }) => {
   const [calculate, setCalculate] = useState(0);
-  const [isSelected, setIsSelected] = useState(false);
 
   useEffect(() => {
-    const totalCost = test.reduce((acc, item) => acc + item.cost * item.count, 0);
+    const totalCost = products.reduce((acc, item) => acc + item.cost * item.count, 0);
 
     setCalculate(totalCost);
   }, []);
@@ -38,17 +28,12 @@ export const TotalCost: FC = ({}) => {
         <div className={styles.count}>
           <span className={styles.totalCost}>${calculate}</span>
         </div>
-        <div className={styles.totalForItems}>Total for {test.length} items</div>
+        <div className={styles.totalForItems}>Total for {products.length} items</div>
       </div>
       <div className={styles.divider}></div>
-      <button
-      className={classNames(styles.buttonPrimary, {
-        [styles.buttonSelected]: isSelected,
-      })}
-      onClick={() => setIsSelected(true)}
-    >
-      Checkout{/* {title} */}
-    </button>
+      <div className={styles.buttonContainer}>
+        <ButtonPrimary title={'Checkout'} />
+      </div>
     </div>
   );
 };
