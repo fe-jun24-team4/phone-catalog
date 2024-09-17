@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import logo from './Logo.svg';
+import { ButtonRounded } from '../buttons';
+import { Direction } from '../../enums/Direction';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -54,11 +56,7 @@ export const Footer: React.FC = () => {
         <div className={styles.sectionBack}>
           <p className={styles.backText}>Back to top</p>
 
-          <button
-            className="button-round button-round--chevron"
-            style={{ transform: 'rotate(-90deg)' }}
-            onClick={scrollToTop}
-          />
+          <ButtonRounded rotate={Direction.up} onClick={scrollToTop} />
         </div>
       </div>
     </footer>
