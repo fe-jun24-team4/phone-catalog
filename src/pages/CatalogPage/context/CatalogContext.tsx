@@ -12,13 +12,16 @@ const StateContext = createContext<State | null>(null);
 type URL = string;
 
 type Props = {
-  source: URL;
+  rawData?: Product[];
+  source?: URL;
 };
 
-export const CatalogContextProvider = ({ children }: PropsWithChildren<Props>) => {
+export const CatalogContextProvider = ({source, rawData, children }: PropsWithChildren<Props>) => {
   const state: State = {
     products: data,
   };
+
+ // ${HOST}/${source}.json
 
   return <StateContext.Provider value={state}>{children}</StateContext.Provider>;
 };

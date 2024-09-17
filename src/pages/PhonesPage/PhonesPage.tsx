@@ -5,7 +5,7 @@ export const PhonesPage = () => {
   return (
     <>
       <Outlet />
-      <CatalogPageWithContext title="Mobile Phones" source="api/phones.json" />
+      <CatalogPageWithContext title="Mobile Phones" source="api/phones" />
     </>
   );
 };

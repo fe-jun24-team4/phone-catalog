@@ -33,7 +33,7 @@ type CatalogPageWithContextProps = {
 
 export const CatalogPageWithContext = ({ title, source }: CatalogPageWithContextProps) => {
   return (
-    <CatalogContextProvider source={`${HOST}/${source}`}>
+    <CatalogContextProvider source={source}>
       <CatalogPage title={title} />
     </CatalogContextProvider>
   );
