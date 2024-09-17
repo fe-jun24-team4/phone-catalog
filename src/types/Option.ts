@@ -1,37 +1,51 @@
 export enum OptionType {
-  Default,
-  Placeholder,
+  default,
+  placeholder,
 }
 
-export type Option<T> = {
-  key: string;
+type Option<T> = {
   value: T;
   type?: OptionType;
 };
 
+type OptionsMap<T> = { [key: string]: Option<T> };
+
+type OptionsConstructorArgs<T> = {
+  label: string;
+  options: OptionsMap<T>;
+};
+
 export class Options<T> {
-  public label: string;
+  public label: string = '';
 
-  public items: Option<T>[] = [];
+  public items = {} as OptionsMap<T>;
 
-  constructor(label: string, options: Option<T>[]) {
+  constructor({ label, options }: OptionsConstructorArgs<T>) {
     this.label = label;
     this.items = options;
   }
 
-  get defaultOption() {
-    return this.items.find(option => option.type === OptionType.Default);
+  get default() {
+    const entries = Object.entries(this.items);
+
+    const defaultOption = entries.find(([_, option]) => option.type === OptionType.default);
+
+    if (defaultOption) {
+      return defaultOption;
+    }
+
+    const placeholderOption = entries.find(([_, option]) => option.type === OptionType.placeholder);
+
+    if (placeholderOption) {
+      return placeholderOption;
+    }
+
+    return entries[0] ?? null;
   }
 
-  get placeholderOption() {
-    return this.items.find(option => option.type === OptionType.Default);
-  }
+  get visible() {
+    const entries = Object.entries(this.items);
 
-  get initialOption() {
-    return this.defaultOption ?? this.placeholderOption;
-  }
-
-  get withoutPlaceholder() {
-    return this.items.filter(option => option.type !== OptionType.Placeholder);
+    return entries.filter(([_, option]) => option.type !== OptionType.placeholder);
   }
 }

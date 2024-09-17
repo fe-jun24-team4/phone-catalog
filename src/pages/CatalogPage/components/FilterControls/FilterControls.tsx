@@ -1,20 +1,14 @@
 import style from './FilterControls.module.scss';
-import cn from 'classnames';
 
-import { DropdownButton } from '../../../common/DropdownButton/DropdownButton';
-import { Option, Options } from '../../../../types/Option';
-
-enum A {
-  A,
-  B,
-  C,
-}
+import { Options } from '../../../../types/Option';
+import { SortBy } from '../../../../enums/sortBy';
+import { DropdownButton } from '../../../../components/DropdownButton';
 
 type Props = {
-  sortByOptions: A;
-  onSortByChange?: (option: A) => void;
-  perPageOptions: { [key: string]: number };
-  onPerPageChange?: (option: number) => void;
+  sortByOptions: Options<SortBy>;
+  onSortByChange?: (value: SortBy) => void;
+  perPageOptions: Options<number>;
+  onPerPageChange?: (value: number) => void;
 };
 
 export const FilterControls = ({
@@ -24,9 +18,11 @@ export const FilterControls = ({
   onPerPageChange = () => {},
 }: Props) => {
   return (
-    <div className={cn(style.container)}>
-      <DropdownButton options={sortByOptions} onOptionChange={onSortByChange} />
-      <DropdownButton options={perPageOptions} onOptionChange={onPerPageChange} />
+    <div className={style.container}>
+      <div className={style.dropdowns}>
+        <DropdownButton options={sortByOptions} onChange={onSortByChange} />
+        <DropdownButton options={perPageOptions} onChange={onPerPageChange} />
+      </div>
     </div>
   );
 };
