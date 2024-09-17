@@ -1,1 +1,1 @@
-export const HOST = 'http://localhost:5173/phone-catalog';
+export const HOST = import.meta.env.VITE_HOST;

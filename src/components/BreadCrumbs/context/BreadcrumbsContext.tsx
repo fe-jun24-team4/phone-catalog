@@ -1,3 +1,4 @@
+import React from 'react';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
 type Contract = {
