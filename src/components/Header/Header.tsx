@@ -1,36 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classnames from 'classnames';
+import { RouteNames } from '../../enums/RouteNames';
 
 export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <a className={styles.logo}>
+        <Link to={RouteNames.home} className={styles.logo}>
           <img
             src="./src/images/nice-gadgets-logo.svg"
             className={styles.logoImage}
             alt="Nice Gadgets Logo"
           />
-        </a>
+        </Link>
 
         <nav className={styles.menu}>
           <div className={styles.menuWrapper}>
             <ul className={styles.list}>
               <li className={styles.menuItem}>
-                <a href="#">Home</a>
+                <Link to={RouteNames.home}>Home</Link>
               </li>
 
               <li className={styles.menuItem}>
-                <a href="#">Phones</a>
+                <Link to={RouteNames.phones}>Phones</Link>
               </li>
 
               <li className={styles.menuItem}>
-                <a href="#">Tablets</a>
+                <Link to={RouteNames.tablets}>Tablets</Link>
               </li>
 
               <li className={styles.menuItem}>
-                <a href="#">Accessories</a>
+                <Link to={RouteNames.accessories}>Accessories</Link>
               </li>
             </ul>
 
@@ -46,12 +48,12 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className={styles.icons}>
-          <div className={styles.icon}>
+          <Link to={RouteNames.favorites} className={styles.icon}>
             <span className="icon-heart"></span>
-          </div>
-          <div className={styles.icon}>
+          </Link>
+          <Link to={RouteNames.cart} className={styles.icon}>
             <span className="icon-shopping-bag"></span>
-          </div>
+          </Link>
         </div>
 
         <div className={styles.burgerMenu}>
