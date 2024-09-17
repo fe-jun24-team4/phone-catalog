@@ -1,5 +1,7 @@
 import styles from './buttonRounded.module.scss';
 import classNames from 'classnames';
+
+import React from 'react';
 import { FC } from 'react';
 import { Direction } from '../../../enums/Direction';
 
