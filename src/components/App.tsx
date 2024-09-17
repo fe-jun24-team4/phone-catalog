@@ -9,7 +9,6 @@ function App() {
       <header className="header">
         <Header />
       </header>
-
       <main className="page">
         <div className="page___container" style={{ paddingTop: '48px' }}>
           <Outlet />
