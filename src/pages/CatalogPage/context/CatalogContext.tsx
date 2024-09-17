@@ -1,7 +1,8 @@
-import { createContext, PropsWithChildren, useContext } from 'react';
+import React, { createContext, PropsWithChildren, useContext } from 'react';
 import { ProductShort as Product } from '../../../types/Product';
 
-import data from '../../../api/products.json';
+import { useFetchData } from '../../../hooks/useFetch';
+import { HOST } from '../../../utils/constants/host';
 
 type State = {
   products: Product[];
@@ -12,18 +13,17 @@ const StateContext = createContext<State | null>(null);
 type URL = string;
 
 type Props = {
-  rawData?: Product[];
   source?: URL;
 };
 
-export const CatalogContextProvider = ({source, rawData, children }: PropsWithChildren<Props>) => {
-  const state: State = {
-    products: data,
+export const CatalogContextProvider = ({ source, children }: PropsWithChildren<Props>) => {
+  const { data } = useFetchData(`${HOST}/${source}.json`);
+
+  const contextValue = {
+    products: data as Product[],
   };
 
- // ${HOST}/${source}.json
-
-  return <StateContext.Provider value={state}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={contextValue}>{children}</StateContext.Provider>;
 };
 
 export const useCatalogContext = () => {

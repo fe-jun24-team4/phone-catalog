@@ -1,8 +1,8 @@
+import React from 'react';
 import styles from './CatalogPage.module.scss';
 
 import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
 import { CatalogContextProvider, useCatalogContext } from './context/CatalogContext';
-import { HOST } from '../../utils/constants/host';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 type CatalogPageProps = {
@@ -11,6 +11,8 @@ type CatalogPageProps = {
 
 const CatalogPage = ({ title }: CatalogPageProps) => {
   const { products } = useCatalogContext();
+  
+  console.log(products);
 
   return (
     <div className={styles.container}>

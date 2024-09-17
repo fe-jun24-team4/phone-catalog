@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const useFetchData = <T>(url: string) => {
-  const [data, setData] = useState<T | null>(null);
+  const [data, setSata] = useState<T[]>([] as T[]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -12,7 +12,7 @@ export const useFetchData = <T>(url: string) => {
 
       const res = await response.json();
 
-      setData(res);
+      setSata(res);
     } catch (error) {
       setIsError(true);
       throw error;
@@ -23,10 +23,11 @@ export const useFetchData = <T>(url: string) => {
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, []);
 
   return {
     isLoading,
+    fetchData,
     isError,
     data,
   };
