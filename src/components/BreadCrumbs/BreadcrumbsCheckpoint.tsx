@@ -3,6 +3,7 @@ import {
   BreadcrumbsContextProvider,
   useBreadcrumbsContextUnsertain,
 } from './context/BreadcrumbsContext';
+import React from 'react';
 
 type BreadcrumbsCheckpointProps = {
   title: string;
