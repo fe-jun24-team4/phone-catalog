@@ -2,7 +2,6 @@ import styles from './buttonPrimary.module.scss';
 import classNames from 'classnames';
 import React from 'react';
 
-import React from 'react';
 import { FC, useState } from 'react';
 
 export interface Props {
