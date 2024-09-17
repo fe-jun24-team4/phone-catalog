@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import styles from './buttonFavorite.module.scss';
 import classNames from 'classnames';
+import React from 'react';
 
 export interface Props {
   icon: string;

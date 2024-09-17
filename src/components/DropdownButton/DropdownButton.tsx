@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import styles from './DropdownButton.module.scss';
+import React = require('react');
 
 interface DropdownProps {
   description: string;

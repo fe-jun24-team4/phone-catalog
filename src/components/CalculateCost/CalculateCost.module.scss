@@ -1,0 +1,82 @@
+@import '../../styles/generals/variables.scss';
+@import '../../styles/generals/index.scss';
+
+.container {
+  border: 1px solid $themePurpleElements;
+  width: 368px;
+  height: 206px;
+  border-radius: 16px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+.totalSummary {
+  display: flex;
+  flex-direction:column;
+  text-align: center;
+  gap: 6px;
+  padding-top: 23px;
+}
+
+.totalCost {
+  font-size: 32px;
+  font-weight: $fontWeightBold;
+  line-height: $lineHeightAdditional;
+  color: $themePurplePrimary;
+}
+
+.totalForItems {
+  color: $themePurpleSecondary;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.divider {
+  margin-top: 25px;
+  margin-left: 23.5px;
+  content: "";
+  height: 1px;
+  width: 321px;
+  display: block;
+  flex-direction: column;
+  background-color: $themePurpleElements;
+  align-items: center;
+}
+
+.buttonPrimary {
+  margin: 24px;
+  max-width: 320px;
+  width: 100%;
+
+  padding: 13.5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  font-weight: $fontWeightBold;
+  text-align: center;
+
+  border: 1px solid transparent;
+
+  background-color: $themePurpleAccent;
+  color: $themePurpleWhite;
+
+  border-radius: 48px;
+
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+
+  &.buttonSelected {
+      background-color: transparent;
+      color: $themePurpleAccent;
+      border-color: $themePurpleElements;
+
+      @include onHover {
+          box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
+        }
+    }
+}
