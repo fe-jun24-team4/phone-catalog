@@ -1,18 +1,23 @@
-import { Outlet } from 'react-router-dom';
-import { RotateDegs } from '../buttons/buttonFavorite/RotateDegs';
-import { ButtonFavorite, ButtonPrimary, ButtonRounded } from '../buttons';
+import { CartItem } from '../../CartItem/CartItem';
+import Phone from '../../CartItem/Phone.svg'
 
 function App() {
+
+const selectedPhone = {
+  imgSrc: Phone,
+  description: 'Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)',
+  quantity: 1,
+  price: 1099,
+};
+
   return (
     <div className="wrapper">
       <header className="header">
-        <ButtonFavorite icon="icon-heart" />
-        <ButtonPrimary title="test" />
-        <ButtonRounded icon="icon-chevron-left" rotateDeg={RotateDegs.up} />
+
       </header>
 
       <main className="page">
-        <Outlet />
+      <CartItem selectedPhone={selectedPhone}/>
       </main>
 
       <footer className="footer">Footer</footer>
