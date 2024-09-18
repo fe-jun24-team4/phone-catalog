@@ -41,7 +41,7 @@ export const DropdownButton = <T,>({
 
       <button type="button" className={styles.trigger} onClick={() => setIsOpen(!isOpen)}>
         <p className={styles.selectedOption}>{selectedOption}</p>
-        <div className={cn('icon-chevron-up', styles.chevron)} />
+        <div className={cn('icon-chevron-down', styles.chevron)} />
       </button>
 
       <div className={styles.menu}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
-import { CheckoutModal } from '../pages/CartPage/components/CheckoutModal/CheckoutModal';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       </header>
 
       <main className="page">
-        <CheckoutModal />
+        <Outlet />
       </main>
 
       <Footer />

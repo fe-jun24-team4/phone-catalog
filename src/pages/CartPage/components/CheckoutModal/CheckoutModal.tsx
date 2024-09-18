@@ -1,47 +1,78 @@
 import styles from './CheckoutModal.module.scss';
+import cn from 'classnames';
 
-import React from 'react';
-import { OrderItem } from '../../../../types/OrderItem';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { ButtonPrimary } from '../../../../components/buttons';
 import { Input } from '../../../../components/inputs';
 import { shippingOptions } from '../../../../utils/constants/dropdownOptions';
-import { CartItem } from '../../../../CartItem/CartItem';
 
-import data from '../../../../api/phones.json';
+import { calculateOrderTotal } from '../../../../features/calculateOrderTotal';
+import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
+import { useCartContext } from '../../context/CartContext';
+import debounce from 'lodash.debounce';
 
-function useCartContext(): { orderItems: OrderItem[] } {
-  return {
-    orderItems: data.slice(0, 3).map((product, index) => ({ product, amount: index + 1 })),
-  };
-}
+type CheckoutModalProps = {
+  onConfirm?: () => void;
+  onReject?: () => void;
+};
 
-export const CheckoutModal = () => {
-  const { orderItems } = useCartContext();
+export const CheckoutModal = ({}: CheckoutModalProps) => {
+  const {
+    cart,
+    isCheckoutVisible: isVisible,
+    setIsCheckoutVisible: setIsVisible,
+  } = useCartContext();
+
+  const [errors, setErrors] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    creditCardNumber: '',
+  });
+
+  const totalCost = calculateOrderTotal(cart);
+
+  const ref = useRef(null);
+
+  useOnClickOutside(() => {
+    if (isVisible) {
+      setIsVisible(false);
+    }
+  }, ref);
+
+  const validateFirstNameDebounced = debounce((name: string) => {
+    if (!name) {
+      setErrors(prev => ({ ...prev, firstName: 'First name is required' }));
+    }
+  });
+
+  const validate;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.order}>
-        {orderItems.map(item => (
-          <CartItem key={item.product.id} item={item} />
-        ))}
-      </div>
-
+    <div ref={ref} className={cn(styles.container, { [styles.isVisible]: isVisible })}>
       <form className={styles.form}>
-        <Input.Text placeholder="First name" />
-        <Input.Text placeholder="Last name" />
-        <Input.Text placeholder="my.email@domain.com" />
+        <Input.Text placeholder="First name" error={errors.firstName} onChange={} />
+        <Input.Text placeholder="Last name" error={errors.lastName} />
+        <Input.Text placeholder="email@domain.com" error={errors.email} />
         <Input.Dropdown label="Ship to:" options={shippingOptions} />
-        <Input.CreditCard label="Please, enter your credit card info:" />
+        <Input.CreditCard label="Credit card info" error={errors.creditCardNumber} />
       </form>
 
-      <div className={styles.total}>
-        <h3 className={styles.totalText}>Your total is ${1234}</h3>
+      <div className={styles.spacer} />
+
+      <div className={styles.final}>
+        <div className={styles.total}>
+          <p className={styles.totalSuperscript}>Your total is</p>
+
+          <h3 className={styles.totalPrice}>${totalCost}</h3>
+        </div>
 
         <div className={styles.separator} />
 
         <div className={styles.buttons}>
-          <ButtonPrimary title="Confirm" />
-          <ButtonPrimary title="Return to Cart" />
+          <ButtonPrimary title="Confirm" onClick={() => setIsVisible(false)} />
+          <ButtonPrimary title="Return to Cart" onClick={() => setIsVisible(false)} />
         </div>
       </div>
     </div>
