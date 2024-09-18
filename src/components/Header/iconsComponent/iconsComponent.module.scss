@@ -1,0 +1,85 @@
+@import '../../../styles/generals/index.scss';
+
+.icons {
+  display: none;
+
+  @include onTabletAndUp {
+      display: flex;
+  }
+
+  &.mobile {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      border-top: 2px solid $themePurpleElements;
+
+      @include onTabletAndUp {
+          display: none;
+      }
+  }
+}
+
+.icon {
+  position: relative;
+
+  height: 64px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  cursor: pointer; 
+
+  &:nth-child(1) {
+      border-right: 2px solid $themePurpleElements;
+  }
+
+  @include before {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      height: 3px;
+      width: 0;
+
+      background-color: $themePurplePrimary;
+      border-radius: 10px;
+      
+      transition-duration: $transitionDuration;
+  }
+
+  span {
+      transition-duration: $transitionDuration;
+  }
+
+  @include onHover {
+      span {
+          color: $themePurplePrimary;
+          transform: $transformScale;
+      }
+  }
+
+  @include onTabletAndUp {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+
+      &:nth-child(1) {
+          border-left: 2px solid $themePurpleElements;
+      }
+  }
+
+  @include onLaptopAndUp {
+      width: 64px;
+      height: 64px;
+  }
+
+  &.active {
+      color: $themePurplePrimary;
+
+      &::before {
+          width: 100%;
+      }
+  }
+}

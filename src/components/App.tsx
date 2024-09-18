@@ -13,17 +13,19 @@ function App() {
       </header>
 
       <main className="page">
+<<<<<<< HEAD
         <div className="page___container">
           {/* <Outlet /> */}
           <div style={{ paddingTop: '100px' }}>
             <CheckoutModal />
           </div>
         </div>
+=======
+        <Outlet />
+>>>>>>> develop
       </main>
 
-      <div className="div__container">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

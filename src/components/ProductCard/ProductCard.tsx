@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { ProductShort as Product } from '../../types/Product';
+import { Product } from '../../types/Product';
 import { HOST } from '../../utils/constants/host';
 import { ButtonFavorite, ButtonPrimary } from '../buttons';
 
@@ -9,13 +9,13 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { image, name, price, fullPrice, screen, capacity, ram } = product;
+  const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
 
   return (
     <a href="#" className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
-          <img src={`${HOST}/${image}`} alt={name} className={styles.image} />
+          <img src={`${HOST}/${images[0]}`} alt={name} className={styles.image} />
         </div>
 
         <div className={styles.content}>
@@ -23,8 +23,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <h4 className={styles.title}>{name}</h4>
 
             <div className={styles.priceBlock}>
-              <p className={styles.price}>${price}</p>
-              {fullPrice && <span className={styles.fullPrice}>${fullPrice}</span>}
+              <p className={styles.price}>${priceDiscount}</p>
+              {priceRegular && <span className={styles.fullPrice}>${priceRegular}</span>}
             </div>
           </div>
 
