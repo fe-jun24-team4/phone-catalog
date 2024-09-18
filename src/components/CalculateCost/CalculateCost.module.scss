@@ -1,0 +1,43 @@
+@import '../../styles/generals/index.scss';
+
+.total {
+  max-width: 600px;
+  width: 100%;
+}
+
+.totalWrapper {
+  padding: 24px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border-radius: 16px;
+  border: 1px solid $themePurpleElements;
+
+  @include onLaptopAndUp {
+    gap: 24px; 
+  }
+}
+
+.totalBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  height: 1px;
+  
+  background-color: $themePurpleElements;
+}
+
+.price {
+  text-align: center;
+  color: $themePurplePrimary;
+
+  font-size: $fontSizeBig;
+  font-weight: $fontWeightSemiBlack;
+  line-height: $lineHeightAdditional;
+}
