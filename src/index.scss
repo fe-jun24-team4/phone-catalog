@@ -32,6 +32,7 @@ body {
   flex-direction: column;
 
   & > .page {
+    padding-top: 72px;
     flex-grow: 1;
   }
 }
