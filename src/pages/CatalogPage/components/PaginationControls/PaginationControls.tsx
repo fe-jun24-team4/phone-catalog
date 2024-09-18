@@ -1,9 +1,9 @@
 import style from './PaginationControls.module.scss';
-import '../../../../styles/generals/buttons.scss';
+import cn from 'classnames';
 
+import React from 'react';
 import { useState } from 'react';
 
-import cn from 'classnames';
 import { range } from '../../../../utils/range';
 import { ButtonRounded } from '../../../../components/buttons';
 import { Direction } from '../../../../enums/Direction';
@@ -44,7 +44,10 @@ export const PaginationControls = ({
 
   return (
     <div className={cn(style.controls)}>
-      <ButtonRounded rotate={Direction.left} onClick={selectPrevPage} disabled={isFirstPage} />
+      <div className={style.prev}>
+        <ButtonRounded rotate={Direction.left} onClick={selectPrevPage} disabled={isFirstPage} />
+      </div>
+
       {pagesRange.map(page => (
         <ButtonRounded
           title={`${page}`}
@@ -53,7 +56,10 @@ export const PaginationControls = ({
           selected={page === currentPage}
         />
       ))}
-      <ButtonRounded rotate={Direction.right} onClick={selectNextPage} disabled={isLastPage} />
+
+      <div className={style.next}>
+        <ButtonRounded rotate={Direction.right} onClick={selectNextPage} disabled={isLastPage} />
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import React from 'react';
 import { CatalogPageWithContext } from '../CatalogPage';
 
 export const TabletsPage = () => {

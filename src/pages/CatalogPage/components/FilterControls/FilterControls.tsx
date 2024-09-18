@@ -1,5 +1,7 @@
 import style from './FilterControls.module.scss';
 
+import React from 'react';
+
 import { Options } from '../../../../types/Option';
 import { SortBy } from '../../../../enums/sortBy';
 import { DropdownButton } from '../../../../components/DropdownButton';

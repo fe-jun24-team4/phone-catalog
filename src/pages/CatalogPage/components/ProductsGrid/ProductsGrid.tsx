@@ -6,6 +6,7 @@ import { FilterControls } from '../FilterControls/FilterControls';
 import { PaginationControls } from '../PaginationControls';
 import { ProductsGridPage } from '../ProductsGridPage/ProductsGridPage';
 
+import React from 'react';
 import { useMemo, useState } from 'react';
 import { perPageOptions, sortByOptions } from '../../../../utils/constants/dropdownOptions';
 import { ProductShort as Product } from '../../../../types/Product';

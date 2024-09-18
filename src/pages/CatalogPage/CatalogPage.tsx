@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './CatalogPage.module.scss';
 
+import React from 'react';
 import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
 import { CatalogContextProvider, useCatalogContext } from './context/CatalogContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+
+import { HOST } from '../../utils/constants/host';
 
 type CatalogPageProps = {
   title: string;
