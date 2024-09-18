@@ -29,13 +29,13 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('Mont/Mont-Semibold/Mont-SemiBold.eot');
+  src: url('Mont/Mont-SemiBold/Mont-SemiBold.eot');
   src:
-    url('Mont/Mont-Semibold/Mont-SemiBold.eot?#iefix') format('embedded-opentype'),
-    url('Mont/Mont-Semibold/Mont-SemiBold.woff2') format('woff2'),
-    url('Mont/Mont-Semibold/Mont-SemiBold.woff') format('woff'),
-    url('Mont/Mont-Semibold/Mont-SemiBold.ttf') format('truetype'),
-    url('Mont/Mont-Semibold/Mont-SemiBold.svg') format('svg');
+    url('Mont/Mont-SemiBold/Mont-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('Mont/Mont-SemiBold/Mont-SemiBold.woff2') format('woff2'),
+    url('Mont/Mont-SemiBold/Mont-SemiBold.woff') format('woff'),
+    url('Mont/Mont-SemiBold/Mont-SemiBold.ttf') format('truetype'),
+    url('Mont/Mont-SemiBold/Mont-SemiBold.svg') format('svg');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -43,13 +43,13 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('Mont/Mont/Heavy/Mont-Heavy.eot');
+  src: url('Mont/Mont-Heavy/Mont-Heavy.eot');
   src:
-    url('Mont/Mont/Heavy/Mont-Heavy.eot?#iefix') format('embedded-opentype'),
-    url('Mont/Mont/Heavy/Mont-Heavy.woff2') format('woff2'),
-    url('Mont/Mont/Heavy/Mont-Heavy.woff') format('woff'),
-    url('Mont/Mont/Heavy/Mont-Heavy.ttf') format('truetype'),
-    url('Mont/Mont/Heavy/Mont-Heavy.svg#Mont-Heavy') format('svg');
+    url('Mont/Mont-Heavy/Mont-Heavy.eot?#iefix') format('embedded-opentype'),
+    url('Mont/Mont-Heavy/Mont-Heavy.woff2') format('woff2'),
+    url('Mont/Mont-Heavy/Mont-Heavy.woff') format('woff'),
+    url('Mont/Mont-Heavy/Mont-Heavy.ttf') format('truetype'),
+    url('Mont/Mont-Heavy/Mont-Heavy.svg#Mont-Heavy') format('svg');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
