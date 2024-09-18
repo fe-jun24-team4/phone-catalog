@@ -34,4 +34,6 @@ export type Product = {
   processor: string;
   ram: string;
   cell: string[];
+  zoom: string;
+  camera: string;
 };
