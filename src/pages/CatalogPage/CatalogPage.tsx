@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './CatalogPage.module.scss';
 
 import React from 'react';
@@ -13,6 +14,8 @@ type CatalogPageProps = {
 
 const CatalogPage = ({ title }: CatalogPageProps) => {
   const { products } = useCatalogContext();
+  
+  console.log(products);
 
   return (
     <div className={styles.container}>
@@ -35,7 +38,7 @@ type CatalogPageWithContextProps = {
 
 export const CatalogPageWithContext = ({ title, source }: CatalogPageWithContextProps) => {
   return (
-    <CatalogContextProvider source={`${HOST}/${source}`}>
+    <CatalogContextProvider source={source}>
       <CatalogPage title={title} />
     </CatalogContextProvider>
   );

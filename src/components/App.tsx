@@ -11,14 +11,10 @@ function App() {
       </header>
 
       <main className="page">
-        <div className="page___container">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
 
-      <div className="div__container">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }
