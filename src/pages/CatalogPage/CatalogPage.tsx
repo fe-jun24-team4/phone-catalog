@@ -1,20 +1,42 @@
-import { BreadCrumbs } from '../common/BreadCrumbs';
+import styles from './CatalogPage.module.scss';
+
+import React from 'react';
 import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
-import style from './CatalogPage.module.scss';
+import { CatalogContextProvider, useCatalogContext } from './context/CatalogContext';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-import cn from 'classnames';
+import { HOST } from '../../utils/constants/host';
 
-export const CatalogPage = () => {
+type CatalogPageProps = {
+  title: string;
+};
+
+const CatalogPage = ({ title }: CatalogPageProps) => {
+  const { products } = useCatalogContext();
+
   return (
-    <div className={cn(style.container)}>
-      <BreadCrumbs />
+    <div className={styles.container}>
+      <Breadcrumbs.View />
 
-      <div className={cn(style.titleContainer)}>
-        <h1 className={cn(style.titleText)}>Mobile phones</h1>
-        <p className={cn(style.titleSubscript)}>95 models</p>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.titleText}>{title}</h1>
+        <p className={styles.titleSubscript}>{products.length} models</p>
       </div>
 
-      <ProductsGrid />
+      <ProductsGrid products={products} />
     </div>
+  );
+};
+
+type CatalogPageWithContextProps = {
+  title: string;
+  source: string;
+};
+
+export const CatalogPageWithContext = ({ title, source }: CatalogPageWithContextProps) => {
+  return (
+    <CatalogContextProvider source={`${HOST}/${source}`}>
+      <CatalogPage title={title} />
+    </CatalogContextProvider>
   );
 };

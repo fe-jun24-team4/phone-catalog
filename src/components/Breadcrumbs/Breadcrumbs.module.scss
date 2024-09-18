@@ -1,0 +1,20 @@
+@import '../../styles/generals/index.scss';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+
+  font-size: $fontSizeSmall;
+  font-weight: $fontWeightSemiBold;
+  line-height: $lineHeightAdditional;
+}
+
+.checkpoint {
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    color: $themePurplePrimary;
+
+    transition-duration: $transitionDuration;
+  }
+}

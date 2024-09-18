@@ -1,10 +1,12 @@
 import style from './PaginationControls.module.scss';
-import '../../../../styles/generals/buttons.scss';
+import cn from 'classnames';
 
+import React from 'react';
 import { useState } from 'react';
 
-import cn from 'classnames';
 import { range } from '../../../../utils/range';
+import { ButtonRounded } from '../../../../components/buttons';
+import { Direction } from '../../../../enums/Direction';
 
 type Props = {
   itemsCount: number;
@@ -13,7 +15,12 @@ type Props = {
   onPageChange?: (page: number) => void;
 };
 
-export const PaginationControls = ({ itemsCount, perPage, startPage = 1, onPageChange }: Props) => {
+export const PaginationControls = ({
+  itemsCount,
+  perPage,
+  startPage = 1,
+  onPageChange = () => {},
+}: Props) => {
   const [currentPage, setCurrentPage] = useState(startPage);
 
   const pagesCount = Math.ceil(itemsCount / perPage);
@@ -24,9 +31,7 @@ export const PaginationControls = ({ itemsCount, perPage, startPage = 1, onPageC
   const selectPage = (page: number) => {
     setCurrentPage(page);
 
-    if (onPageChange) {
-      onPageChange(page);
-    }
+    onPageChange(page);
   };
 
   const selectPrevPage = () => {
@@ -39,25 +44,22 @@ export const PaginationControls = ({ itemsCount, perPage, startPage = 1, onPageC
 
   return (
     <div className={cn(style.controls)}>
-      <button
-        className={cn('button-round', 'button-round--chevron', style.prev)}
-        onClick={selectPrevPage}
-        disabled={isFirstPage}
-      />
+      <div className={style.prev}>
+        <ButtonRounded rotate={Direction.left} onClick={selectPrevPage} disabled={isFirstPage} />
+      </div>
+
       {pagesRange.map(page => (
-        <button
+        <ButtonRounded
+          title={`${page}`}
           key={page}
-          className={cn('button-round', { 'button-round--selected': page === currentPage })}
           onClick={() => selectPage(page)}
-        >
-          {page}
-        </button>
+          selected={page === currentPage}
+        />
       ))}
-      <button
-        className={cn('button-round', 'button-round--chevron', style.next)}
-        onClick={selectNextPage}
-        disabled={isLastPage}
-      />
+
+      <div className={style.next}>
+        <ButtonRounded rotate={Direction.right} onClick={selectNextPage} disabled={isLastPage} />
+      </div>
     </div>
   );
 };

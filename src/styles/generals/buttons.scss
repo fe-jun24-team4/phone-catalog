@@ -1,100 +1,101 @@
+@import './index.scss';
+
 .button-primary {
-    max-width: 200px;
-    //Katya znaye
-    width: 100%;
-  
-    padding: 10px;
-  
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-  
-    font-weight: $fontWeightBold;
-    text-align: center;
-  
-    border: 1px solid transparent;
-  
-    background-color: $themePurpleAccent;
-    color: $themePurpleWhite;
-  
-    border-radius: 48px;
+  max-width: 200px;
+  //Katya znaye
+  width: 100%;
 
-    transition-duration: $transitionDuration;
-  
-    @include onHover {
-      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
-    }
+  padding: 10px;
 
-    &--selected {
-        background-color: transparent;
-        color: $themePurpleAccent;
-        border-color: $themePurpleElements;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 
-        @include onHover {
-            box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
-          }
-      }
+  font-weight: $fontWeightBold;
+  text-align: center;
+
+  border: 1px solid transparent;
+
+  background-color: $themePurpleAccent;
+  color: $themePurpleWhite;
+
+  border-radius: 48px;
+
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
   }
 
-  .button-round {
-    width: 32px;
-    height: 32px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-
-    border: 1px solid $themePurpleElements;
-    border-radius: 50%;
-    overflow: hidden;
-
+  &--selected {
     background-color: transparent;
-
-    color: $themePurplePrimary;
-    transition-duration: $transitionDuration;
+    color: $themePurpleAccent;
+    border-color: $themePurpleElements;
 
     @include onHover {
-        border-color: $themePurplePrimary;
+      box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
+    }
+  }
+}
+
+.button-round {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  border: 1px solid $themePurpleElements;
+  border-radius: 50%;
+  overflow: hidden;
+
+  background-color: transparent;
+
+  color: $themePurplePrimary;
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    border-color: $themePurplePrimary;
+  }
+
+  &--selected {
+    background-color: $themePurplePrimary;
+    color: $themePurpleWhite;
+  }
+
+  &--chevron {
+    border-color: $themePurpleIcons;
+    @include before {
+      content: '\e900';
+      font-family: 'icomoon';
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &--heart {
+    width: 40px;
+    height: 40px;
+
+    border-color: $themePurpleIcons;
+
+    @include before {
+      content: '\e906';
+      font-family: 'icomoon';
     }
 
     &--selected {
-        background-color: $themePurplePrimary;
+      border-color: $themePurpleAccent;
+      background-color: $themePurpleAccent;
+
+      &::before {
         color: $themePurpleWhite;
-    }
-
-    &--chevron {
-        border-color: $themePurpleIcons;
-        @include before {
-            content: '\e900';
-            font-family: 'icomoon';
-        }
-
-        &:disabled {
-            opacity: 0.5;
-            pointer-events: none;
-        }
-    }
-
-    &--heart {
-        width: 40px;
-        height: 40px;
-
-        border-color: $themePurpleIcons;
-
-        @include before {
-            content: '\e906';
-            font-family: 'icomoon';
-        }
-
-        &--selected {
-            border-color: $themePurpleAccent;
-            background-color: $themePurpleAccent;
-
-            &::before {
-                color: $themePurpleWhite;
-            }
-        }
+      }
     }
   }
-  
+}

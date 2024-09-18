@@ -1,36 +1,60 @@
-import { FC, useState } from 'react';
 import styles from './DropdownButton.module.scss';
+import cn from 'classnames';
 
-interface DropdownProps {
-  description: string;
-  options: string[];
-  onChange: (option: string) => void;
+import { useEffect, useRef, useState } from 'react';
+import { Options } from '../../types/Option';
+import React from 'react';
+
+interface DropdownProps<T> {
+  options: Options<T>;
+  onChange: (value: T) => void;
 }
 
-export const Dropdown: FC<DropdownProps> = ({ description, options, onChange }) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+export const DropdownButton = <T,>({ options, onChange }: DropdownProps<T>) => {
+  const description = options.label;
+  const [selectedOption, setSelectedOption] = useState(options.default[0]);
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  const handleSelect = (option: string) => {
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (isOpen && ref.current && !ref.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.addEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, ref]);
+
+  const handleOptionSelect = (option: string) => {
     if (option !== selectedOption) {
       setSelectedOption(option);
-      onChange(option);
+      onChange(options.items[option].value);
     }
-  };
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(event.target.value);
+    setIsOpen(false);
   };
 
   return (
-    <div className={styles.containerDropdown}>
-      <label htmlFor="dropdown">{description}</label>
-      <select id="dropdown" name="dropdown" onChange={handleChange}>
-        {options.map(option => (
-          <option key={option} value={option} onClick={() => handleSelect(option)}>
+    <div ref={ref} className={cn(styles.dropdown, { [styles.isOpen]: isOpen })}>
+      <p className={styles.description}>{description}</p>
+
+      <button className={styles.trigger} onClick={() => setIsOpen(!isOpen)}>
+        <p className={styles.selectedOption}>{selectedOption}</p>
+        <div className={cn('icon-chevron-up', styles.chevron)} />
+      </button>
+
+      <div className={styles.menu}>
+        {options.visible.map(([option]) => (
+          <div key={option} className={styles.option} onClick={() => handleOptionSelect(option)}>
             {option}
-          </option>
+          </div>
         ))}
-      </select>
+      </div>
     </div>
   );
 };

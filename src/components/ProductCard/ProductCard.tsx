@@ -1,19 +1,21 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { Card } from '../../types/Card';
+import { ProductShort as Product } from '../../types/Product';
+import { HOST } from '../../utils/constants/host';
+import { ButtonFavorite, ButtonPrimary } from '../buttons';
 
 interface ProductCardProps {
-  card: Card;
+  product: Product;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
-  const { image, name, price, fullPrice, screen, capacity, ram } = card;
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { image, name, price, fullPrice, screen, capacity, ram } = product;
 
   return (
     <a href="#" className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
-          <img src={image} alt={name} className={styles.image} />
+          <img src={`${HOST}/${image}`} alt={name} className={styles.image} />
         </div>
 
         <div className={styles.content}>
@@ -48,9 +50,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
         </div>
 
         <div className={styles.actions}>
-          <button className="button-primary">Add to cart</button>
+          <ButtonPrimary title="Add to cart" />
 
-          <button className="button-round button-round--heart"></button>
+          <ButtonFavorite icon={'icon-heart'} />
         </div>
       </div>
     </a>
