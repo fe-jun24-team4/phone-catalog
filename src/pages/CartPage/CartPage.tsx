@@ -8,7 +8,7 @@ const CartPageWithoutContext = () => {
 
   return (
     <>
-      <CheckoutModal />;
+      <CheckoutModal />
       <ButtonPrimary title="Checkout" onClick={() => setIsCheckoutVisible(true)} />
     </>
   );

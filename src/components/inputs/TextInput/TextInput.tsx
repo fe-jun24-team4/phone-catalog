@@ -47,6 +47,7 @@ export const TextInput = ({
         value={value}
         onChange={handleValueChange}
         onSubmit={event => event.preventDefault()}
+        onBlur={() => onChange(value)}
       />
 
       <span className={styles.error}>{error}</span>

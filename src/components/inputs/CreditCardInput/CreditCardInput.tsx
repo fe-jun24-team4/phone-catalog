@@ -33,18 +33,28 @@ export const CreditCardInput = ({
     }
   };
 
-  const blurInput = () => setIsFocused(false);
+  const blurInput = () => {
+    if (isFocused) {
+      setIsFocused(false);
+
+      onChange(cardNumber.filter(digit => digit !== 'X').join(''));
+    }
+  };
 
   useOnClickOutside(blurInput, ref);
 
   useEffect(() => {
     const setCardDigit = (value: string) => {
-      setCardNumber(prevNumber => {
-        const number = [...prevNumber];
+      const numPromise = new Promise<string[]>(resolve => {
+        setCardNumber(prevNumber => {
+          const number = [...prevNumber];
 
-        number[cursorPosition] = value;
+          number[cursorPosition] = value;
 
-        return number;
+          resolve(number);
+
+          return number;
+        });
       });
 
       if (cursorPosition < 15) {
@@ -52,20 +62,28 @@ export const CreditCardInput = ({
       } else {
         setIsFocused(false);
       }
+
+      numPromise.then(num => onChange(num.filter(digit => digit !== 'X').join('')));
     };
 
     const clearCardDigit = () => {
-      setCardNumber(prevNumber => {
-        const number = [...prevNumber];
+      const numPromise = new Promise<string[]>(resolve => {
+        setCardNumber(prevNumber => {
+          const number = [...prevNumber];
 
-        number[cursorPosition] = 'X';
+          number[cursorPosition] = 'X';
 
-        return number;
+          resolve(number);
+
+          return number;
+        });
       });
 
       if (cursorPosition > 0) {
         setCursorPosition(prev => prev - 1);
       }
+
+      numPromise.then(num => onChange(num.filter(digit => digit !== 'X').join('')));
     };
 
     const handleKeyboardInput = (event: KeyboardEvent) => {
@@ -87,11 +105,7 @@ export const CreditCardInput = ({
         removeEventListener('keydown', handleKeyboardInput);
       }
     };
-  }, [isFocused, cursorPosition]);
-
-  useEffect(() => {
-    onChange(cardNumber.join(''));
-  }, [cardNumber, onChange]);
+  }, [isFocused, cursorPosition, onChange]);
 
   return (
     <div
