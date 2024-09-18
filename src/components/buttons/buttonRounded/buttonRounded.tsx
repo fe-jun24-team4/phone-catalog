@@ -35,6 +35,7 @@ export interface Props {
 
 const ButtonRounded: FC<Props> = ({
   title,
+  icon = 'icon-chevron-left',
   rotate,
   onClick = () => {},
   disabled = false,
@@ -57,10 +58,7 @@ const ButtonRounded: FC<Props> = ({
       {title ? (
         `${title}`
       ) : (
-        <span
-          className={'icon-chevron-left'}
-          style={{ transform: `rotate(${rotationDegrees}deg)` }}
-        ></span>
+        <span className={icon} style={{ transform: `rotate(${rotationDegrees}deg)` }}></span>
       )}
     </button>
   );

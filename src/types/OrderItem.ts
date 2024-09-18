@@ -1,6 +1,6 @@
-import { ProductShort as Product } from './Product';
+import { Product } from './Product';
 
 export type OrderItem = {
   product: Product;
-  ammount: number;
+  amount: number;
 };

@@ -27,6 +27,12 @@ body {
   }
 }
 
-.page{
+.page {
   @include container;
+
+  padding-top: 48px;
+
+  @include onLaptopAndUp {
+    padding-top: 64px;
+  }
 }

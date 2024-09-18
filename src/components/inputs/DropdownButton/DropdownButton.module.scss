@@ -26,7 +26,7 @@
   }
 }
 
-.description {
+.label {
   @include label;
 }
 
@@ -113,4 +113,8 @@
 
     transition-duration: $transitionDuration;
   }
+}
+
+.error {
+  @include error;
 }
