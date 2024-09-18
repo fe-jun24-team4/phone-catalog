@@ -1,7 +1,9 @@
 import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { Outlet } from 'react-router-dom';
+import { Input } from './inputs';
+import { shippingOptions } from '../utils/constants/dropdownOptions';
+import { CheckoutModal } from '../pages/CartPage/components/CheckoutModal/CheckoutModal';
 
 function App() {
   return (
@@ -12,7 +14,10 @@ function App() {
 
       <main className="page">
         <div className="page___container">
-          <Outlet />
+          {/* <Outlet /> */}
+          <div style={{ paddingTop: '100px' }}>
+            <CheckoutModal />
+          </div>
         </div>
       </main>
 

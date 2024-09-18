@@ -1,34 +1,28 @@
 import styles from './DropdownButton.module.scss';
 import cn from 'classnames';
 
-import { useEffect, useRef, useState } from 'react';
-import { Options } from '../../types/Option';
+import { useRef, useState } from 'react';
+import { Options } from '../../../types/Option';
 import React from 'react';
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 
-interface DropdownProps<T> {
+type DropdownProps<T> = {
+  label?: string;
   options: Options<T>;
-  onChange: (value: T) => void;
-}
+  onChange?: (value: T) => void;
+};
 
-export const DropdownButton = <T,>({ options, onChange }: DropdownProps<T>) => {
-  const description = options.label;
+export const DropdownButton = <T,>({
+  label: description,
+  options,
+  onChange = () => {},
+}: DropdownProps<T>) => {
   const [selectedOption, setSelectedOption] = useState(options.default[0]);
   const [isOpen, setIsOpen] = useState(false);
+
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (isOpen && ref.current && !ref.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.addEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen, ref]);
+  useOnClickOutside(() => setIsOpen(false), ref);
 
   const handleOptionSelect = (option: string) => {
     if (option !== selectedOption) {

@@ -1,0 +1,21 @@
+@import '../../styles/generals/index.scss';
+
+@mixin label() {
+  color: $themePurpleSecondary;
+  font-size: 12px;
+  line-height: $lineHeightAdditional;
+}
+
+@mixin error() {
+  opacity: 0;
+
+  color: $themePurpleRed;
+  font-size: 12px;
+  line-height: $lineHeightAdditional;
+
+  transition-duration: $transitionDuration;
+
+  @include before {
+    content: '* ';
+  }
+}
