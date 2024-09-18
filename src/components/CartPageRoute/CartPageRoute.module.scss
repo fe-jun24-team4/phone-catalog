@@ -1,0 +1,31 @@
+@import '../../styles/generals/index.scss';
+
+.header_box {
+
+}
+
+.back {
+  margin-top: 105px;
+}
+
+.title {
+  margin-top: 16px;
+  color: $themePurplePrimary;
+  font-weight: $fontWeightSemiBlack;
+  font-size: 48px;
+  line-height: $lineHeightAdditional;
+}
+
+.main_box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.phoneContainer {
+  border: 1px solid $themePurpleIcons;
+  border-radius: 16px;
+  width: 592px;
+  height: 128px;
+}
