@@ -51,7 +51,7 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   );
 };
 
-export const useCart = (): CartContextValue => {
+export const useCartContext = (): CartContextValue => {
   const context = useContext(CartContext);
 
   if (!context) {
