@@ -1,10 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import styles from './Header.module.scss';
 import classnames from 'classnames';
+import { Link, NavLink } from 'react-router-dom';
 import { RouteNames } from '../../enums/RouteNames';
+import { isLinkActive } from './isLinkActive';
+import { IconsComponent } from './iconsComponent/iconsComponent';
+import { useHandleMenuAction } from './hooks/useHandleMenuAction';
 
 export const Header: React.FC = () => {
+  const { isMenuActive, setIsMenuActive, handleMenuAction } = useHandleMenuAction();
+
+  const getLinkActiveClassName = (params: { isActive: boolean }) =>
+    classnames(styles.link, isLinkActive(styles.active, params));
+
+  useEffect(() => {
+    if (isMenuActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isMenuActive]);
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -16,48 +32,71 @@ export const Header: React.FC = () => {
           />
         </Link>
 
-        <nav className={styles.menu}>
+        <nav
+          className={classnames(styles.menu, {
+            [styles.active]: isMenuActive,
+          })}
+        >
           <div className={styles.menuWrapper}>
             <ul className={styles.list}>
               <li className={styles.menuItem}>
-                <Link to={RouteNames.home}>Home</Link>
+                <NavLink
+                  to={RouteNames.home}
+                  className={getLinkActiveClassName}
+                  onClick={handleMenuAction}
+                >
+                  Home
+                </NavLink>
               </li>
 
               <li className={styles.menuItem}>
-                <Link to={RouteNames.phones}>Phones</Link>
+                <NavLink
+                  to={RouteNames.phones}
+                  className={getLinkActiveClassName}
+                  onClick={handleMenuAction}
+                >
+                  Phones
+                </NavLink>
               </li>
 
               <li className={styles.menuItem}>
-                <Link to={RouteNames.tablets}>Tablets</Link>
+                <NavLink
+                  to={RouteNames.tablets}
+                  className={getLinkActiveClassName}
+                  onClick={handleMenuAction}
+                >
+                  Tablets
+                </NavLink>
               </li>
 
               <li className={styles.menuItem}>
-                <Link to={RouteNames.accessories}>Accessories</Link>
+                <NavLink
+                  to={RouteNames.accessories}
+                  className={getLinkActiveClassName}
+                  onClick={handleMenuAction}
+                >
+                  Accessories
+                </NavLink>
               </li>
             </ul>
 
-            <div className={classnames(styles.icons, styles.mobile)}>
-              <div className={styles.icon}>
-                <span className="icon-heart"></span>
-              </div>
-              <div className={styles.icon}>
-                <span className="icon-shopping-bag"></span>
-              </div>
-            </div>
+            <IconsComponent mobile />
           </div>
         </nav>
 
-        <div className={styles.icons}>
-          <Link to={RouteNames.favorites} className={styles.icon}>
-            <span className="icon-heart"></span>
-          </Link>
-          <Link to={RouteNames.cart} className={styles.icon}>
-            <span className="icon-shopping-bag"></span>
-          </Link>
-        </div>
+        <IconsComponent />
 
-        <div className={styles.burgerMenu}>
-          <span className="icon-home"></span>
+        <div
+          className={classnames(styles.burgerMenu, {
+            [styles.active]: isMenuActive,
+          })}
+          onClick={() => setIsMenuActive(prev => !prev)}
+        >
+          <div className={styles.burgerItem} />
+
+          <div className={styles.burgerItem} />
+
+          <div className={styles.burgerItem} />
         </div>
       </div>
     </header>

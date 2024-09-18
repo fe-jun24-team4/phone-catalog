@@ -6,6 +6,7 @@ import { PhonesPage } from './PhonesPage';
 import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { CatalogContextProvider } from './CatalogPage/context/CatalogContext';
 
 export const RootPage = () => {
   return (
@@ -19,7 +20,10 @@ export const RootPage = () => {
             </Breadcrumbs.Checkpoint>
           }
         >
-          <Route index element={<p>HOMEPAGE</p>} />
+          <Route
+            index
+            element={<CatalogContextProvider source={'api/phones'}></CatalogContextProvider>}
+          />
           <Route
             path={RouteNames.phones}
             element={

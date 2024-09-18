@@ -1,156 +1,244 @@
 @import '../../styles/generals/index.scss';
 
 .header {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
 
-  width: 100%;
-  height: 48px;
+    width: 100%;
+    height: 48px;
 
-  @include onLaptopAndUp {
-    height: 64px;
-  }
+    @include onTabletAndUp {
+        height: auto;
+    }
 }
 
 .container {
-  max-width: 1456px;
-  width: 100%;
-  min-height: 100%;
+    max-width: 1456px;
+    width: 100%;
+    min-height: 100%;
+    
+    margin: 0 auto;
+    padding-left: 16px;
 
-  margin: 0 auto;
-  padding-left: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
+    border-bottom: 2px solid $themePurpleElements;
 
-  border-bottom: 2px solid $themePurpleElements;
-  border-left: 2px solid $themePurpleElements;
-  border-right: 2px solid $themePurpleElements;
+    background-color: $themePurpleWhite;
 
-  background-color: $themePurpleWhite;
+    @include onTabletAndUp {
+        justify-content: unset;
+    }
 
-  @include onTabletAndUp {
-    justify-content: unset;
-  }
+    @include onLaptopAndUp {
+        gap: 48px;
 
-  @include onLaptopAndUp {
-    gap: 48px;
-  }
+        border-left: 2px solid $themePurpleElements;
+        border-right: 2px solid $themePurpleElements;
+    }
 }
 
 .logo {
-  width: 64px;
-  height: 22px;
+    width: 64px;
+    height: 22px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include onLaptopAndUp {
+        width: 80px;
+        height: 28px;
+    }
 }
 
 .logoImage {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  object-fit: contain;
-  object-position: start;
+    object-fit: contain;
+    object-position: start;
 }
 
 .menu {
-  display: none;
+    position: fixed;
+    top: 50px;
+    left: 0;
 
-  @include onTabletAndUp {
-    display: block;
+    height: calc(100svh - 50px);
+    width: 100vw;
+
     flex-grow: 1;
-  }
+
+    overflow: auto;
+
+    transform: translateX(100%);
+    transition-duration: 0.5s;
+
+    background-color: $themePurpleWhite;
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    @include onTabletAndUp {
+        position: relative;
+        top: unset;
+        left: unset;
+
+        height: auto;
+        width: max-content;
+
+        transform: none;
+        background-color: transparent;
+    }
+}
+
+.menuWrapper {
+    padding-top: 24px;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    @include onTabletAndUp {
+        padding-top: 0;
+
+        height: auto;
+
+        display: block;
+    }
 }
 
 .list {
-  @include onTabletAndUp {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    flex-grow: 1;
     gap: 32px;
-  }
 
-  @include onLaptopAndUp {
-    gap: 64px;
-  }
+    @include onTabletAndUp {
+        flex-direction: row;
+    }
+
+    @include onLaptopAndUp {
+        gap: 64px;
+    }
 }
 
 .menuItem {
-  font-size: $fontSizeSmall;
-  font-weight: $fontWeightSemiBlack;
-  text-transform: uppercase;
-
-  transition-duration: $transitionDuration;
-
-  @include onHover {
-    color: $themePurplePrimary;
-    transform: $transformScale;
-  }
-}
-
-.icons {
-  display: none;
-
-  @include onTabletAndUp {
     display: flex;
-  }
-
-  &.mobile {
-    @include onTabletAndUp {
-      display: none;
-    }
-  }
+    justify-content: center;
+    align-items: center;
 }
 
-.icon {
-  width: 48px;
-  height: 48px;
+.link {
+    position: relative;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  border-left: 2px solid $themePurpleElements;
+    font-size: $fontSizeSmall;
+    font-weight: $fontWeightSemiBlack;
+    text-transform: uppercase;
 
-  cursor: pointer;
-
-  span {
     transition-duration: $transitionDuration;
-  }
 
-  @include onHover {
-    span {
-      color: $themePurplePrimary;
-      transform: $transformScale;
+    @include before {
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+
+        height: 3px;
+        width: 0;
+
+        background-color: $themePurplePrimary;
+        border-radius: 10px;
+        
+        transition-duration: $transitionDuration;
     }
-  }
 
-  @include onLaptopAndUp {
-    width: 64px;
-    height: 64px;
-  }
+    @include onHover {
+        color: $themePurplePrimary;
+    }
+
+    @include onTabletAndUp {
+        height: 48px;
+
+        &::before {
+            bottom: 0;
+        }
+    }
+
+    @include onLaptopAndUp {
+        height: 64px;
+    }
+
+    &.active {
+        color: $themePurplePrimary;
+
+        &::before {
+            width: 100%;
+        }
+    }
 }
 
 .burgerMenu {
-  width: 48px;
-  height: 48px;
+    position: relative;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
+    width: 48px;
+    height: 48px;
 
-  border-left: 2px solid $themePurpleElements;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 2px;
 
-  cursor: pointer;
+    border-left: 2px solid $themePurpleElements;
 
-  @include onTabletAndUp {
-    display: none;
-  }
+    cursor: pointer;
+
+    &.active {
+        .burgerItem {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            &:nth-child(1) {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                display: none;
+            }
+
+            &:nth-child(3) {
+                right: 24px;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
+    }
+    @include onTabletAndUp {
+        display: none;
+    }
+}
+
+.burgerItem {
+    width: 16px;
+    height: 2px;
+
+    border-radius: 10px;
+    background-color: $themePurplePrimary;
+
+    transition-duration: $transitionDuration;
 }
