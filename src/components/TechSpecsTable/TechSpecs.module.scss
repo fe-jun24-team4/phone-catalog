@@ -1,7 +1,8 @@
 @import '../../styles/generals/index.scss';
 
 .container {
-  width: 288px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .title {
@@ -28,7 +29,7 @@
   gap: 8px;
 }
 
-.specs_container {
+.specs_box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,4 +42,15 @@
 
 .description {
   color: $themePurplePrimary;
+  display: flex; 
+  align-items: center;
+  gap: 3px;
+
+  p {
+    @include exceptLastChild {
+      @include after {
+        content:',';
+      }
+    }
+  }
 }

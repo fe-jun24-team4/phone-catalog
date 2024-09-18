@@ -1,45 +1,35 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './TechSpecs.module.scss';
+import { Product } from '../../types/Product';
+import { getDescriptionContent } from './helpers/helpers';
 
-export const TechSpecs = () => {
+interface Props {
+  product: Product;
+}
+
+export const TechSpecs: FC<Props> = ({ product }) => {
+  const { screen, resolution, processor, ram, capacity, camera, zoom, cell } = product;
+  const techSpecs = { screen, resolution, processor, ram, capacity, camera, zoom, cell };
+
   return (
     <div className={styles.container}>
       <span className={styles.title}>Tech Specs</span>
       <div className={styles.divider}></div>
 
       <div className={styles.containers}>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>Screen</div>
-          <div className={styles.description}>6.5” OLED</div>
-        </div>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>Resolution</div>
-          <div className={styles.description}>2688x1242</div>
-        </div>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>Processor</div>
-          <div className={styles.description}>Apple A12 Bionic</div>
-        </div>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>RAM</div>
-          <div className={styles.description}>3 GB</div>
-        </div>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>Built in memory</div>
-          <div className={styles.description}>64 GB</div>
-        </div>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>Camera</div>
-          <div className={styles.description}>12 Mp + 12 Mp + 12 Mp (Triple)</div>
-        </div>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>Zoom</div>
-          <div className={styles.description}>Optical, 2x</div>
-        </div>
-        <div className={styles.specs_container}>
-          <div className={styles.specs}>Cell</div>
-          <div className={styles.description}>GSM, LTE, UMTS</div>
-        </div>
+        {Object.entries(techSpecs).map(([key, value]) => {
+          const capitalizedTitle = key.charAt(0).toUpperCase() + key.slice(1);
+          const specsContent =
+            capitalizedTitle === 'Capacity' ? 'Built in memory' : capitalizedTitle;
+          const descriptionContent = getDescriptionContent(value);
+
+          return (
+            <div key={key} className={styles.specs_box}>
+              <div className={styles.specs}>{specsContent}</div>
+              <div className={styles.description}>{descriptionContent}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
