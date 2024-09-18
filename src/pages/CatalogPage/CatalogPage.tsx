@@ -5,16 +5,12 @@ import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
 import { CatalogContextProvider, useCatalogContext } from './context/CatalogContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-// import { HOST } from '../../utils/constants/host';
-
 type CatalogPageProps = {
   title: string;
 };
 
 const CatalogPage = ({ title }: CatalogPageProps) => {
   const { products } = useCatalogContext();
-
-  // console.log(products);
 
   return (
     <div className={styles.container}>

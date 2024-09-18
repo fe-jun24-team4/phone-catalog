@@ -1,5 +1,5 @@
 import React, { createContext, PropsWithChildren, useContext } from 'react';
-import { ProductShort as Product } from '../../../types/Product';
+import { Product } from '../../../types/Product';
 
 import { useFetchData } from '../../../hooks/useFetch';
 import { HOST } from '../../../utils/constants/host';

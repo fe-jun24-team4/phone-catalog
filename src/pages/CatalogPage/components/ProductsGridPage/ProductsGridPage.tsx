@@ -3,7 +3,7 @@ import style from './ProductsGridPage.module.scss';
 import cn from 'classnames';
 
 import React from 'react';
-import { ProductShort as Product } from '../../../../types/Product';
+import { Product } from '../../../../types/Product';
 import { ProductCard } from '../../../../components/ProductCard';
 
 type Props = {
