@@ -1,12 +1,12 @@
 import { SortBy } from '../enums/sortBy';
-import { ProductShort as Product } from '../types/Product';
+import { Product } from '../types/Product';
 
 export function sortProducts(products: Product[], sortBy: SortBy) {
   const result = [...products];
 
   switch (sortBy) {
     case SortBy.newest:
-      result.sort(({ year: a }, { year: b }) => b - a);
+      //result.sort(({ year: a }, { year: b }) => b - a);
       break;
     case SortBy.topRated:
       //throw new Error('Not implemented');
@@ -16,8 +16,8 @@ export function sortProducts(products: Product[], sortBy: SortBy) {
       break;
     case SortBy.biggestDiscount:
       result.sort((a, b) => {
-        const aDiscount = 1 - a.price / a.fullPrice;
-        const bDiscount = 1 - b.price / b.fullPrice;
+        const aDiscount = 1 - a.priceDiscount / a.priceRegular;
+        const bDiscount = 1 - b.priceDiscount / b.priceRegular;
 
         return bDiscount - aDiscount;
       });

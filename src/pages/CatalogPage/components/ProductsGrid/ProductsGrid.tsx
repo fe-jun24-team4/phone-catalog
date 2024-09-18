@@ -9,7 +9,7 @@ import { ProductsGridPage } from '../ProductsGridPage/ProductsGridPage';
 import React from 'react';
 import { useMemo, useState } from 'react';
 import { perPageOptions, sortByOptions } from '../../../../utils/constants/dropdownOptions';
-import { ProductShort as Product } from '../../../../types/Product';
+import { Product } from '../../../../types/Product';
 import { sortProducts } from '../../../../features/sortProducts';
 
 type Props = {
