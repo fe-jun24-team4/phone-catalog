@@ -23,16 +23,15 @@ export const TotalCost: FC<TotalCostProps> = ({ products }) => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.totalSummary}>
-        <div className={styles.count}>
-          <span className={styles.totalCost}>${calculate}</span>
+    <div className={styles.total}>
+      <div className={styles.totalWrapper}>
+        <div className={styles.totalBlock}>
+          <p className={styles.price}>${calculate}</p>
+          <p className={styles.text}>Total for {products.length} item</p>
         </div>
-        <div className={styles.totalForItems}>Total for {products.length} items</div>
-      </div>
-      <div className={styles.divider}></div>
-      <div className={styles.buttonContainer}>
-        <ButtonPrimary title={'Checkout'} />
+        <div className={styles.line} />
+
+        <ButtonPrimary title="Checkout" />
       </div>
     </div>
   );

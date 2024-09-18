@@ -9,8 +9,8 @@
     width: 100%;
     height: 48px;
 
-    @include onLaptop {
-        height: 64px;
+    @include onTabletAndUp {
+        height: auto;
     }
 }
 
@@ -28,17 +28,18 @@
     gap: 32px;
 
     border-bottom: 2px solid $themePurpleElements;
-    border-left: 2px solid $themePurpleElements;
-    border-right: 2px solid $themePurpleElements;
 
     background-color: $themePurpleWhite;
 
-    @include onTablet {
+    @include onTabletAndUp {
         justify-content: unset;
     }
 
-    @include onLaptop {
+    @include onLaptopAndUp {
         gap: 48px;
+
+        border-left: 2px solid $themePurpleElements;
+        border-right: 2px solid $themePurpleElements;
     }
 }
 
@@ -49,6 +50,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include onLaptopAndUp {
+        width: 80px;
+        height: 28px;
+    }
 }
 
 .logoImage {
@@ -60,99 +66,179 @@
 }
 
 .menu {
-    display: none;
+    position: fixed;
+    top: 50px;
+    left: 0;
 
-    @include onTablet {
+    height: calc(100svh - 50px);
+    width: 100vw;
+
+    flex-grow: 1;
+
+    overflow: auto;
+
+    transform: translateX(100%);
+    transition-duration: 0.5s;
+
+    background-color: $themePurpleWhite;
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    @include onTabletAndUp {
+        position: relative;
+        top: unset;
+        left: unset;
+
+        height: auto;
+        width: max-content;
+
+        transform: none;
+        background-color: transparent;
+    }
+}
+
+.menuWrapper {
+    padding-top: 24px;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    @include onTabletAndUp {
+        padding-top: 0;
+
+        height: auto;
+
         display: block;
-        flex-grow: 1;
     }
 }
 
 .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    gap: 32px;
 
-    @include onTablet {
-        display: flex;
-        align-items: center;
-        gap: 32px;
+    @include onTabletAndUp {
+        flex-direction: row;
     }
 
-    @include onLaptop {
+    @include onLaptopAndUp {
         gap: 64px;
     }
 }
 
 .menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-size: $fontSizeSmall;
     font-weight: $fontWeightSemiBlack;
     text-transform: uppercase;
 
     transition-duration: $transitionDuration;
 
-    @include onHover {
-        color: $themePurplePrimary;
-        transform: $transformScale;
-    }
-}
+    @include before {
+        position: absolute;
+        left: 0;
+        bottom: -5px;
 
-.icons {
-    display: none;
+        height: 3px;
+        width: 0;
 
-    @include onTablet {
-        display: flex;
-    }
-
-    &.mobile {
-        @include onTablet {
-            display: none;
-        }
-    }
-}
-
-.icon {
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-
-    border-left: 2px solid $themePurpleElements;
-
-    cursor: pointer; 
-
-    span {
+        background-color: $themePurplePrimary;
+        border-radius: 10px;
+        
         transition-duration: $transitionDuration;
     }
 
     @include onHover {
-        span {
-            color: $themePurplePrimary;
-            transform: $transformScale;
+        color: $themePurplePrimary;
+    }
+
+    @include onTabletAndUp {
+        height: 48px;
+
+        &::before {
+            bottom: 0;
         }
     }
 
-    @include onLaptop {
-        width: 64px;
+    @include onLaptopAndUp {
         height: 64px;
+    }
+
+    &.active {
+        color: $themePurplePrimary;
+
+        &::before {
+            width: 100%;
+        }
     }
 }
 
-
 .burgerMenu {
+    position: relative;
+
     width: 48px;
     height: 48px;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    gap: 2px;
 
     border-left: 2px solid $themePurpleElements;
 
     cursor: pointer;
 
-    @include onTablet {
+    &.active {
+        .burgerItem {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            &:nth-child(1) {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                display: none;
+            }
+
+            &:nth-child(3) {
+                right: 24px;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
+    }
+    @include onTabletAndUp {
         display: none;
     }
+}
+
+.burgerItem {
+    width: 16px;
+    height: 2px;
+
+    border-radius: 10px;
+    background-color: $themePurplePrimary;
+
+    transition-duration: $transitionDuration;
 }

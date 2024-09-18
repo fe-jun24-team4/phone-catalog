@@ -1,8 +1,7 @@
-import { Outlet } from 'react-router-dom';
-import { Header } from './Header/Header';
-import Footer from '../Footer/Footer';
-
 import React from 'react';
+import { Header } from './Header';
+import { Footer } from './Footer';
+import { Outlet } from 'react-router-dom';
 import { TotalCost } from './CalculateCost';
 
 function App() {
@@ -12,16 +11,11 @@ function App() {
         <Header />
       </header>
       <main className="page">
-        <div className="page___container" style={{ width: 350 }}>
-          <Outlet />
-          Content
-        </div>
+        <Outlet />
       </main>
       <TotalCost products={[]} />
 
-      <div className="div__container">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,57 +1,43 @@
-@import '../../styles/generals/variables.scss';
 @import '../../styles/generals/index.scss';
-@import '../../styles/generals/mixins.scss';
 
-.container {
-  border: 1px solid $themePurpleElements;
-  width: 368px;
-  height: 206px;
-  border-radius: 16px;
-  margin-left: 50px;
-  margin-bottom: 50px;
+.total {
+  max-width: 600px;
+  width: 100%;
 }
 
-.totalSummary {
+.totalWrapper {
+  padding: 24px;
+  
   display: flex;
-  flex-direction:column;
-  text-align: center;
-  gap: 6px;
-  padding-top: 23px;
-}
-
-.totalCost {
-  font-size: 32px;
-  font-weight: $fontWeightBold;
-  line-height: $lineHeightAdditional;
-  color: $themePurplePrimary;
-}
-
-.totalForItems {
-  color: $themePurpleSecondary;
-  line-height: 1.5;
-  font-weight: 500;
-}
-
-.divider {
-  margin-top: 25px;
-  margin-left: 23.5px;
-  content: "";
-  height: 1px;
-  width: 321px;
-  display: block;
   flex-direction: column;
-  background-color: $themePurpleElements;
-  align-items: center;
+  gap: 16px;
+
+  border-radius: 16px;
+  border: 1px solid $themePurpleElements;
+
+  @include onLaptopAndUp {
+    gap: 24px; 
+  }
 }
 
-.buttonContainer {
+.totalBlock {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 24px ;
-  padding-top: 16px;
+}
 
-  @include onLaptop {
-    padding-top: 24px;
-  }
+.line {
+  height: 1px;
+  
+  background-color: $themePurpleElements;
+}
+
+.price {
+  text-align: center;
+  color: $themePurplePrimary;
+
+  font-size: $fontSizeBig;
+  font-weight: $fontWeightSemiBlack;
+  line-height: $lineHeightAdditional;
 }

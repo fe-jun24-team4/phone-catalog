@@ -1,19 +1,21 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { Card } from '../../types/Card';
+import { Product } from '../../types/Product';
+import { HOST } from '../../utils/constants/host';
+import { ButtonFavorite, ButtonPrimary } from '../buttons';
 
 interface ProductCardProps {
-  card: Card;
+  product: Product;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
-  const { image, name, price, fullPrice, screen, capacity, ram } = card;
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
 
   return (
     <a href="#" className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
-          <img src={image} alt={name} className={styles.image} />
+          <img src={`${HOST}/${images[0]}`} alt={name} className={styles.image} />
         </div>
 
         <div className={styles.content}>
@@ -21,8 +23,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
             <h4 className={styles.title}>{name}</h4>
 
             <div className={styles.priceBlock}>
-              <p className={styles.price}>${price}</p>
-              {fullPrice && <span className={styles.fullPrice}>${fullPrice}</span>}
+              <p className={styles.price}>${priceDiscount}</p>
+              {priceRegular && <span className={styles.fullPrice}>${priceRegular}</span>}
             </div>
           </div>
 
@@ -48,9 +50,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ card }) => {
         </div>
 
         <div className={styles.actions}>
-          <button className="button-primary">Add to cart</button>
+          <ButtonPrimary title="Add to cart" />
 
-          <button className="button-round button-round--heart"></button>
+          <ButtonFavorite icon={'icon-heart'} />
         </div>
       </div>
     </a>
