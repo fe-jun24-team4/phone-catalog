@@ -27,6 +27,7 @@ body {
   @include container;
 
   padding-top: 48px;
+  flex-grow: 1;
 
   @include onLaptopAndUp {
     padding-top: 64px;
