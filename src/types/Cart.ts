@@ -1,3 +1,5 @@
+import { OrderItem } from './OrderItem';
+
 export enum CartActionTypes {
   ADD_ITEM = 'ADD_ITEM',
   REMOVE_ITEM = 'REMOVE_ITEM',
@@ -12,7 +14,7 @@ export interface CartItem {
   quantity: number;
 }
 
-export type CartState = CartItem[];
+export type CartState = OrderItem[];
 
 export interface CartContextValue {
   cart: CartState;
@@ -21,4 +23,7 @@ export interface CartContextValue {
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   replaceCart: (cart: CartItem[]) => void;
+
+  isCheckoutVisible: boolean;
+  setIsCheckoutVisible: (state: boolean) => void;
 }

@@ -1,29 +1,31 @@
 import React, { createContext, useContext, useState, useEffect, PropsWithChildren } from 'react';
-import { CartItem, CartContextValue } from '../../../types/Cart';
+import { CartContextValue } from '../../../types/Cart';
 import { getInitialCartState, addItemToCart } from '../../../utils/cartUtils';
+import { OrderItem } from '../../../types/OrderItem';
 
 const CartContext = createContext<CartContextValue | null>(null);
 
 export const CartContextProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [cart, setCart] = useState<CartItem[]>(getInitialCartState);
+  const [cart, setCart] = useState<OrderItem[]>(getInitialCartState());
+  const [isCheckoutVisible, setIsCheckoutVisible] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addItem = (item: CartItem) => {
+  const addItem = (item: OrderItem) => {
     setCart(prevCart => addItemToCart(prevCart, item));
   };
 
   const removeItem = (id: string) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
+    setCart(prevCart => prevCart.filter(item => item.product.id !== id));
   };
 
   const updateQuantity = (id: string, quantity: number) => {
     setCart(prevCart =>
       prevCart
-        .map(item => (item.id === id ? { ...item, quantity } : item))
-        .filter(item => item.quantity > 0),
+        .map(item => (item.product.id === id ? { ...item, quantity } : item))
+        .filter(item => item.amount > 0),
     );
   };
 
@@ -31,7 +33,7 @@ export const CartContextProvider = ({ children }: PropsWithChildren<{}>) => {
     setCart([]);
   };
 
-  const replaceCart = (newCart: CartItem[]) => {
+  const replaceCart = (newCart: OrderItem[]) => {
     setCart(newCart);
   };
 
@@ -44,6 +46,9 @@ export const CartContextProvider = ({ children }: PropsWithChildren<{}>) => {
         updateQuantity,
         clearCart,
         replaceCart,
+
+        isCheckoutVisible,
+        setIsCheckoutVisible,
       }}
     >
       {children}
@@ -55,7 +60,7 @@ export const useCartContext = (): CartContextValue => {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error('useCart must be used within a CartContextProvider');
   }
 
   return context;
