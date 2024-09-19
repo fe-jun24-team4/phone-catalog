@@ -18,11 +18,11 @@ export type CartState = OrderItem[];
 
 export interface CartContextValue {
   cart: CartState;
-  addItem: (item: CartItem) => void;
+  addItem: (item: OrderItem) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
-  replaceCart: (cart: CartItem[]) => void;
+  replaceCart: (cart: OrderItem[]) => void;
 
   isCheckoutVisible: boolean;
   setIsCheckoutVisible: (state: boolean) => void;

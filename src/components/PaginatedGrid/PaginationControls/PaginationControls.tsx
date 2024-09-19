@@ -4,9 +4,9 @@ import cn from 'classnames';
 import React from 'react';
 import { useState } from 'react';
 
-import { range } from '../../../../utils/range';
-import { ButtonRounded } from '../../../../components/buttons';
-import { Direction } from '../../../../enums/Direction';
+import { range } from '../../../utils/range';
+import { ButtonRounded } from '../../buttons';
+import { Direction } from '../../../enums/Direction';
 
 type Props = {
   itemsCount: number;
