@@ -1,6 +1,5 @@
 import styles from './buttonPrimary.module.scss';
 import classNames from 'classnames';
-
 import React from 'react';
 import { FC } from 'react';
 
