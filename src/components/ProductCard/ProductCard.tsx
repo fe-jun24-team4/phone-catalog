@@ -3,16 +3,24 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { HOST } from '../../utils/constants/host';
 import { ButtonFavorite, ButtonPrimary } from '../buttons';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
+  const { pathname } = useLocation();
+  const { images, name, priceRegular, priceDiscount, screen, capacity, ram, id } = product;
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`${pathname}/${id}`);
+  };
 
   return (
-    <a href="#" className={styles.card}>
+    <article className={styles.card} onClick={handleClick}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
           <img src={`${HOST}/${images[0]}`} alt={name} className={styles.image} />
@@ -50,11 +58,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         <div className={styles.actions}>
-          <ButtonPrimary title="Add to cart" />
+          <ButtonPrimary title="Add to cart" onClick={() => {
+            console.log('add to cart');
+          }} />
 
           <ButtonFavorite icon={'icon-heart'} />
         </div>
       </div>
-    </a>
+    </article>
   );
 };

@@ -6,9 +6,10 @@ import { FC, useState } from 'react';
 
 export interface Props {
   title: string;
+  onClick: () => void;
 }
 
-const ButtonPrimary: FC<Props> = ({ title }) => {
+const ButtonPrimary: FC<Props> = ({ title, onClick }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   return (
@@ -16,7 +17,10 @@ const ButtonPrimary: FC<Props> = ({ title }) => {
       className={classNames(styles.buttonPrimary, {
         [styles.selected]: isSelected,
       })}
-      onClick={() => setIsSelected(true)}
+      onClick={(event) => {
+        event.preventDefault();
+        onClick();
+      }}
     >
       {title}
     </button>
