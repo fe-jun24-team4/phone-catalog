@@ -7,6 +7,7 @@ import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { CatalogContextProvider } from './CatalogPage/context/CatalogContext';
+import { CartPageRoute } from '../components/CartPageRoute';
 
 export const RootPage = () => {
   return (
@@ -49,7 +50,7 @@ export const RootPage = () => {
             }
           />
           <Route path={RouteNames.favorites} element={<p>Favorites</p>} />
-          <Route path={RouteNames.cart} element={<p>CART</p>} />
+          <Route path={RouteNames.cart} element={<CartPageRoute />} />
         </Route>
         <Route path={RouteNames.pageNotFound} element={<p>PAGE NOT FOUND</p>} />
       </Routes>

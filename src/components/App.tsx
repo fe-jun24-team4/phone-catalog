@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Outlet } from 'react-router-dom';
-import { CartPageRoute } from './CartPageRoute';
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
 
       <main className="page">
         <Outlet />
-        <CartPageRoute />
       </main>
 
       <Footer />
