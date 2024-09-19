@@ -1,5 +1,5 @@
-@import '../../styles/generals/variables.scss';
-@import '../../styles/generals/mixins.scss';
+@import '../../../styles/generals/index.scss';
+@import '../mixins.scss';
 
 .dropdown {
   position: relative;
@@ -26,10 +26,8 @@
   }
 }
 
-.description {
-  color: $themePurpleSecondary;
-  font-size: 12px;
-  line-height: $lineHeightAdditional;
+.label {
+  @include label;
 }
 
 .trigger {
@@ -48,6 +46,7 @@
 
   &:focus {
     border-color: $themePurplePrimary;
+    outline: none;
   }
 }
 
@@ -114,4 +113,8 @@
 
     transition-duration: $transitionDuration;
   }
+}
+
+.error {
+  @include error;
 }

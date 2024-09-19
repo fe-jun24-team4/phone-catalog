@@ -18,6 +18,12 @@
   }
 }
 
+@mixin onlyLastChild {
+  &:last-child {
+    @content;
+  }
+}
+
 @mixin before {
   &::before {
     content: '';

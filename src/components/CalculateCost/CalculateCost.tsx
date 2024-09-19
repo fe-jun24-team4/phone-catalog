@@ -2,33 +2,30 @@ import { FC, useState, useEffect } from 'react';
 import styles from './CalculateCost.module.scss';
 import React from 'react';
 import { ButtonPrimary } from '../buttons';
-
-interface Product {
-  title: string;
-  count: number;
-  cost: number;
-}
+import { OrderItem } from '../../types/OrderItem';
+import { calculateOrderTotal } from '../../features/calculateOrderTotal';
 
 type TotalCostProps = {
-  products: Product[];
+  order: OrderItem[];
 };
 
-export const TotalCost: FC<TotalCostProps> = ({ products }) => {
-  const [calculate, setCalculate] = useState(0);
+export const TotalCost: FC<TotalCostProps> = ({ order }) => {
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const totalCost = products.reduce((acc, item) => acc + item.cost * item.count, 0);
+    const totalCost = calculateOrderTotal(order);
 
-    setCalculate(totalCost);
+    setTotal(totalCost);
   }, []);
 
   return (
     <div className={styles.total}>
       <div className={styles.totalWrapper}>
         <div className={styles.totalBlock}>
-          <p className={styles.price}>${calculate}</p>
-          <p className={styles.text}>Total for {products.length} item</p>
+          <p className={styles.price}>${total}</p>
+          <p className={styles.text}>Total for {order.length} item</p>
         </div>
+
         <div className={styles.line} />
 
         <ButtonPrimary title="Checkout" />

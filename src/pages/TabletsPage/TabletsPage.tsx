@@ -1,6 +1,11 @@
 import React from 'react';
-import { CatalogPageWithContext } from '../CatalogPage';
+import { CatalogPage } from '../CatalogPage';
+import { CatalogContextProvider } from '../CatalogPage/context/CatalogContext';
 
 export const TabletsPage = () => {
-  return <CatalogPageWithContext title="Tablets" source="api/tablets" />;
+  return (
+    <CatalogContextProvider source="api/tablets">
+      <CatalogPage title="Tablets" />
+    </CatalogContextProvider>
+  );
 };

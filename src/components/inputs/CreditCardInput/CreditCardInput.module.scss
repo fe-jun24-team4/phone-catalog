@@ -1,0 +1,81 @@
+@import '../../../styles/generals/index.scss';
+@import '../mixins.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+
+  &.isError {
+    & > .digits {
+      border-color: $themePurpleRed;
+    }
+
+    & > .error {
+      opacity: 1;
+    }
+  }
+}
+
+.label {
+  @include label;
+}
+
+.digits {
+  height: 40px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 8px;
+
+  box-sizing: border-box;
+  padding: 0 12px;
+
+  border: 1px solid $themePurpleIcons;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition-duration: $transitionDuration;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.isFocused {
+    border-color: $themePurplePrimary;
+    outline: none;
+  }
+}
+
+.quartet {
+  display: flex;
+  gap: 4px;
+}
+
+.digit {
+  width: 6px;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition-duration: 0.15s;
+
+  &.withCursor {
+    transform: scale(1.3);
+  }
+
+  &.isEntered {
+    color: $themePurplePrimary;
+    font-weight: $fontWeightBold;
+  }
+}
+
+.error {
+  @include error;
+}

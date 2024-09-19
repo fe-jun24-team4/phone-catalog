@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Options } from '../../../../types/Option';
 import { SortBy } from '../../../../enums/sortBy';
-import { DropdownButton } from '../../../../components/DropdownButton';
+import { Input } from '../../../../components/inputs';
 
 type Props = {
   sortByOptions: Options<SortBy>;
@@ -22,8 +22,8 @@ export const FilterControls = ({
   return (
     <div className={style.container}>
       <div className={style.dropdowns}>
-        <DropdownButton options={sortByOptions} onChange={onSortByChange} />
-        <DropdownButton options={perPageOptions} onChange={onPerPageChange} />
+        <Input.Dropdown options={sortByOptions} onChange={onSortByChange} />
+        <Input.Dropdown options={perPageOptions} onChange={onPerPageChange} />
       </div>
     </div>
   );

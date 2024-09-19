@@ -1,0 +1,23 @@
+@import '../../../styles/generals/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-top: 24px;
+  padding-bottom: 32px;
+
+  @include onTabletAndUp {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.text {
+  @include titleMain;
+}
+
+.subscript {
+  font-weight: $fontWeightSemiBold;
+}

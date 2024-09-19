@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CartItem.module.scss';
 import { ButtonRounded } from '../components/buttons';
 import classNames from 'classnames';
+import { OrderItem } from '../types/OrderItem';
 
 interface SelectedPhone {
   imgSrc: string;
@@ -16,6 +17,16 @@ interface Props {
 
 export const CartItem: React.FC<Props> = ({ selectedPhone }) => {
   const { imgSrc, description, quantity, price } = selectedPhone;
+
+type CartItemProps = {
+  item: OrderItem;
+};
+};
+
+export const CartItem = ({ item }: CartItemProps) => {
+  const { product, amount } = item;
+  const { images, name, priceDiscount } = product;
+  const image = images[0];
 
   return (
     <div className={styles.cart}>
@@ -33,10 +44,10 @@ export const CartItem: React.FC<Props> = ({ selectedPhone }) => {
         <div className={classNames(styles.position, styles.spaceBetween)}>
           <div className={styles.quantityBlock}>
             <ButtonRounded icon="icon-minus" />
-            <p className={styles.quantity}>{quantity}</p>
+            <p className={styles.quantity}>{amount}</p>
             <ButtonRounded icon="icon-plus" />
           </div>
-          <p className={styles.price}>${price}</p>
+          <p className={styles.price}>${priceDiscount}</p>
         </div>
       </div>
     </div>

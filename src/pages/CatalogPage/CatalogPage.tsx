@@ -1,40 +1,25 @@
 import styles from './CatalogPage.module.scss';
 
 import React from 'react';
-import { ProductsGrid } from './components/ProductsGrid/ProductsGrid';
-import { CatalogContextProvider, useCatalogContext } from './context/CatalogContext';
+import { Catalog } from './components/Catalog';
+import { useCatalogContext } from './context/CatalogContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { TitleWithSubscript } from '../../components/text/TitleWithSubscript';
 
 type CatalogPageProps = {
   title: string;
 };
 
-const CatalogPage = ({ title }: CatalogPageProps) => {
+export const CatalogPage = ({ title }: CatalogPageProps) => {
   const { products } = useCatalogContext();
 
   return (
     <div className={styles.container}>
       <Breadcrumbs.View />
 
-      <div className={styles.titleContainer}>
-        <h1 className={styles.titleText}>{title}</h1>
-        <p className={styles.titleSubscript}>{products.length} models</p>
-      </div>
+      <TitleWithSubscript title={title} subscript={`${products.length} models`} />
 
-      <ProductsGrid products={products} />
+      <Catalog products={products} />
     </div>
-  );
-};
-
-type CatalogPageWithContextProps = {
-  title: string;
-  source: string;
-};
-
-export const CatalogPageWithContext = ({ title, source }: CatalogPageWithContextProps) => {
-  return (
-    <CatalogContextProvider source={source}>
-      <CatalogPage title={title} />
-    </CatalogContextProvider>
   );
 };
