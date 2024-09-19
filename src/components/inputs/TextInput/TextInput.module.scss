@@ -1,0 +1,54 @@
+@import '../../../styles/generals/index.scss';
+@import '../mixins.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+
+  &.isError {
+    & > .input {
+      border-color: $themePurpleRed;
+    }
+
+    & > .error {
+      opacity: 1;
+    }
+  }
+}
+
+.label {
+  @include label;
+}
+
+.input {
+  height: 40px;
+
+  display: block;
+
+  box-sizing: border-box;
+  padding: 0 12px;
+
+  border: 1px solid $themePurpleIcons;
+  border-radius: 8px;
+
+  font-weight: $fontWeightBold;
+
+  cursor: pointer;
+
+  transition-duration: $transitionDuration;
+
+  &:focus {
+    border-color: $themePurplePrimary;
+    outline: none;
+  }
+
+  &::placeholder {
+    font-weight: $fontWeightNormal;
+  }
+}
+
+.error {
+  @include error;
+}
