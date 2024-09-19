@@ -21,13 +21,15 @@ body {
 
   display: flex;
   flex-direction: column;
-
-  & > .page {
-    padding-top: 72px;
-    flex-grow: 1;
-  }
 }
 
-.page{
+.page {
   @include container;
+
+  padding-top: 48px;
+  flex-grow: 1;
+
+  @include onLaptopAndUp {
+    padding-top: 64px;
+  }
 }

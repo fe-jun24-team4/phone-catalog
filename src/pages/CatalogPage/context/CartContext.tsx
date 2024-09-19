@@ -4,7 +4,7 @@ import { getInitialCartState, addItemToCart } from '../../../utils/cartUtils';
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
+export const CartContextProvider = ({ children }: PropsWithChildren<{}>) => {
   const [cart, setCart] = useState<CartItem[]>(getInitialCartState);
 
   useEffect(() => {
