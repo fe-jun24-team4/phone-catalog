@@ -14,15 +14,6 @@ body {
   background-color: $themePurpleBgHover;
 }
 
-[class*='__container'] {
-  max-width: 1266px;
-  width: 100%;
-  box-sizing: border-box;
-
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 .wrapper {
   min-height: 100vh;
   overflow: hidden;
@@ -35,4 +26,8 @@ body {
     padding-top: 72px;
     flex-grow: 1;
   }
+}
+
+.page{
+  @include container;
 }
