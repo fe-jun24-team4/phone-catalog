@@ -1,31 +1,70 @@
 @import '../../styles/generals/index.scss';
 
-.header_box {
+.cartWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
+  padding: 75px 0 56px;
+
+  @include onTabletAndUp {
+    padding: 85px 0 64px;
+  }
+
+  @include onLaptopAndUp {
+    padding: 120px 0 80px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  @include onTabletAndUp {
+    gap: 16px;
+  }
 }
 
 .back {
-  margin-top: 72px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  
+  span {
+    font-size: 15px;
+    color: $themePurplePrimary;
+  }
 }
 
 .title {
-  margin-top: 24px;
   color: $themePurplePrimary;
   font-weight: $fontWeightSemiBlack;
-  font-size: 48px;
+  font-size: $fontSizeBig;
   line-height: $lineHeightAdditional;
+
+  @include onTabletAndUp {
+    font-size: 48px;
+  }
 }
 
-.main_box {
+.main {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr);
+  justify-items: center;
+  gap: 32px;
+
+
+  @include onLaptopAndUp {
+    grid-template-columns: 2fr 1fr;
+    justify-items: start;
+    gap: 16px;
+  }
+}
+
+.products_block {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 32px;
-}
 
-.phoneContainer {
-  border: 1px solid $themePurpleIcons;
-  border-radius: 16px;
-  width: 592px;
-  height: 128px;
 }

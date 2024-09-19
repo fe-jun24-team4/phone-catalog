@@ -19,7 +19,7 @@
     border: 1px solid $themePurpleElements;
     border-radius: 16px;
 
-    @include onTablet {
+    @include onTabletAndUp {
         flex-direction: row;
         gap: 24px;
     }

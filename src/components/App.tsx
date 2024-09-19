@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Outlet } from 'react-router-dom';
-import { PageRoute } from './CartPageRoute/CartPageRoute';
+import { CartPageRoute } from './CartPageRoute';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
 
       <main className="page">
         <Outlet />
-        <PageRoute />
+        <CartPageRoute />
       </main>
 
       <Footer />
