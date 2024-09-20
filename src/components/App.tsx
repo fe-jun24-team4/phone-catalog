@@ -1,9 +1,10 @@
-import React from 'react';
-import { Header } from './Header';
-import { Footer } from './Footer';
-import { Outlet } from 'react-router-dom';
 import { FavouritesContextProvider } from '../pages/FavouritesPage/context/FavouritesContext';
 import { CartContextProvider } from '../pages/CartPage/context/CartContext';
+import { ShopByCategory } from './ShopByCategory/ShopByCategory';
+import { Outlet } from 'react-router-dom';
+import { Header } from './Header';
+import { Footer } from './Footer';
+import React from 'react';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 
           <main className="page">
             <Outlet />
+            <ShopByCategory />
           </main>
 
           <Footer />
