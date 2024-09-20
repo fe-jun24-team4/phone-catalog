@@ -1,0 +1,53 @@
+@import '../../styles/generals/index.scss';
+
+.homeHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    //height: 82px;
+    
+    font-weight: $fontWeightSemiBlack;
+    font-size: $fontSizeBig;
+    color: $themePurplePrimary;
+    line-height: $lineHeightAdditional;
+    //text-align: center;
+
+    @include onTabletAndUp {
+        font-size: 48px;
+    }
+}
+
+h2 {
+    margin-bottom: 24px;
+    font-size: 22px;
+    color: $themePurplePrimary;
+    font-weight: $fontWeightBold;
+  
+    @include onTabletAndUp {
+      font-size: 32px;
+      line-height: $lineHeightAdditional;
+    }
+  }
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lines {
+    font-size: $fontSizeBig;
+    color: $themePurplePrimary;
+}
+
+.firstLine {
+    color: $themePurpleAccent;
+}
+
+.productCardsContainer {
+    display: block;
+    margin: 56px 16px;
+    }
+

@@ -4,6 +4,7 @@ import { RouteNames } from '../enums/RouteNames';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 import App from '../components/App';
+import { HomePage } from './HomePage';
 import { PhonesPage } from './PhonesPage';
 import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
@@ -22,6 +23,7 @@ export const RootPage = () => {
             </Breadcrumbs.Checkpoint>
           }
         >
+          <Route path={RouteNames.home} element={<HomePage />} />
           <Route
             path={RouteNames.phones}
             element={
