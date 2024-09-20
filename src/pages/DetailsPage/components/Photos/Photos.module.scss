@@ -1,0 +1,60 @@
+@import '../../../../styles/generals/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  transition-duration: $transitionDuration;
+
+  @include onTabletAndUp {
+    flex-direction: row-reverse;
+    justify-content: start;
+  }
+}
+
+.aside {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  @include onTabletAndUp {
+    flex-direction: column;
+  }
+}
+
+.asideItem {
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid $themePurpleIcons;
+  border-radius: 8px;
+
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    border-color: $themePurpleElements;
+  }
+
+  @include onLaptopAndUp {
+    width: 80px;
+    height: 80px;
+  }
+
+  &.isHero {
+    border-color: $themePurplePrimary;
+  }
+}
+
+.hero {
+  width: 288px;
+  height: 288px;
+
+  transition-duration: $transitionDuration;
+
+  @include onLaptopAndUp {
+    width: 464px;
+    height: 464px;
+  }
+}
