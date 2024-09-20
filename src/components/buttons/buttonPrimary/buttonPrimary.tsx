@@ -5,8 +5,8 @@ import { FC } from 'react';
 
 export interface Props {
   title: string;
-  onClick?: () => void;
   selected?: boolean;
+  onClick?: () => void;
 }
 
 const ButtonPrimary: FC<Props> = ({ title, selected, onClick = () => {} }) => {
