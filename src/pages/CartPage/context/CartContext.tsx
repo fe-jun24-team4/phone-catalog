@@ -18,14 +18,14 @@ export const CartContextProvider = ({ children }: PropsWithChildren<{}>) => {
   };
 
   const removeItem = (id: string) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
+    setCart(prevCart => prevCart.filter(item => item.product.id !== id));
   };
 
   const updateQuantity = (id: string, quantity: number) => {
     setCart(prevCart =>
       prevCart
-        .map(item => (item.id === id ? { ...item, quantity } : item))
-        .filter(item => item.quantity > 0),
+        .map(item => (item.product.id === id ? { ...item, quantity } : item))
+        .filter(item => item.amount > 0),
     );
   };
 

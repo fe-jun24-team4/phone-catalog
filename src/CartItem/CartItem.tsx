@@ -4,8 +4,23 @@ import { ButtonRounded } from '../components/buttons';
 import classNames from 'classnames';
 import { OrderItem } from '../types/OrderItem';
 
+interface SelectedPhone {
+  imgSrc: string;
+  description: string;
+  quantity: number;
+  price: number;
+}
+
+interface Props {
+  selectedPhone: SelectedPhone;
+}
+
+export const CartItem: React.FC<Props> = ({ selectedPhone }) => {
+  const { imgSrc, description, quantity, price } = selectedPhone;
+
 type CartItemProps = {
   item: OrderItem;
+};
 };
 
 export const CartItem = ({ item }: CartItemProps) => {
@@ -19,10 +34,10 @@ export const CartItem = ({ item }: CartItemProps) => {
         <div className={styles.position}>
           <span className="icon-plus" />
           <div className={styles.photo}>
-            <img src={image} alt={name} className={styles.photoImg} />
+            <img src={imgSrc} alt={description} className={styles.photoImg} />
           </div>
           <div className={styles.details}>
-            <p className={styles.description}>{name}</p>
+            <p className={styles.description}>{description}</p>
           </div>
         </div>
 

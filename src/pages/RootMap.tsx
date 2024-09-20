@@ -1,12 +1,15 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { RouteNames } from '../enums/RouteNames';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+
 import App from '../components/App';
 import { PhonesPage } from './PhonesPage';
 import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { CatalogContextProvider } from './CatalogPage/context/CatalogContext';
+import { FavouritesPage } from './FavouritesPage/FavouritesPage';
 import { CartPage } from './CartPage/CartPage';
 
 export const RootPage = () => {
@@ -21,10 +24,6 @@ export const RootPage = () => {
             </Breadcrumbs.Checkpoint>
           }
         >
-          <Route
-            index
-            element={<CatalogContextProvider source={'api/phones'}></CatalogContextProvider>}
-          />
           <Route
             path={RouteNames.phones}
             element={
@@ -49,7 +48,14 @@ export const RootPage = () => {
               </Breadcrumbs.Checkpoint>
             }
           />
-          <Route path={RouteNames.favorites} element={<p>Favorites</p>} />
+          <Route
+            path={RouteNames.favorites}
+            element={
+              <Breadcrumbs.Checkpoint title="Favourites">
+                <FavouritesPage />
+              </Breadcrumbs.Checkpoint>
+            }
+          />
           <Route path={RouteNames.cart} element={<CartPage />} />
         </Route>
         <Route path={RouteNames.pageNotFound} element={<p>PAGE NOT FOUND</p>} />
