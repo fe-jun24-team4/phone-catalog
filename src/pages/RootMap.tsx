@@ -1,12 +1,12 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { RouteNames } from '../enums/RouteNames';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 import App from '../components/App';
 import { PhonesPage } from './PhonesPage';
 import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
-import { Breadcrumbs } from '../components/Breadcrumbs';
 import { FavouritesPage } from './FavouritesPage/FavouritesPage';
 import { CartPage } from './CartPage/CartPage';
 

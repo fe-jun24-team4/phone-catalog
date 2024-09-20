@@ -1,0 +1,166 @@
+@import '../../../../styles/generals/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  & > :not(:first-child) {
+    max-width: 320px;
+  }
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: $themePurpleElements;
+}
+
+.description {
+  font-size: $fontSizeSmall;
+  font-weight: $fontWeightSemiBold;
+  line-height: $lineHeightAdditional;
+}
+
+.id {
+  font-size: $fontSizeSmall;
+  font-weight: $fontWeightBold;
+  line-height: $lineHeightAdditional;
+}
+
+.colorVariantsAndId {
+  display: flex;
+  justify-content: space-between;
+}
+
+.variants {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.variantButtonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.colorButton {
+  width: 32px;
+  height: 32px;
+
+  box-sizing: border-box;
+  border: 1px solid $themePurpleElements;
+  border-radius: 16px;
+  padding: 2px;
+
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    border-color: $themePurpleIcons;
+
+    transition-duration: $transitionDuration;
+  }
+
+  &.isSelected {
+    border-color: $themePurplePrimary;
+  }
+}
+
+.color {
+  width: 26px;
+  height: 26px;
+
+  border-radius: 13px;
+}
+
+.capacityButton {
+  height: 32px;
+  width: max-content;
+
+  display: flex;
+  align-items: center;
+
+  padding: 2px 8px;
+
+  color: $themePurplePrimary;
+  font-weight: $fontWeightSemiBold;
+
+  border: 1px solid $themePurpleElements;
+  border-radius: 4px;
+
+  transition-duration: $transitionDuration;
+
+  @include onHover {
+    border-color: $themePurpleIcons;
+
+    transition-duration: $transitionDuration;
+  }
+
+  &.isSelected {
+    color: $themePurpleWhite;
+    background-color: $themePurplePrimary;
+    border-color: $themePurplePrimary;
+  }
+}
+
+.addToCartAndSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.addToCart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceNow {
+  color: $themePurplePrimary;
+  font-size: $fontSizeBig;
+  font-weight: $fontWeightSemiBlack;
+
+  @include before {
+    content: '$';
+  }
+}
+
+.priceBefore {
+  font-size: $fontSizeMedium;
+  font-weight: $fontWeightSemiBold;
+  text-decoration: line-through;
+
+  @include before {
+    content: '$';
+  }
+}
+
+.cartAndFavourite {
+  display: flex;
+  gap: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specValue {
+  color: $themePurplePrimary;
+  font-size: $fontSizeSmall;
+  font-weight: $fontWeightBold;
+  line-height: $lineHeightAdditional;
+}
