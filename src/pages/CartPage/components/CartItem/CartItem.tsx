@@ -43,9 +43,17 @@ export const CartItem = ({ item }: CartItemProps) => {
 
         <div className={classNames(styles.position, styles.spaceBetween)}>
           <div className={styles.quantityBlock}>
-            <ButtonRounded icon="icon-minus" onClick={() => handleQuantityChange(amount - 1)} />
+            <ButtonRounded
+              icon="icon-minus"
+              disabled={amount === 1}
+              onClick={() => handleQuantityChange(amount - 1)}
+            />
             <p className={styles.quantity}>{amount}</p>
-            <ButtonRounded icon="icon-plus" onClick={() => handleQuantityChange(amount + 1)} />
+            <ButtonRounded
+              icon="icon-plus"
+              disabled={amount >= 9}
+              onClick={() => handleQuantityChange(amount + 1)}
+            />
           </div>
           <p className={styles.price}>${priceDiscount}</p>
         </div>

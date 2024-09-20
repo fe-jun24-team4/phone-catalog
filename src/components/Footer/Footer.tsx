@@ -7,7 +7,6 @@ import { Direction } from '../../enums/Direction';
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth',
   });
 };
 

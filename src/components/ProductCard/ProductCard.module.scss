@@ -7,12 +7,16 @@
   display: flex;
   flex-direction: column;
 
+  border: 1px solid $themePurpleElements;
+  border-radius: 8px;
+  overflow: hidden;
+
   cursor: pointer;
 
   transition: $transitionDuration;
 
   @include onHover {
-    box-shadow: 0px 2px 16px 0px #0000001a;
+    box-shadow: 0 2px 16px #0000001a;
 
     transform: $transformScale;
   }
@@ -24,9 +28,6 @@
   flex-grow: 1;
 
   padding: 32px;
-
-  border: 1px solid $themePurpleElements;
-  border-radius: 8px;
 
   background-color: $themePurpleWhite;
 }
@@ -69,8 +70,6 @@
 .info {
   padding-bottom: 8px;
 
-  flex-grow: 1;
-
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -81,7 +80,7 @@
 }
 
 .title {
-  flex-grow: 1;
+  height: 42px;
 }
 
 .priceBlock {

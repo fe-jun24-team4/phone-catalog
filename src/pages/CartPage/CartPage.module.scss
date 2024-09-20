@@ -1,4 +1,4 @@
-@import '../../styles/generals/index.scss';
+@import '../../styles/generals/index';
 
 .cartWrapper {
   display: flex;
@@ -27,6 +27,8 @@
 }
 
 .back {
+  width: max-content;
+
   display: flex;
   align-items: center;
   gap: 6px;

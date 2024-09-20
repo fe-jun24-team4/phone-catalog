@@ -6,9 +6,11 @@ import { TotalCost } from './components/TotalCost';
 import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { CartItem } from './components/CartItem/CartItem';
 import { CheckoutModal } from './components/CheckoutModal/CheckoutModal';
+import { useNavigate } from 'react-router-dom';
 
 export const CartPage: FC = () => {
   const { cart } = useCartContext();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -17,10 +19,10 @@ export const CartPage: FC = () => {
       <div className={styles.cart}>
         <div className={styles.cartWrapper}>
           <div className={styles.header}>
-            <a href="#" className={styles.back}>
+            <button className={styles.back} onClick={() => navigate(-1)}>
               <span className="icon-chevron-left" />
               Back
-            </a>
+            </button>
             <h2 className={styles.title}>Cart</h2>
           </div>
 

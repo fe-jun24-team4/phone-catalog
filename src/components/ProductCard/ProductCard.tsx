@@ -8,6 +8,7 @@ import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
 
 interface ProductCardProps {
+  key?: number;
   product: Product;
 }
 
