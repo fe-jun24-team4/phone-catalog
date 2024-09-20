@@ -1,5 +1,4 @@
-
-@import '../../styles/generals/index.scss';
+@import '../../../../styles/generals/index.scss';
 
 .total {
   max-width: 592px;
@@ -8,7 +7,7 @@
 
 .totalWrapper {
   padding: 24px;
-  
+
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -17,7 +16,7 @@
   border: 1px solid $themePurpleElements;
 
   @include onLaptopAndUp {
-    gap: 24px; 
+    gap: 24px;
   }
 }
 
@@ -30,7 +29,7 @@
 
 .line {
   height: 1px;
-  
+
   background-color: $themePurpleElements;
 }
 

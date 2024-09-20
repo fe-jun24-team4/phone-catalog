@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './TechSpecs.module.scss';
-import { Product } from '../../types/Product';
 import { getDescriptionContent } from './helpers/helpers';
+import { Product } from '../../../../types/Product';
 
 interface Props {
   product: Product;

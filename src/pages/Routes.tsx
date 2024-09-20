@@ -1,19 +1,20 @@
 import React from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes as RouterRoutes } from 'react-router-dom';
 import { RouteNames } from '../enums/RouteNames';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
-import App from '../components/App';
+import { App } from '../components/App';
 import { PhonesPage } from './PhonesPage';
 import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
-import { FavouritesPage } from './FavouritesPage/FavouritesPage';
+import { FavouritesPage } from './FavouritesPage';
 import { CartPage } from './CartPage/CartPage';
+import { NotFoundPage } from './NotFoundPage';
 
-export const RootPage = () => {
+export const Routes = () => {
   return (
     <Router>
-      <Routes>
+      <RouterRoutes>
         <Route
           path={RouteNames.home}
           element={
@@ -54,10 +55,17 @@ export const RootPage = () => {
               </Breadcrumbs.Checkpoint>
             }
           />
-          <Route path={RouteNames.cart} element={<CartPage />} />
+          <Route
+            path={RouteNames.cart}
+            element={
+              <Breadcrumbs.Checkpoint title="Cart">
+                <CartPage />
+              </Breadcrumbs.Checkpoint>
+            }
+          />
         </Route>
-        <Route path={RouteNames.pageNotFound} element={<p>PAGE NOT FOUND</p>} />
-      </Routes>
+        <Route path={RouteNames.pageNotFound} element={<NotFoundPage />} />
+      </RouterRoutes>
     </Router>
   );
 };

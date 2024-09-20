@@ -14,10 +14,8 @@ type State = {
 
 const StateContext = createContext<State | null>(null);
 
-import data from '../../../api/phones.json';
-
 export const FavouritesContextProvider = ({ children }: PropsWithChildren) => {
-  const { read, write } = useLocalStorage<Product[]>(FAVOURITES, data.slice(0, 3));
+  const { read, write } = useLocalStorage<Product[]>(FAVOURITES, []);
 
   const favourites: Product[] = read();
 

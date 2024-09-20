@@ -52,7 +52,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className={styles.actions}>
           <ButtonPrimary title="Add to cart" />
 
-          <ButtonFavorite icon={'icon-heart'} />
+          <ButtonFavorite />
         </div>
       </div>
     </a>

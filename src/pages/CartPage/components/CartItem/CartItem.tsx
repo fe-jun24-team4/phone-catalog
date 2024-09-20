@@ -1,9 +1,10 @@
-import React from 'react';
 import styles from './CartItem.module.scss';
-import { ButtonRounded } from '../components/buttons';
 import classNames from 'classnames';
-import { OrderItem } from '../types/OrderItem';
-import { useCartContext } from '../pages/CartPage/context/CartContext';
+
+import React from 'react';
+import { OrderItem } from '../../../../types/OrderItem';
+import { useCartContext } from '../../context/CartContext';
+import { ButtonRounded } from '../../../../components/buttons';
 
 type CartItemProps = {
   item: OrderItem;
@@ -11,8 +12,10 @@ type CartItemProps = {
 
 export const CartItem = ({ item }: CartItemProps) => {
   const { product, amount } = item;
+
   const { images, name, priceDiscount } = product;
   const image = images[0];
+
   const { removeItem, updateQuantity } = useCartContext();
 
   const handleRemove = () => {
