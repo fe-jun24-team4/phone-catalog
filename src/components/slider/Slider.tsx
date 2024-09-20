@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, Mousewheel } from 'swiper/modules';
+import SwiperCore from 'swiper';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -10,6 +11,7 @@ import styles from './Slider.module.scss';
 import classnames from 'classnames';
 import { ButtonRounded } from '../buttons';
 import { Direction } from '../../enums/Direction';
+import React from 'react';
 
 interface Settings {
   slidesPerView: number;
@@ -39,13 +41,13 @@ interface Props {
 }
 
 export const Slider: FC<Props> = ({ slider }) => {
-  const swiperRef = useRef<Swiper | null>(null);
+  const swiperRef = useRef<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const { sliders, settings, sliderHeader, width } = slider;
   const { slidesPerView, spaceBetween, breakpoints, delay } = settings;
 
-  const handleSwiperInit = (swiper: Swiper) => {
+  const handleSwiperInit = (swiper: SwiperCore) => {
     swiperRef.current = swiper;
     setActiveIndex(swiper.realIndex);
   };
@@ -121,7 +123,7 @@ export const Slider: FC<Props> = ({ slider }) => {
 
         {!sliderHeader && (
           <div className={styles.customPagination}>
-            {sliders.map((slide, index) => (
+            {sliders.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
