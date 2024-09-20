@@ -29,7 +29,7 @@ export const CartItem = ({ item }: CartItemProps) => {
     <div className={styles.cart}>
       <div className={styles.container}>
         <div className={styles.position}>
-          <span className="icon-plus" />
+          <span className="icon-plus" onClick={handleRemove} />
           <div className={styles.photo}>
             <img src={image} alt={name} className={styles.photoImg} />
           </div>
@@ -45,7 +45,6 @@ export const CartItem = ({ item }: CartItemProps) => {
             <ButtonRounded icon="icon-plus" onClick={() => handleQuantityChange(amount + 1)} />
           </div>
           <p className={styles.price}>${priceDiscount}</p>
-          <button onClick={handleRemove}>Remove</button>
         </div>
       </div>
     </div>
