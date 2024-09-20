@@ -6,6 +6,7 @@ import { RouteNames } from '../../enums/RouteNames';
 import { isLinkActive } from './isLinkActive';
 import { IconsComponent } from './iconsComponent/iconsComponent';
 import { useHandleMenuAction } from './hooks/useHandleMenuAction';
+import logo from './Logo.svg';
 
 export const Header: React.FC = () => {
   const { isMenuActive, setIsMenuActive, handleMenuAction } = useHandleMenuAction();
@@ -25,11 +26,7 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to={RouteNames.home} className={styles.logo}>
-          <img
-            src="./src/images/nice-gadgets-logo.svg"
-            className={styles.logoImage}
-            alt="Nice Gadgets Logo"
-          />
+          <img src={logo} className={styles.logoImage} alt="Nice Gadgets Logo" />
         </Link>
 
         <nav

@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
           <ul className={styles.list}>
             <li className={styles.navItem}>
               <a
-                href="https://github.com/your-repo"
+                href="https://github.com/fe-jun24-team4/phone-catalog/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.navItem}>
               <a
-                href="https://github.com/your-repo"
+                href="https://github.com/fe-jun24-team4/phone-catalog/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.navItem}>
               <a
-                href="https://github.com/your-repo"
+                href="https://github.com/fe-jun24-team4/phone-catalog/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
