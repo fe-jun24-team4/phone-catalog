@@ -7,7 +7,7 @@ import { FC } from 'react';
 export interface Props {
   icon?: string;
   selected?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ButtonFavorite: FC<Props> = ({ icon = 'icon-heart', selected, onClick = () => {} }) => {

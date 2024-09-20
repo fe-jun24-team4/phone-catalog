@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { HOST } from '../../utils/constants/host';
@@ -6,7 +6,6 @@ import { ButtonFavorite, ButtonPrimary } from '../buttons';
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
-import { RouteNames } from '../../enums/RouteNames';
 
 interface ProductCardProps {
   product: Product;
@@ -15,7 +14,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
   const navigate = useNavigate();
-  
+
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
   const isInFavourite = Boolean(favourites.find(item => item.id === product.id));
 
@@ -77,12 +76,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         <div className={styles.actions}>
-        <ButtonPrimary
-              title={isInCart ? 'View in cart' : 'Add to cart'}
-              selected={isInCart}
-              onClick={handleAddToCart}
-            />
-        <ButtonFavorite icon="icon-heart" selected={isInFavourite} onClick={toggleFavourite} />
+          <ButtonPrimary
+            title={isInCart ? 'View in cart' : 'Add to cart'}
+            selected={isInCart}
+            onClick={handleAddToCart}
+          />
+          <ButtonFavorite icon="icon-heart" selected={isInFavourite} onClick={toggleFavourite} />
         </div>
       </div>
     </div>

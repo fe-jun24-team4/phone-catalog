@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { useFetchRecommended } from '../../hooks/useFetchRecommended';
-import { shuffleArray } from '../../utils/shuffleArray';
-import { Product } from '../../types/Product';
 
-export const RecommendedPhones: React.FC = () => {
+import { useFetchRecommended } from '../../../../hooks/useFetchRecommended';
+import { shuffleArray } from '../../../../utils/shuffleArray';
+import { Product } from '../../../../types/Product';
+
+export const Recommended: React.FC = () => {
   const { data: phones, isLoading, isError } = useFetchRecommended<Product[]>('api/phones.json');
 
   const recommendedPhones = useMemo(() => {

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './CategoryComponent.module.scss';
 import { Link } from 'react-router-dom';
-import { RouteNames } from '../../../enums/RouteNames';
+import { RouteNames } from '../../../../../enums/RouteNames';
 
 interface Props {
   imgSrc: string;

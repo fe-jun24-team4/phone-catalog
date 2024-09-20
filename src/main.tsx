@@ -1,10 +1,12 @@
+import './index.scss';
+
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.scss';
-import { RootPage } from './pages/RootMap';
+
+import { Routes } from './pages/Routes';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RootPage />
+    <Routes />
   </StrictMode>,
 );

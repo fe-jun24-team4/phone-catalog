@@ -13,12 +13,7 @@ type DropdownProps<T> = {
   onChange?: (value: T) => void;
 };
 
-export const DropdownButton = <T,>({
-  label,
-  error,
-  options,
-  onChange = () => {},
-}: DropdownProps<T>) => {
+export const DropdownButton = <T,>({ label, options, onChange = () => {} }: DropdownProps<T>) => {
   const [selectedOption, setSelectedOption] = useState(options.default[0]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -52,7 +47,7 @@ export const DropdownButton = <T,>({
         ))}
       </div>
 
-      <span className={styles.error}>{error}</span>
+      {/* <span className={styles.error}>{error}</span> */}
     </div>
   );
 };

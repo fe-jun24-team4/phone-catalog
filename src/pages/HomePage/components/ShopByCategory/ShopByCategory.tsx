@@ -1,20 +1,16 @@
-import { RouteNames } from '../../enums/RouteNames';
-import { useFetchData } from '../../hooks/useFetch';
-import { Product } from '../../types/Product';
-import { CategoryComponent } from './CategoryComponent/CategoryComponent';
 import styles from './ShopByCategory.module.scss';
+
+import { CategoryComponent } from './CategoryComponent/CategoryComponent';
 import React from 'react';
+import { HOST } from '../../../../utils/constants/host';
+import { useFetchData } from '../../../../hooks/useFetch';
+import { Product } from '../../../../types/Product';
+import { RouteNames } from '../../../../enums/RouteNames';
 
 export const ShopByCategory = () => {
-  const { data: phones } = useFetchData<Product>(
-    'http://localhost:5173/phone-catalog/api/phones.json',
-  );
-  const { data: tablets } = useFetchData<Product>(
-    'http://localhost:5173/phone-catalog/api/tablets.json',
-  );
-  const { data: accessories } = useFetchData<Product>(
-    'http://localhost:5173/phone-catalog/api/accessories.json',
-  );
+  const { data: phones } = useFetchData<Product>(`${HOST}/api/phones.json`);
+  const { data: tablets } = useFetchData<Product>(`${HOST}/api/tablets.json`);
+  const { data: accessories } = useFetchData<Product>(`${HOST}/api/accessories.json`);
 
   const categories = [
     {

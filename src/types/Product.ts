@@ -14,7 +14,6 @@ export type ProductShort = {
 };
 
 export type Product = {
-  imageUrl: string | undefined;
   id: string;
   category: string;
   namespaceId: string;

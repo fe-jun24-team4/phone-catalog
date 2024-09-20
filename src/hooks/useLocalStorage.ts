@@ -23,17 +23,16 @@ export function useLocalStorage<T>(key: string, initialValue: T): LocalStorageAc
   useEffect(() => {
     const value = read<T>(key);
 
-    if (value === null) {
-      write(key, initialValue);
+    if (value) {
+      setCache(value);
     }
-  }, [initialValue, key]);
-
-  useEffect(() => {
-    write(key, cache);
-  }, [cache, key]);
+  }, [key]);
 
   return {
     read: () => cache,
-    write: setCache,
+    write: value => {
+      setCache(value);
+      write(key, value);
+    },
   };
 }
