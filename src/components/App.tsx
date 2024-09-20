@@ -17,7 +17,6 @@ function App() {
 
           <main className="page">
             <Outlet />
-            <ShopByCategory />
           </main>
 
           <Footer />
