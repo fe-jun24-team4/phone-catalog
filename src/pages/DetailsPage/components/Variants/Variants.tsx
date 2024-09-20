@@ -5,6 +5,10 @@ import { Product } from '../../../../types/Product';
 import React, { useState } from 'react';
 import { ButtonFavorite, ButtonPrimary } from '../../../../components/buttons';
 import { colorNameToRgb } from '../../../../utils/colorNameToRgb';
+import { useFavouritesContext } from '../../../FavouritesPage/context/FavouritesContext';
+import { useCartContext } from '../../../CartPage/context/CartContext';
+import { useNavigate } from 'react-router-dom';
+import { RouteNames } from '../../../../enums/RouteNames';
 
 type Props = {
   product: Product;
@@ -34,6 +38,14 @@ export const Variants = ({
     ['Ram', product.ram],
   ];
 
+  const navigate = useNavigate();
+
+  const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
+  const isInFavourite = Boolean(favourites.find(item => item.id === product.id));
+
+  const { cart, addItem: addToCart } = useCartContext();
+  const isInCart = Boolean(cart.find(item => item.product.id === product.id));
+
   const [color, setColor] = useState(defaultColor);
   const [capacity, setCapacity] = useState(defaultCapacity);
 
@@ -48,6 +60,22 @@ export const Variants = ({
     if (newCapacity !== capacity) {
       setCapacity(newCapacity);
       onCapacityChange(newCapacity);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (isInCart) {
+      navigate(RouteNames.cart);
+    } else {
+      addToCart({ product, amount: 1 });
+    }
+  };
+
+  const toggleFavourite = () => {
+    if (isInFavourite) {
+      removeFavourite(product);
+    } else {
+      addFavourite(product);
     }
   };
 
@@ -100,8 +128,12 @@ export const Variants = ({
           </div>
 
           <div className={styles.cartAndFavourite}>
-            <ButtonPrimary title="Add to cart" />
-            <ButtonFavorite icon="icon-heart" />
+            <ButtonPrimary
+              title={isInCart ? 'View in cart' : 'Add to cart'}
+              selected={isInCart}
+              onClick={handleAddToCart}
+            />
+            <ButtonFavorite icon="icon-heart" selected={isInFavourite} onClick={toggleFavourite} />
           </div>
         </article>
 
