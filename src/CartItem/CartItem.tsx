@@ -5,21 +5,6 @@ import classNames from 'classnames';
 import { OrderItem } from '../types/OrderItem';
 import { useCartContext } from '../pages/CartPage/context/CartContext';
 
-// interface SelectedPhone {
-//   imgSrc: string;
-//   description: string;
-//   quantity: number;
-//   price: number;
-// }
-
-// interface Props {
-//   selectedPhone: SelectedPhone;
-// }
-
-// export const CartItem: React.FC<Props> = ({ selectedPhone }) => {
-//   const { imgSrc, description, quantity, price } = selectedPhone;
-// }; це здається зайвим тут, закоментувала
-
 type CartItemProps = {
   item: OrderItem;
 };
@@ -49,7 +34,7 @@ export const CartItem = ({ item }: CartItemProps) => {
             <img src={image} alt={name} className={styles.photoImg} />
           </div>
           <div className={styles.details}>
-            <p className={name}>{styles.description}</p>
+            <p className={styles.description}>{name}</p>
           </div>
         </div>
 
