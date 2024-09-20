@@ -1,12 +1,11 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { CatalogPageWithContext } from '../CatalogPage';
+import { CatalogPage } from '../CatalogPage';
+import { CatalogContextProvider } from '../CatalogPage/context/CatalogContext';
 
 export const PhonesPage = () => {
   return (
-    <>
-      <Outlet />
-      <CatalogPageWithContext title="Mobile Phones" source="api/phones" />
-    </>
+    <CatalogContextProvider source="api/phones">
+      <CatalogPage title="Mobile Phones" />
+    </CatalogContextProvider>
   );
 };

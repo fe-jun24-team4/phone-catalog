@@ -10,18 +10,10 @@ type Option<T> = {
 
 type OptionsMap<T> = { [key: string]: Option<T> };
 
-type OptionsConstructorArgs<T> = {
-  label: string;
-  options: OptionsMap<T>;
-};
-
 export class Options<T> {
-  public label: string = '';
-
   public items = {} as OptionsMap<T>;
 
-  constructor({ label, options }: OptionsConstructorArgs<T>) {
-    this.label = label;
+  constructor(options: OptionsMap<T>) {
     this.items = options;
   }
 

@@ -10,13 +10,14 @@ type State = {
 
 const StateContext = createContext<State | null>(null);
 
-type URL = string;
-
-type Props = {
-  source?: URL;
+type CatalogContextProviderProps = {
+  source: string;
 };
 
-export const CatalogContextProvider = ({ source, children }: PropsWithChildren<Props>) => {
+export const CatalogContextProvider = ({
+  source,
+  children,
+}: PropsWithChildren<CatalogContextProviderProps>) => {
   const { data } = useFetchData(`${HOST}/${source}.json`);
 
   const contextValue = {
