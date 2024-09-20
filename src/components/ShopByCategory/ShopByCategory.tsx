@@ -1,5 +1,7 @@
+import { RouteNames } from '../../enums/RouteNames';
 import { useFetchData } from '../../hooks/useFetch';
 import { Product } from '../../types/Product';
+import { CategoryComponent } from './CategoryComponent/CategoryComponent';
 import styles from './ShopByCategory.module.scss';
 import React from 'react';
 
@@ -14,49 +16,43 @@ export const ShopByCategory = () => {
     'http://localhost:5173/phone-catalog/api/accessories.json',
   );
 
+  const categories = [
+    {
+      id: 1,
+      imgSrc: './img/category-phones.webp',
+      title: 'Mobile phones',
+      productsAmount: phones.length,
+      linkRoute: RouteNames.phones,
+    },
+    {
+      id: 1,
+      imgSrc: './img/category-tablets.webp',
+      title: 'Tablets',
+      productsAmount: tablets.length,
+      linkRoute: RouteNames.tablets,
+    },
+    {
+      id: 1,
+      imgSrc: './img/category-accessories.png',
+      title: 'Accessories',
+      productsAmount: accessories.length,
+      linkRoute: RouteNames.accessories,
+    },
+  ];
+
   return (
     <div className="page">
       <h2>Shop by categories</h2>
       <div className={styles.categories}>
-        <a href="url" className={styles.cart_box}>
-          <div className={styles.picture}>
-            <img
-              className={styles.phone}
-              src="http://localhost:5173/phone-catalog/img/category-phones.webp"
-              alt="phone"
-            />
-          </div>
-          <div className={styles.titleAndCount}>
-            <h3 className={styles.title}>Mobile phones</h3>
-            <p className={styles.quantity}>{phones.length || 0} models</p>
-          </div>
-        </a>
-        <a href="url" className={styles.cart_box}>
-          <div className={styles.picture}>
-            <img
-              className={styles.tablet}
-              src="http://localhost:5173/phone-catalog/img/category-tablets.png"
-              alt="phone"
-            />
-          </div>
-          <div className={styles.titleAndCount}>
-            <h3 className={styles.title}>Tablets</h3>
-            <p className={styles.quantity}>{tablets.length || 0} models</p>
-          </div>
-        </a>
-        <a href="url" className={styles.cart_box}>
-          <div className={styles.picture}>
-            <img
-              className={styles.accessories}
-              src="http://localhost:5173/phone-catalog/img/category-accessories.png"
-              alt="phone"
-            />
-          </div>
-          <div className={styles.titleAndCount}>
-            <h3 className={styles.title}>Accessories</h3>
-            <p className={styles.quantity}>{accessories.length || 0} models</p>
-          </div>
-        </a>
+        {categories.map(category => (
+          <CategoryComponent
+            key={category.id}
+            imgSrc={category.imgSrc}
+            title={category.title}
+            productsAmount={category.productsAmount}
+            linkRoute={category.linkRoute}
+          />
+        ))}
       </div>
     </div>
   );
