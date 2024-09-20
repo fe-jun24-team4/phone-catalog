@@ -3,6 +3,9 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { HOST } from '../../utils/constants/host';
 import { ButtonFavorite, ButtonPrimary } from '../buttons';
+import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../pages/CartPage/context/CartContext';
+import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
 
 interface ProductCardProps {
   key?: number;
@@ -11,9 +14,32 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
+  const navigate = useNavigate();
+
+  const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
+  const isInFavourite = Boolean(favourites.find(item => item.id === product.id));
+
+  const { cart, addItem: addToCart } = useCartContext();
+  const isInCart = Boolean(cart.find(item => item.product.id === product.id));
+
+  const handleAddToCart = () => {
+    if (isInCart) {
+      navigate(`/cart`);
+    } else {
+      addToCart({ product, amount: 1 });
+    }
+  };
+
+  const toggleFavourite = () => {
+    if (isInFavourite) {
+      removeFavourite(product);
+    } else {
+      addFavourite(product);
+    }
+  };
 
   return (
-    <a href="#" className={styles.card}>
+    <div className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
           <img src={`${HOST}/${images[0]}`} alt={name} className={styles.image} />
@@ -51,11 +77,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         <div className={styles.actions}>
-          <ButtonPrimary title="Add to cart" />
-
-          <ButtonFavorite icon={'icon-heart'} />
+          <ButtonPrimary
+            title={isInCart ? 'View in cart' : 'Add to cart'}
+            selected={isInCart}
+            onClick={handleAddToCart}
+          />
+          <ButtonFavorite icon="icon-heart" selected={isInFavourite} onClick={toggleFavourite} />
         </div>
       </div>
-    </a>
+    </div>
   );
 };

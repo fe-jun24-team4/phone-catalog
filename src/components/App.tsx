@@ -1,11 +1,12 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { Outlet } from 'react-router-dom';
+
 import { FavouritesContextProvider } from '../pages/FavouritesPage/context/FavouritesContext';
 import { CartContextProvider } from '../pages/CartPage/context/CartContext';
 
-function App() {
+export function App() {
   return (
     <CartContextProvider>
       <FavouritesContextProvider>
@@ -24,5 +25,3 @@ function App() {
     </CartContextProvider>
   );
 }
-
-export default App;
