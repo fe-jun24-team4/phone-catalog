@@ -15,7 +15,8 @@ function App() {
           </header>
 
           <main className="page">
-            <Outlet />
+          <Outlet />
+          
           </main>
 
           <Footer />
