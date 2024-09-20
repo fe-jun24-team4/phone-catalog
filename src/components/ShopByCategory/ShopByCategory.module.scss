@@ -1,0 +1,74 @@
+@import '../../styles/generals/index.scss';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include onTabletAndUp {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.cart_box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: 22px;
+  color: $themePurplePrimary;
+  font-weight: $fontWeightBold;;
+
+  @include onTabletAndUp {
+    font-size: 32px;
+    line-height: $lineHeightAdditional;
+  }
+}
+
+.picture {
+  width: 288px;
+  height: 363px;
+  border: 1px solid $themePurpleGreen;
+  border-radius: 8px;
+  transition: width 0.3s ease, height 0.3s ease;
+
+  @include onTabletAndUp {
+    width: 187px;
+    height: 262px;
+  }
+
+  @include onLaptopAndUp {
+    width: 368px;
+    height: 368px;
+
+    border-radius: 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.titleAndCount {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+h3 {
+  color: $themePurplePrimary;
+  font-size: 20px;
+  line-height: $lineHeightAdditional;
+  font-weight: $fontWeightSemiBold;
+}
+
+.quantity {
+  font-size: 14px;
+  color: $themePurpleSecondary;
+}
+

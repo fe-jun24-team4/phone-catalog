@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import AboutSection from './AboutSection/AboutSection';
-
+import { Outlet } from 'react-router-dom';
+import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
 
       <main className="page">
         <Outlet />
+        <ShopByCategory />
       </main>
 
       <Footer />
