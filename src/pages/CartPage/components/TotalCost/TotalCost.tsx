@@ -15,6 +15,8 @@ export const TotalCost: FC<TotalCostProps> = ({ order }) => {
   const { cart, isCheckoutVisible, setIsCheckoutVisible } = useCartContext();
   const [total, setTotal] = useState(0);
 
+  const itemsCount = cart.reduce((count, item) => count + item.amount, 0);
+
   useEffect(() => {
     const totalCost = calculateOrderTotal(order);
 
@@ -37,7 +39,7 @@ export const TotalCost: FC<TotalCostProps> = ({ order }) => {
         <div className={styles.totalBlock}>
           <p className={styles.price}>${total}</p>
           <p className={styles.text}>
-            Total for {cart.length} {cart.length === 1 ? 'item' : 'items'}
+            Total for {itemsCount} {itemsCount === 1 ? 'item' : 'items'}
           </p>
         </div>
 

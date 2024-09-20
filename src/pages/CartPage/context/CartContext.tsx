@@ -21,10 +21,10 @@ export const CartContextProvider = ({ children }: PropsWithChildren<{}>) => {
     setCart(prevCart => prevCart.filter(item => item.product.id !== id));
   };
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateQuantity = (id: string, amount: number) => {
     setCart(prevCart =>
       prevCart
-        .map(item => (item.product.id === id ? { ...item, quantity } : item))
+        .map(item => (item.product.id === id ? { ...item, amount } : item))
         .filter(item => item.amount > 0),
     );
   };
