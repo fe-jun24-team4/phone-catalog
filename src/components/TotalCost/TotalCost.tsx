@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react';
-import styles from './CalculateCost.module.scss';
+import styles from './TotalCost.module.scss';
 import React from 'react';
 import { ButtonPrimary } from '../buttons';
 import { OrderItem } from '../../types/OrderItem';

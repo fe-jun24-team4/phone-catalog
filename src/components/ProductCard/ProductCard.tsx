@@ -5,6 +5,7 @@ import { HOST } from '../../utils/constants/host';
 import { ButtonFavorite, ButtonPrimary } from '../buttons';
 
 interface ProductCardProps {
+  key?: number;
   product: Product;
 }
 
