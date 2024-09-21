@@ -27,9 +27,12 @@
   align-items: center;
   gap: 32px;
 
-  border-bottom: 2px solid $themePurpleElements;
+  border-bottom: 2px solid var(--colorElements);
 
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
+
+  transition-property: background-color, border-color;
+  transition-duration: $transitionDuration;
 
   @include onTabletAndUp {
     justify-content: unset;
@@ -38,8 +41,8 @@
   @include onLaptopAndUp {
     gap: 48px;
 
-    border-left: 2px solid $themePurpleElements;
-    border-right: 2px solid $themePurpleElements;
+    border-left: 2px solid var(--colorElements);
+    border-right: 2px solid var(--colorElements);
   }
 }
 
@@ -80,7 +83,7 @@
   transform: translateX(100%);
   transition-duration: 0.5s;
 
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
 
   &.active {
     transform: translateX(0);
@@ -160,14 +163,14 @@
     height: 3px;
     width: 0;
 
-    background-color: $themePurplePrimary;
+    background-color: var(--colorPrimary);
     border-radius: 10px;
 
     transition-duration: $transitionDuration;
   }
 
   @include onHover {
-    color: $themePurplePrimary;
+    color: var(--colorPrimary);
   }
 
   @include onTabletAndUp {
@@ -183,7 +186,7 @@
   }
 
   &.active {
-    color: $themePurplePrimary;
+    color: var(--colorPrimary);
 
     &::before {
       width: 100%;
@@ -204,7 +207,7 @@
   flex-shrink: 0;
   gap: 2px;
 
-  border-left: 2px solid $themePurpleElements;
+  border-left: 2px solid var(--colorElements);
 
   cursor: pointer;
 
@@ -238,7 +241,7 @@
   height: 2px;
 
   border-radius: 10px;
-  background-color: $themePurplePrimary;
+  background-color: var(--colorPrimary);
 
   transition-duration: $transitionDuration;
 }

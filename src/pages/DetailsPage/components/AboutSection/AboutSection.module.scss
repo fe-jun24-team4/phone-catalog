@@ -1,56 +1,51 @@
 @import '../../styles/generals/index.scss';
 
-  .aboutWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+.aboutWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 
-  }
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-  .titleBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+.title {
+  color: var(--colorPrimary);
+  font-weight: $fontWeightBold;
+  font-size: 20px;
+  line-height: $lineHeightAdditional;
+}
 
+.line {
+  height: 1px;
+  background-color: var(--colorElements);
+}
 
-  .title {
-    color: $themePurplePrimary;
-    font-weight: $fontWeightBold;
-    font-size: 20px;
-    line-height: $lineHeightAdditional;
-  }
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 
-  .line {
-    height: 1px;
-    background-color: $themePurpleElements;
-  }
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-  .descriptionBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
+.descriptionTitle {
+  font-size: 16px;
+  font-weight: $fontWeightBold;
+  line-height: $lineHeightAdditional;
 
-  .description {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  color: var(--colorPrimary);
+}
 
-  .descriptionTitle {
-    font-size: 16px;
-    font-weight: $fontWeightBold;
-    line-height: $lineHeightAdditional;
-
-    color: $themePurplePrimary;
-  }
-
-  .textBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  
-  
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

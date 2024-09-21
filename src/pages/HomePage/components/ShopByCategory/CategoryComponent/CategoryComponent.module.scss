@@ -26,7 +26,7 @@
   img {
     width: 100%;
     height: 100%;
-  
+
     object-fit: cover;
   }
 }
@@ -54,9 +54,8 @@
 }
 
 .title {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   font-size: 20px;
   line-height: $lineHeightAdditional;
   font-weight: $fontWeightSemiBold;
 }
-

@@ -45,6 +45,7 @@ li {
 
 input {
   width: 100%;
+  background-color: inherit;
 }
 
 a {

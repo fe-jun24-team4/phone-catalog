@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
 
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
   border-radius: 8px;
   overflow: hidden;
 
@@ -29,7 +29,10 @@
 
   padding: 32px;
 
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
+
+  transition-property: background-color;
+  transition-duration: $transitionDuration;
 }
 
 .imageContent {
@@ -74,13 +77,19 @@
   flex-direction: column;
   gap: 8px;
 
-  border-bottom: 1px solid $themePurpleElements;
+  border-bottom: 1px solid var(--colorElements);
 
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
+
+  transition-property: border-color;
+  transition-duration: $transitionDuration;
 }
 
 .title {
   height: 42px;
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .priceBlock {
@@ -93,10 +102,13 @@
 
 .price {
   font-weight: $fontWeightSemiBlack;
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .fullPrice {
-  color: $themePurpleSecondary;
+  color: var(--colorSecondary);
   text-decoration: line-through;
 }
 
@@ -117,7 +129,10 @@
 }
 
 .specValue {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .actions {
