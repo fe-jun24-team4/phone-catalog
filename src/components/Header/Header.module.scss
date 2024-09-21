@@ -1,244 +1,247 @@
 @import '../../styles/generals/index.scss';
 
 .header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 10;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
 
-    width: 100%;
-    height: 48px;
+  width: 100%;
+  height: 48px;
 
-    @include onTabletAndUp {
-        height: auto;
-    }
+  @include onTabletAndUp {
+    height: auto;
+  }
 }
 
 .container {
-    max-width: 1456px;
-    width: 100%;
-    min-height: 100%;
-    
-    margin: 0 auto;
-    padding-left: 16px;
+  max-width: 1456px;
+  width: 100%;
+  min-height: 100%;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
+  margin: 0 auto;
+  padding-left: 16px;
 
-    border-bottom: 2px solid $themePurpleElements;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
 
-    background-color: $themePurpleWhite;
+  border-bottom: 2px solid var(--colorElements);
 
-    @include onTabletAndUp {
-        justify-content: unset;
-    }
+  background-color: var(--colorBackground);
 
-    @include onLaptopAndUp {
-        gap: 48px;
+  transition-property: background-color, border-color;
+  transition-duration: $transitionDuration;
 
-        border-left: 2px solid $themePurpleElements;
-        border-right: 2px solid $themePurpleElements;
-    }
+  @include onTabletAndUp {
+    justify-content: unset;
+  }
+
+  @include onLaptopAndUp {
+    gap: 48px;
+
+    border-left: 2px solid var(--colorElements);
+    border-right: 2px solid var(--colorElements);
+  }
 }
 
 .logo {
-    width: 64px;
-    height: 22px;
+  width: 64px;
+  height: 22px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    @include onLaptopAndUp {
-        width: 80px;
-        height: 28px;
-    }
+  @include onLaptopAndUp {
+    width: 80px;
+    height: 28px;
+  }
 }
 
 .logoImage {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    object-fit: contain;
-    object-position: left;
+  object-fit: contain;
+  object-position: left;
 }
 
 .menu {
-    position: fixed;
-    top: 50px;
-    left: 0;
+  position: fixed;
+  top: 50px;
+  left: 0;
 
-    height: calc(100svh - 50px);
-    width: 100vw;
+  height: calc(100svh - 50px);
+  width: 100vw;
 
-    flex-grow: 1;
+  flex-grow: 1;
 
-    overflow: auto;
+  overflow: auto;
 
-    transform: translateX(100%);
-    transition-duration: 0.5s;
+  transform: translateX(100%);
+  transition-duration: 0.5s;
 
-    background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
 
-    &.active {
-        transform: translateX(0);
-    }
+  &.active {
+    transform: translateX(0);
+  }
 
-    @include onTabletAndUp {
-        position: relative;
-        top: unset;
-        left: unset;
+  @include onTabletAndUp {
+    position: relative;
+    top: unset;
+    left: unset;
 
-        height: auto;
-        width: max-content;
+    height: auto;
+    width: max-content;
 
-        transform: none;
-        background-color: transparent;
-    }
+    transform: none;
+    background-color: transparent;
+  }
 }
 
 .menuWrapper {
-    padding-top: 24px;
+  padding-top: 24px;
 
-    height: 100%;
+  height: 100%;
 
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 
-    @include onTabletAndUp {
-        padding-top: 0;
+  @include onTabletAndUp {
+    padding-top: 0;
 
-        height: auto;
+    height: auto;
 
-        display: block;
-    }
+    display: block;
+  }
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  gap: 32px;
 
-    @include onTabletAndUp {
-        flex-direction: row;
-    }
+  @include onTabletAndUp {
+    flex-direction: row;
+  }
 
-    @include onLaptopAndUp {
-        gap: 64px;
-    }
+  @include onLaptopAndUp {
+    gap: 64px;
+  }
 }
 
 .menuItem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link {
-    position: relative;
+  position: relative;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    font-size: $fontSizeSmall;
-    font-weight: $fontWeightSemiBlack;
-    text-transform: uppercase;
+  font-size: $fontSizeSmall;
+  font-weight: $fontWeightSemiBlack;
+  text-transform: uppercase;
+
+  transition-duration: $transitionDuration;
+
+  @include before {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+
+    height: 3px;
+    width: 0;
+
+    background-color: var(--colorPrimary);
+    border-radius: 10px;
 
     transition-duration: $transitionDuration;
+  }
 
-    @include before {
-        position: absolute;
-        left: 0;
-        bottom: -5px;
+  @include onHover {
+    color: var(--colorPrimary);
+  }
 
-        height: 3px;
-        width: 0;
+  @include onTabletAndUp {
+    height: 48px;
 
-        background-color: $themePurplePrimary;
-        border-radius: 10px;
-        
-        transition-duration: $transitionDuration;
+    &::before {
+      bottom: 0;
     }
+  }
 
-    @include onHover {
-        color: $themePurplePrimary;
+  @include onLaptopAndUp {
+    height: 64px;
+  }
+
+  &.active {
+    color: var(--colorPrimary);
+
+    &::before {
+      width: 100%;
     }
-
-    @include onTabletAndUp {
-        height: 48px;
-
-        &::before {
-            bottom: 0;
-        }
-    }
-
-    @include onLaptopAndUp {
-        height: 64px;
-    }
-
-    &.active {
-        color: $themePurplePrimary;
-
-        &::before {
-            width: 100%;
-        }
-    }
+  }
 }
 
 .burgerMenu {
-    position: relative;
+  position: relative;
 
-    width: 48px;
-    height: 48px;
+  width: 48px;
+  height: 48px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 2px;
 
-    border-left: 2px solid $themePurpleElements;
+  border-left: 2px solid var(--colorElements);
 
-    cursor: pointer;
+  cursor: pointer;
 
-    &.active {
-        .burgerItem {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+  &.active {
+    .burgerItem {
+      position: absolute;
+      top: 50%;
+      left: 50%;
 
-            &:nth-child(1) {
-                transform: translate(-50%, -50%) rotate(45deg);
-            }
+      &:nth-child(1) {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
 
-            &:nth-child(2) {
-                display: none;
-            }
-
-            &:nth-child(3) {
-                right: 24px;
-                transform: translate(-50%, -50%) rotate(-45deg);
-            }
-        }
-    }
-    @include onTabletAndUp {
+      &:nth-child(2) {
         display: none;
+      }
+
+      &:nth-child(3) {
+        right: 24px;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
     }
+  }
+  @include onTabletAndUp {
+    display: none;
+  }
 }
 
 .burgerItem {
-    width: 16px;
-    height: 2px;
+  width: 16px;
+  height: 2px;
 
-    border-radius: 10px;
-    background-color: $themePurplePrimary;
+  border-radius: 10px;
+  background-color: var(--colorPrimary);
 
-    transition-duration: $transitionDuration;
+  transition-duration: $transitionDuration;
 }

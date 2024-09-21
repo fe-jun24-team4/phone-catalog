@@ -16,8 +16,8 @@
 
   border: 1px solid transparent;
 
-  background-color: $themePurpleAccent;
-  color: $themePurpleWhite;
+  background-color: var(--colorAccentPrimary);
+  color: var(--colorBackground);
 
   border-radius: 48px;
 
@@ -29,8 +29,8 @@
 
   &--selected {
     background-color: transparent;
-    color: $themePurpleAccent;
-    border-color: $themePurpleElements;
+    color: var(--colorAccentPrimary);
+    border-color: var(--colorElements);
 
     @include onHover {
       box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
@@ -47,26 +47,26 @@
   align-items: center;
   flex-shrink: 0;
 
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
   border-radius: 50%;
   overflow: hidden;
 
   background-color: transparent;
 
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   transition-duration: $transitionDuration;
 
   @include onHover {
-    border-color: $themePurplePrimary;
+    border-color: var(--colorPrimary);
   }
 
   &--selected {
-    background-color: $themePurplePrimary;
-    color: $themePurpleWhite;
+    background-color: var(--colorPrimary);
+    color: var(--colorBackground);
   }
 
   &--chevron {
-    border-color: $themePurpleIcons;
+    border-color: var(--colorIcons);
     @include before {
       content: '\e900';
       font-family: 'icomoon';
@@ -82,7 +82,7 @@
     width: 40px;
     height: 40px;
 
-    border-color: $themePurpleIcons;
+    border-color: var(--colorIcons);
 
     @include before {
       content: '\e906';
@@ -90,11 +90,11 @@
     }
 
     &--selected {
-      border-color: $themePurpleAccent;
-      background-color: $themePurpleAccent;
+      border-color: var(--colorAccentPrimary);
+      background-color: var(--colorAccentPrimary);
 
       &::before {
-        color: $themePurpleWhite;
+        color: var(--colorBackground);
       }
     }
   }

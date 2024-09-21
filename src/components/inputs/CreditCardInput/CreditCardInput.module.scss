@@ -9,7 +9,7 @@
 
   &.isError {
     & > .digits {
-      border-color: $themePurpleRed;
+      border-color: var(--colorEyeCatchingPrimary);
     }
 
     & > .error {
@@ -33,7 +33,7 @@
   box-sizing: border-box;
   padding: 0 12px;
 
-  border: 1px solid $themePurpleIcons;
+  border: 1px solid var(--colorIcons);
   border-radius: 8px;
 
   cursor: pointer;
@@ -45,7 +45,7 @@
   }
 
   &.isFocused {
-    border-color: $themePurplePrimary;
+    border-color: var(--colorPrimary);
     outline: none;
   }
 }
@@ -71,7 +71,7 @@
   }
 
   &.isEntered {
-    color: $themePurplePrimary;
+    color: var(--colorPrimary);
     font-weight: $fontWeightBold;
   }
 }

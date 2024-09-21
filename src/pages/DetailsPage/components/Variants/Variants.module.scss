@@ -13,7 +13,7 @@
 .separator {
   width: 100%;
   height: 1px;
-  background-color: $themePurpleElements;
+  background-color: var(--colorElements);
 }
 
 .description {
@@ -50,20 +50,20 @@
   height: 32px;
 
   box-sizing: border-box;
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
   border-radius: 16px;
   padding: 2px;
 
   transition-duration: $transitionDuration;
 
   @include onHover {
-    border-color: $themePurpleIcons;
+    border-color: var(--colorIcons);
 
     transition-duration: $transitionDuration;
   }
 
   &.isSelected {
-    border-color: $themePurplePrimary;
+    border-color: var(--colorPrimary);
   }
 }
 
@@ -83,24 +83,24 @@
 
   padding: 2px 8px;
 
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   font-weight: $fontWeightSemiBold;
 
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
   border-radius: 4px;
 
   transition-duration: $transitionDuration;
 
   @include onHover {
-    border-color: $themePurpleIcons;
+    border-color: var(--colorIcons);
 
     transition-duration: $transitionDuration;
   }
 
   &.isSelected {
-    color: $themePurpleWhite;
-    background-color: $themePurplePrimary;
-    border-color: $themePurplePrimary;
+    color: var(--colorBackground);
+    background-color: var(--colorPrimary);
+    border-color: var(--colorPrimary);
   }
 }
 
@@ -123,7 +123,7 @@
 }
 
 .priceNow {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   font-size: $fontSizeBig;
   font-weight: $fontWeightSemiBlack;
 
@@ -159,7 +159,7 @@
 }
 
 .specValue {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   font-size: $fontSizeSmall;
   font-weight: $fontWeightBold;
   line-height: $lineHeightAdditional;

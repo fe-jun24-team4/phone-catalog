@@ -13,7 +13,10 @@
   gap: 16px;
 
   border-radius: 16px;
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
+
+  transition-property: border-color;
+  transition-duration: $transitionDuration;
 
   @include onLaptopAndUp {
     gap: 24px;
@@ -30,12 +33,15 @@
 .line {
   height: 1px;
 
-  background-color: $themePurpleElements;
+  background-color: var(--colorElements);
+
+  transition-property: background-color;
+  transition-duration: $transitionDuration;
 }
 
 .price {
   text-align: center;
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
 
   font-size: $fontSizeBig;
   font-weight: $fontWeightSemiBlack;
