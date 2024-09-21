@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
 
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
   border-radius: 8px;
   overflow: hidden;
 
@@ -29,7 +29,7 @@
 
   padding: 32px;
 
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
 }
 
 .imageContent {
@@ -74,9 +74,9 @@
   flex-direction: column;
   gap: 8px;
 
-  border-bottom: 1px solid $themePurpleElements;
+  border-bottom: 1px solid var(--colorElements);
 
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
 }
 
 .title {
@@ -96,7 +96,7 @@
 }
 
 .fullPrice {
-  color: $themePurpleSecondary;
+  color: var(--colorSecondary);
   text-decoration: line-through;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .specValue {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
 }
 
 .actions {

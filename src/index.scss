@@ -4,14 +4,31 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --colorEyeCatchingPrimary: #eb5757;
+  --colorEyeCatchingSecondary: #27ae60;
+
+  --colorBackground: #ffffff;
+  --colorBackgroundOnHover: #fafbfc;
+
+  --colorElements: #e2e6e9;
+  --colorIcons: #b4bdc3;
+
+  --colorPrimary: #0f0f11;
+  --colorSecondary: #89939a;
+
+  --colorAccentPrimary: #4219d0;
+  --colorAccentSecondary: #f4ba47;
+}
+
 body {
   font-family: 'Mont';
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
 
-  color: $themePurpleSecondary;
-  background-color: $themePurpleBgHover;
+  color: var(--colorSecondary);
+  background-color: var(--colorBackgroundOnHover);
 }
 
 .wrapper {

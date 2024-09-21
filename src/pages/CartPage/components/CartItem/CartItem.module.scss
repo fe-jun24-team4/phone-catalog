@@ -13,10 +13,10 @@
   justify-content: space-between;
   gap: 16px;
 
-  color: $themePurplePrimary;
-  background-color: $themePurpleWhite;
+  color: var(--colorPrimary);
+  background-color: var(--colorBackground);
 
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
   border-radius: 16px;
 
   @include onTabletAndUp {
@@ -32,7 +32,7 @@
 
   span {
     cursor: pointer;
-    color: $themePurpleSecondary;
+    color: var(--colorSecondary);
     transform: rotate(45deg);
 
     transition-duration: $transitionDuration;
@@ -40,7 +40,7 @@
     font-size: 20px;
 
     @include onHover {
-      color: $themePurplePrimary;
+      color: var(--colorPrimary);
 
       transform: scale(1.3) rotate(45deg);
     }
@@ -74,7 +74,7 @@
 }
 
 .description {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
 }
 
 .price {

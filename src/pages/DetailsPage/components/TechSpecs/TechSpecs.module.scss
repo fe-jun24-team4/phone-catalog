@@ -6,7 +6,7 @@
 }
 
 .title {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   font-size: 20px;
   line-height: $lineHeightAdditional;
 
@@ -18,7 +18,7 @@
 .divider {
   height: 1px;
   width: 100%;
-  background-color: $themePurpleElements;
+  background-color: var(--colorElements);
   margin-top: 16px;
   margin-bottom: 30px;
 }
@@ -37,19 +37,18 @@
 }
 
 .specs {
-  
 }
 
 .description {
-  color: $themePurplePrimary;
-  display: flex; 
+  color: var(--colorPrimary);
+  display: flex;
   align-items: center;
   gap: 3px;
 
   p {
     @include exceptLastChild {
       @include after {
-        content:',';
+        content: ',';
       }
     }
   }
