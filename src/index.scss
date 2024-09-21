@@ -29,6 +29,9 @@ body {
 
   color: var(--colorSecondary);
   background-color: var(--colorBackgroundOnHover);
+
+  transition-property: color, background-color;
+  transition-duration: $transitionDuration;
 }
 
 .wrapper {

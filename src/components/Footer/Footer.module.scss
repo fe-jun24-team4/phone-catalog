@@ -4,6 +4,9 @@
   padding: 32px 0;
 
   background-color: var(--colorBackground);
+
+  transition-property: background-color;
+  transition-duration: $transitionDuration;
 }
 
 .container {

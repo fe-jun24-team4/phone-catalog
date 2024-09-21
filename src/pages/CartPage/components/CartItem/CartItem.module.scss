@@ -19,6 +19,9 @@
   border: 1px solid var(--colorElements);
   border-radius: 16px;
 
+  transition-property: background-color, border-color;
+  transition-duration: $transitionDuration;
+
   @include onTabletAndUp {
     flex-direction: row;
     gap: 24px;

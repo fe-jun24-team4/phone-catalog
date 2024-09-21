@@ -30,6 +30,9 @@
   padding: 32px;
 
   background-color: var(--colorBackground);
+
+  transition-property: background-color;
+  transition-duration: $transitionDuration;
 }
 
 .imageContent {
@@ -77,10 +80,16 @@
   border-bottom: 1px solid var(--colorElements);
 
   color: var(--colorPrimary);
+
+  transition-property: border-color;
+  transition-duration: $transitionDuration;
 }
 
 .title {
   height: 42px;
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .priceBlock {
@@ -93,6 +102,9 @@
 
 .price {
   font-weight: $fontWeightSemiBlack;
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .fullPrice {
@@ -118,6 +130,9 @@
 
 .specValue {
   color: var(--colorPrimary);
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .actions {

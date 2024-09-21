@@ -15,6 +15,9 @@
   border-radius: 16px;
   border: 1px solid var(--colorElements);
 
+  transition-property: border-color;
+  transition-duration: $transitionDuration;
+
   @include onLaptopAndUp {
     gap: 24px;
   }
@@ -31,6 +34,9 @@
   height: 1px;
 
   background-color: var(--colorElements);
+
+  transition-property: background-color;
+  transition-duration: $transitionDuration;
 }
 
 .price {

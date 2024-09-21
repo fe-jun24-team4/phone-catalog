@@ -42,6 +42,9 @@
   border: 1px solid var(--colorIcons);
   border-radius: 8px;
 
+  transition-property: border-color;
+  transition-duration: $transitionDuration;
+
   cursor: pointer;
 
   &:focus {

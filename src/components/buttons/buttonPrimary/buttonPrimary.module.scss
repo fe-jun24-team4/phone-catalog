@@ -24,6 +24,9 @@
 
   @include onHover {
     box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+
+    // something *needs* to be done on hover in dark mode, and we are not using this color anyway
+    background-color: var(--colorAccentSecondary);
   }
 
   &.selected {
