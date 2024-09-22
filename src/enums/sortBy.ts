@@ -1,6 +1,6 @@
 export enum SortBy {
-  newest,
-  topSales,
-  topRated,
-  biggestDiscount,
+  newest = 'new',
+  topSales = 'topSales',
+  topRated = 'topRated',
+  biggestDiscount = 'bestDeal',
 }
