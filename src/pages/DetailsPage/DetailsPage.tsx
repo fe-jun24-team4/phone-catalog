@@ -10,8 +10,13 @@ import { Photos } from './components/Photos';
 import { TechSpecs } from './components/TechSpecs';
 import { Variants } from './components/Variants';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useTranslation } from 'react-i18next';
+import { useFetchRecommended } from '../../hooks/useFetchRecommended';
+import { Slider } from '../../components/slider/Slider';
 
 export const DetailsPage = () => {
+  const { t } = useTranslation();
+  const { recommendedData } = useFetchRecommended();
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.pathname.split('/')[1];
@@ -19,6 +24,27 @@ export const DetailsPage = () => {
   const { data } = useFetchData<Product>(`${HOST}/api/${path}.json`);
 
   const product = data.find(item => item.id === location.pathname.split('/')[2]) || null;
+
+  const recommendedSlider = {
+    sliders: recommendedData,
+    settings: {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      delay: 2500,
+      breakpoints: {
+        640: {
+          slidesPerView: 2.5,
+        },
+        1200: {
+          slidesPerView: 4,
+        },
+      },
+    },
+    sliderHeader: {
+      title: t('sliderTitles.youMayAlsoLike'),
+    },
+    width: true,
+  };
 
   return (
     <Breadcrumbs.Checkpoint title={product?.name ?? 'Unknown'}>
@@ -29,7 +55,7 @@ export const DetailsPage = () => {
 
             <button className={styles.backButton} onClick={() => navigate(-1)}>
               <span className="icon-chevron-left" />
-              Back
+              {t('detailsPage.back')}
             </button>
           </div>
           <div className={styles.productMain}>
@@ -47,7 +73,7 @@ export const DetailsPage = () => {
               {product && <TechSpecs product={product} />}
             </div>
           </div>
-          <div className={styles.productRecommended} />
+          <Slider slider={recommendedSlider} />
         </div>
       </div>
     </Breadcrumbs.Checkpoint>

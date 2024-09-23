@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styles from './TechSpecs.module.scss';
 import { getDescriptionContent } from './helpers/helpers';
 import { Product } from '../../../../types/Product';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   product: Product;
@@ -10,17 +11,20 @@ interface Props {
 export const TechSpecs: FC<Props> = ({ product }) => {
   const { screen, resolution, processor, ram, capacity, camera, zoom, cell } = product;
   const techSpecs = { screen, resolution, processor, ram, capacity, camera, zoom, cell };
+  const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
-      <span className={styles.title}>Tech Specs</span>
+      <span className={styles.title}>{t('detailsPage.titles.techSpecs')}</span>
       <div className={styles.divider}></div>
 
       <div className={styles.containers}>
         {Object.entries(techSpecs).map(([key, value]) => {
-          const capitalizedTitle = key.charAt(0).toUpperCase() + key.slice(1);
           const specsContent =
-            capitalizedTitle === 'Capacity' ? 'Built in memory' : capitalizedTitle;
+            key === 'capacity'
+              ? t('detailsPage.memory')
+              : t(`detailsPage.${key}`, key);
+
           const descriptionContent = getDescriptionContent(value);
 
           return (

@@ -9,6 +9,7 @@ import { useFavouritesContext } from '../../../FavouritesPage/context/Favourites
 import { useCartContext } from '../../../CartPage/context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { RouteNames } from '../../../../enums/RouteNames';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -21,6 +22,8 @@ export const Variants = ({
   onColorChange = () => {},
   onCapacityChange = () => {},
 }: Props) => {
+  const { t } = useTranslation();
+
   const {
     id,
     priceDiscount: priceNow,
@@ -32,10 +35,10 @@ export const Variants = ({
   } = product;
 
   const specs = [
-    ['Screen', product.screen],
-    ['Resolution', product.resolution],
-    ['Processor', product.processor],
-    ['Ram', product.ram],
+    [`${t('detailsPage.screen')}`, product.screen],
+    [`${t('detailsPage.resolution')}`, product.resolution],
+    [`${t('detailsPage.processor')}`, product.processor],
+    [`${t('detailsPage.ram')}`, product.ram],
   ];
 
   const navigate = useNavigate();
@@ -83,7 +86,7 @@ export const Variants = ({
     <section className={styles.container}>
       <article className={styles.variants}>
         <div className={styles.colorVariantsAndId}>
-          <span className={styles.description}>Available colors</span>
+          <span className={styles.description}>{t('detailsPage.availableColors')}</span>
           <span className={styles.id}>ID: {id}</span>
         </div>
 
@@ -103,7 +106,7 @@ export const Variants = ({
       <div className={styles.separator} />
 
       <article className={styles.variants}>
-        <p className={styles.description}>Select capacity</p>
+        <p className={styles.description}>{t('detailsPage.selectCapacity')}</p>
 
         <div className={styles.variantButtonsContainer}>
           {capacityVariants.map(variant => (
@@ -129,7 +132,7 @@ export const Variants = ({
 
           <div className={styles.cartAndFavourite}>
             <ButtonPrimary
-              title={isInCart ? 'View in cart' : 'Add to cart'}
+              title={isInCart ? `${t('buttons.viewInCart')}` : `${t('buttons.addToCart')}`}
               selected={isInCart}
               onClick={handleAddToCart}
             />

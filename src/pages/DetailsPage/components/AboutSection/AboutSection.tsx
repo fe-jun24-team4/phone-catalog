@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './aboutSection.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface AboutPhone {
   title: string;
@@ -11,11 +12,13 @@ interface Props {
 }
 
 export const AboutSection: React.FC<Props> = ({ description }) => {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.about}>
       <div className={styles.aboutWrapper}>
         <div className={styles.titleBlock}>
-          <h3 className={styles.title}>About</h3>
+          <h3 className={styles.title}>{t('detailsPage.titles.about')}</h3>
           <div className={styles.line} />
         </div>
 

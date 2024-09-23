@@ -1,9 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Route, Routes as RouterRoutes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes as RouterRoutes, Outlet } from 'react-router-dom';
 import { RouteNames } from '../enums/RouteNames';
 
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { useTranslation } from 'react-i18next';
 
 import { App } from '../components/App';
 import { PhonesPage } from './PhonesPage';
@@ -12,6 +11,8 @@ import { AccessoriesPage } from './AccessoriesPage';
 import { FavouritesPage } from './FavouritesPage';
 import { CartPage } from './CartPage/CartPage';
 import { NotFoundPage } from './NotFoundPage';
+import { DetailsPage } from './DetailsPage/DetailsPage';
+import { useTranslation } from 'react-i18next';
 
 export const Routes = () => {
   const { t } = useTranslation();
@@ -31,26 +32,35 @@ export const Routes = () => {
             path={RouteNames.phones}
             element={
               <Breadcrumbs.Checkpoint title={t('header.phones')}>
-                <PhonesPage />
+                <Outlet />
               </Breadcrumbs.Checkpoint>
             }
-          />
+          >
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<DetailsPage />}></Route>
+          </Route>
           <Route
             path={RouteNames.tablets}
             element={
               <Breadcrumbs.Checkpoint title={t('header.tablets')}>
-                <TabletsPage />
+                <Outlet />
               </Breadcrumbs.Checkpoint>
             }
-          />
+          >
+            <Route index element={<TabletsPage />} />
+            <Route path=":productId" element={<DetailsPage />}></Route>
+          </Route>
           <Route
             path={RouteNames.accessories}
             element={
               <Breadcrumbs.Checkpoint title={t('header.accessories')}>
-                <AccessoriesPage />
+                <Outlet />
               </Breadcrumbs.Checkpoint>
             }
-          />
+          >
+            <Route index element={<AccessoriesPage />} />
+            <Route path=":productId" element={<DetailsPage />}></Route>
+          </Route>
           <Route
             path={RouteNames.favorites}
             element={

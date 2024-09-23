@@ -12,6 +12,7 @@ import classnames from 'classnames';
 import { ButtonRounded } from '../buttons';
 import { Direction } from '../../enums/Direction';
 import React from 'react';
+import { ProductCard } from '../ProductCard';
 
 interface Settings {
   slidesPerView: number;
@@ -28,7 +29,7 @@ interface Settings {
 }
 
 interface SliderProps {
-  sliders: JSX.Element[] | string[];
+  sliders: Array<React.ReactNode> | string[];
   settings: Settings;
   sliderHeader?: {
     title: string;
@@ -115,7 +116,7 @@ export const Slider: FC<Props> = ({ slider }) => {
                   <img src={slide} alt="slide" />
                 </div>
               ) : (
-                slide
+                <ProductCard key={index} product={slide} />
               )}
             </SwiperSlide>
           ))}
