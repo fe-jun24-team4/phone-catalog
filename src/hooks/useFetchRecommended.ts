@@ -1,40 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useFetchData } from './useFetch';
+import { HOST } from '../utils/constants/host';
+import { shuffleArray } from '../utils/shuffleArray';
 
-interface FetchState<T> {
-  data: T | null;
-  isLoading: boolean;
-  isError: boolean;
-}
+export const useFetchRecommended = <T>() => {
+  const { data: phones } = useFetchData<T>(`${HOST}/api/phones.json`);
 
-export const useFetchRecommended = <T>(endpoint: string): FetchState<T> => {
-  const [data, setData] = useState<T | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
+  const recommendedData: T[] = shuffleArray(phones).slice(0, 6);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      setIsError(false);
-
-      try {
-        const response = await fetch(endpoint);
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const result = await response.json();
-
-        setData(result);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [endpoint]); // Залежність endpoint
-
-  return { data, isLoading, isError };
+  return {
+    recommendedData,
+  };
 };

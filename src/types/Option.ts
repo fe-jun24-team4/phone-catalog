@@ -35,9 +35,31 @@ export class Options<T> {
     return entries[0] ?? null;
   }
 
+  get defaultValue() {
+    return this.default[1].value;
+  }
+
   get visible() {
     const entries = Object.entries(this.items);
 
     return entries.filter(([_, option]) => option.type !== OptionType.placeholder);
+  }
+
+  clone(newDefault: T) {
+    const result = new Options<T>({ ...this.items });
+
+    for (const key in result.items) {
+      const value = result.items[key];
+
+      if (value.type === OptionType.default) {
+        result.items[key] = { ...value, type: undefined };
+      }
+
+      if (value.value === newDefault) {
+        result.items[key] = { ...value, type: OptionType.default };
+      }
+    }
+
+    return result;
   }
 }

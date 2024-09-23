@@ -1,0 +1,70 @@
+@import '../../../styles/generals/index.scss';
+@import '../mixins.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+
+  &.isError {
+    & > .chars {
+      border-color: var(--colorEyeCatchingPrimary);
+    }
+
+    & > .error {
+      opacity: 1;
+    }
+  }
+}
+
+.label {
+  @include label;
+}
+
+.chars {
+  height: 40px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 8px;
+
+  box-sizing: border-box;
+  padding: 0 12px;
+
+  border: 1px solid var(--colorIcons);
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition-duration: $transitionDuration;
+
+  &:focus {
+    border-color: var(--colorPrimary);
+    outline: none;
+  }
+}
+
+.char {
+  width: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition-duration: 0.15s;
+
+  &.isCursor {
+    transform: scale(1.3);
+  }
+
+  &.isEntered {
+    color: var(--colorPrimary);
+    font-weight: $fontWeightBold;
+  }
+}
+
+.error {
+  @include error;
+}

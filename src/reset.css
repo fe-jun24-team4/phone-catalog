@@ -25,6 +25,7 @@ nav,
 section,
 audio,
 video,
+button,
 *::before,
 *::after {
   margin: 0;
@@ -80,5 +81,4 @@ button {
   cursor: pointer;
   color: inherit;
   background-color: inherit;
-  border: none;
 }

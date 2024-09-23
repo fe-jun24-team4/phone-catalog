@@ -7,8 +7,10 @@ import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { CartItem } from './components/CartItem/CartItem';
 import { CheckoutModal } from './components/CheckoutModal/CheckoutModal';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const CartPage: FC = () => {
+  const { t } = useTranslation();
   const { cart } = useCartContext();
   const navigate = useNavigate();
 
@@ -21,9 +23,9 @@ export const CartPage: FC = () => {
           <div className={styles.header}>
             <button className={styles.back} onClick={() => navigate(-1)}>
               <span className="icon-chevron-left" />
-              Back
+              {t('cart.back')}
             </button>
-            <h2 className={styles.title}>Cart</h2>
+            <h2 className={styles.title}>{t('pageTitles.cart')}</h2>
           </div>
 
           <div className={styles.main}>
