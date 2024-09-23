@@ -16,11 +16,11 @@
   overflow: auto;
 
   padding: 20px 16px;
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
 
   transition-duration: 0.5s;
 
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
 
   &.isVisible {
     left: 0;
@@ -68,7 +68,7 @@
   align-items: center;
 
   &Price {
-    color: $themePurplePrimary;
+    color: var(--colorPrimary);
 
     font-size: $fontSizeBig;
     font-weight: $fontWeightSemiBlack;
@@ -80,7 +80,7 @@
   width: 100%;
   height: 1px;
 
-  background-color: $themePurpleElements;
+  background-color: var(--colorElements);
 }
 
 .buttons {

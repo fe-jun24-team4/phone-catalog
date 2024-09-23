@@ -1,0 +1,58 @@
+@import '../../../../../styles/generals/index.scss';
+
+.cart_box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  cursor: pointer;
+}
+
+.picture {
+  width: 288px;
+  aspect-ratio: 1;
+
+  border-radius: 8px;
+  overflow: hidden;
+
+  @include onTabletAndUp {
+    width: 100%;
+  }
+
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+}
+
+.phone {
+  background-color: rgb(156, 155, 155);
+  object-position: 60px 50px;
+}
+
+.tablet {
+  background-color: #806262;
+  object-position: 40px 65px;
+  object-position: left bottom;
+}
+
+.accessories {
+  background-color: #852f52;
+  object-position: 40px 50px;
+}
+
+.titleAndCount {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  color: var(--colorPrimary);
+  font-size: 20px;
+  line-height: $lineHeightAdditional;
+  font-weight: $fontWeightSemiBold;
+}

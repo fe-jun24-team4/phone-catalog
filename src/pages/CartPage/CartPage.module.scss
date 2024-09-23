@@ -1,0 +1,70 @@
+@import '../../styles/generals/index';
+
+.cartWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  padding: 24px 0 56px;
+
+  @include onTabletAndUp {
+    padding: 40px 0 64px;
+  }
+
+  @include onLaptopAndUp {
+    padding: 40px 0 80px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include onTabletAndUp {
+    gap: 16px;
+  }
+}
+
+.back {
+  width: max-content;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  span {
+    font-size: 15px;
+    color: var(--colorPrimary);
+  }
+}
+
+.title {
+  color: var(--colorPrimary);
+  font-weight: $fontWeightSemiBlack;
+  font-size: $fontSizeBig;
+  line-height: $lineHeightAdditional;
+
+  @include onTabletAndUp {
+    font-size: 48px;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr);
+  justify-items: center;
+  gap: 32px;
+
+  @include onLaptopAndUp {
+    grid-template-columns: 2fr 1fr;
+    justify-items: start;
+    gap: 16px;
+  }
+}
+
+.productsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

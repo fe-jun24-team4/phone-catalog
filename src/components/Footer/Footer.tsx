@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import logo from './Logo.svg';
+//import logo from './Logo.svg';
 import { ButtonRounded } from '../buttons';
 import { Direction } from '../../enums/Direction';
+import { Link } from 'react-router-dom';
+import { RouteNames } from '../../enums/RouteNames';
+import { Logo } from '../Logo';
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth',
   });
 };
 
@@ -15,14 +17,15 @@ export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <a href="#" className={styles.logo}>
-          <img src={logo} alt="Logo" className={styles.logoImg} />
-        </a>
+        <Link to={RouteNames.home} className={styles.logo}>
+          {/* <img src={logo} className={styles.logoImage} alt="Nice Gadgets Logo" /> */}
+          <Logo />
+        </Link>
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li className={styles.navItem}>
               <a
-                href="https://github.com/your-repo"
+                href="https://github.com/fe-jun24-team4/phone-catalog/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
@@ -32,7 +35,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.navItem}>
               <a
-                href="https://github.com/your-repo"
+                href="https://github.com/fe-jun24-team4/phone-catalog/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
@@ -42,7 +45,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.navItem}>
               <a
-                href="https://github.com/your-repo"
+                href="https://github.com/fe-jun24-team4/phone-catalog/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}

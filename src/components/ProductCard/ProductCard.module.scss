@@ -7,12 +7,16 @@
   display: flex;
   flex-direction: column;
 
+  border: 1px solid var(--colorElements);
+  border-radius: 8px;
+  overflow: hidden;
+
   cursor: pointer;
 
   transition: $transitionDuration;
 
   @include onHover {
-    box-shadow: 0px 2px 16px 0px #0000001a;
+    box-shadow: 0 2px 16px #0000001a;
 
     transform: $transformScale;
   }
@@ -25,10 +29,10 @@
 
   padding: 32px;
 
-  border: 1px solid $themePurpleElements;
-  border-radius: 8px;
+  background-color: var(--colorBackground);
 
-  background-color: $themePurpleWhite;
+  transition-property: background-color;
+  transition-duration: $transitionDuration;
 }
 
 .imageContent {
@@ -69,19 +73,23 @@
 .info {
   padding-bottom: 8px;
 
-  flex-grow: 1;
-
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  border-bottom: 1px solid $themePurpleElements;
+  border-bottom: 1px solid var(--colorElements);
 
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
+
+  transition-property: border-color;
+  transition-duration: $transitionDuration;
 }
 
 .title {
-  flex-grow: 1;
+  height: 42px;
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .priceBlock {
@@ -94,10 +102,13 @@
 
 .price {
   font-weight: $fontWeightSemiBlack;
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .fullPrice {
-  color: $themePurpleSecondary;
+  color: var(--colorSecondary);
   text-decoration: line-through;
 }
 
@@ -118,7 +129,10 @@
 }
 
 .specValue {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
+
+  transition-property: color;
+  transition-duration: $transitionDuration;
 }
 
 .actions {

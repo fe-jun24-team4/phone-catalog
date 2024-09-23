@@ -1,0 +1,55 @@
+@import '../../styles/generals/index.scss';
+
+.container {
+  max-width: 300px;
+  width: 100%;
+}
+
+.title {
+  color: var(--colorPrimary);
+  font-size: 20px;
+  line-height: $lineHeightAdditional;
+
+  @include onTabletAndUp {
+    font-weight: $fontWeightBold;
+  }
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--colorElements);
+  margin-top: 16px;
+  margin-bottom: 30px;
+}
+
+.containers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specs_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.specs {
+}
+
+.description {
+  color: var(--colorPrimary);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  p {
+    @include exceptLastChild {
+      @include after {
+        content: ',';
+      }
+    }
+  }
+}

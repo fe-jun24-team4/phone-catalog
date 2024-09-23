@@ -6,6 +6,8 @@ import { RouteNames } from '../../../enums/RouteNames';
 import styles from './iconsComponent.module.scss';
 import { isLinkActive } from '../isLinkActive';
 import { useHandleMenuAction } from '../hooks/useHandleMenuAction';
+import { useThemeContext } from '../../../context/ThemeContext';
+import { themeDark, themeLight } from '../../../types/ColorTheme';
 
 interface Props {
   mobile?: boolean;
@@ -13,6 +15,7 @@ interface Props {
 
 export const IconsComponent: FC<Props> = ({ mobile }) => {
   const { handleMenuAction } = useHandleMenuAction();
+  const { theme, setTheme } = useThemeContext();
 
   const getIconActiveClassName = (params: { isActive: boolean }) =>
     classnames(styles.icon, isLinkActive(styles.active, params));
@@ -23,6 +26,9 @@ export const IconsComponent: FC<Props> = ({ mobile }) => {
         [styles.mobile]: mobile,
       })}
     >
+      <button onClick={() => setTheme(theme === themeLight.id ? themeDark.id : themeLight.id)}>
+        Switch to {theme === themeLight.id ? 'dark' : 'light'}
+      </button>
       <NavLink
         to={RouteNames.favorites}
         className={getIconActiveClassName}

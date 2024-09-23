@@ -49,7 +49,7 @@
   font-weight: $fontWeightSemiBlack;
   line-height: $lineHeightAdditional;
 
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
 
   @include onTabletAndUp {
     font-size: 48px;
@@ -57,7 +57,7 @@
 }
 
 @mixin container {
-  max-width: 1266px;
+  max-width: 1166px;
   width: 100%;
   box-sizing: border-box;
 

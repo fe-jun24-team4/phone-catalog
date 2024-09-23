@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type LocalStorageAccessor<T> = {
   read: () => T;
@@ -18,22 +18,13 @@ function write<T>(key: string, value: T) {
 }
 
 export function useLocalStorage<T>(key: string, initialValue: T): LocalStorageAccessor<T> {
-  const [cache, setCache] = useState<T>(initialValue);
-
-  useEffect(() => {
-    const value = read<T>(key);
-
-    if (value === null) {
-      write(key, initialValue);
-    }
-  }, [initialValue, key]);
-
-  useEffect(() => {
-    write(key, cache);
-  }, [cache, key]);
+  const [cache, setCache] = useState<T>(read(key) ?? initialValue);
 
   return {
     read: () => cache,
-    write: setCache,
+    write: value => {
+      setCache(value);
+      write(key, value);
+    },
   };
 }

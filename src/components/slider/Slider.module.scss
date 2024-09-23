@@ -1,0 +1,136 @@
+@import '../../styles/generals/index';
+
+.sliderWrapper {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderHeader {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.title {
+  font-size: $fontSizeMedium;
+  font-weight: $fontWeightSemiBlack;
+  color: var(--colorPrimary);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.responsiveSwiper {
+  width: 100%;
+
+  @include onLaptopAndUp {
+    max-width: 1040px;
+    width: 100%;
+  }
+
+  &.width {
+    padding: 25px 15px;
+
+    @include onLaptopAndUp {
+      max-width: 100%;
+    }
+  }
+}
+
+.img {
+  max-width: 100%;
+  width: 100%;
+  height: 50vh;
+  max-height: 320px;
+
+  @include onTabletAndUp {
+    max-height: 189px;
+  }
+
+  @media (min-width: 760px) {
+    max-height: 400px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.customPagination {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  z-index: 3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  transform: translateX(-50%);
+}
+
+.paginationButton {
+  width: 14px;
+  height: 4px;
+
+  background-color: var(--colorElements);
+  cursor: pointer;
+
+  &.active {
+    background-color: var(--colorPrimary);
+  }
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+
+  height: 100%;
+  width: 32px;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 48px;
+  border: 1px solid var(--colorElements);
+
+  @include before {
+    content: '\e900';
+    font-family: 'icomoon';
+  }
+
+  &.prev {
+    left: 0;
+
+    &::before {
+      transform: rotate(180deg);
+    }
+  }
+  &.next {
+    right: 0;
+  }
+
+  &:active {
+    background-color: var(--colorElements);
+  }
+
+  @include onLaptopAndUp {
+    display: flex;
+  }
+}

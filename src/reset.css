@@ -45,6 +45,7 @@ li {
 
 input {
   width: 100%;
+  background-color: inherit;
 }
 
 a {
@@ -79,4 +80,5 @@ button {
   cursor: pointer;
   color: inherit;
   background-color: inherit;
+  border: none;
 }

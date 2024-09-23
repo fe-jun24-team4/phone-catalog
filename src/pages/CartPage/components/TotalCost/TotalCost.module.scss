@@ -1,0 +1,49 @@
+@import '../../../../styles/generals/index.scss';
+
+.total {
+  max-width: 592px;
+  width: 100%;
+}
+
+.totalWrapper {
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border-radius: 16px;
+  border: 1px solid var(--colorElements);
+
+  transition-property: border-color;
+  transition-duration: $transitionDuration;
+
+  @include onLaptopAndUp {
+    gap: 24px;
+  }
+}
+
+.totalBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  height: 1px;
+
+  background-color: var(--colorElements);
+
+  transition-property: background-color;
+  transition-duration: $transitionDuration;
+}
+
+.price {
+  text-align: center;
+  color: var(--colorPrimary);
+
+  font-size: $fontSizeBig;
+  font-weight: $fontWeightSemiBlack;
+  line-height: $lineHeightAdditional;
+}
