@@ -6,7 +6,6 @@ import { RouteNames } from '../../enums/RouteNames';
 import { isLinkActive } from './isLinkActive';
 import { IconsComponent } from './iconsComponent/iconsComponent';
 import { useHandleMenuAction } from './hooks/useHandleMenuAction';
-//import logo from './Logo.svg';
 import { Logo } from '../Logo/Logo';
 import { useTranslation } from 'react-i18next';
 

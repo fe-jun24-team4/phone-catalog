@@ -6,7 +6,7 @@ import { FC } from 'react';
 
 export interface Props {
   selected?: boolean;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const ButtonFavorite: FC<Props> = ({ selected, onClick = () => {} }) => {
