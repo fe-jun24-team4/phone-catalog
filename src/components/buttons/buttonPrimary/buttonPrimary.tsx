@@ -6,7 +6,7 @@ import { FC } from 'react';
 export interface Props {
   title: string;
   selected?: boolean;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const ButtonPrimary: FC<Props> = ({ title, selected, onClick = () => {} }) => {
