@@ -1,7 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useThemeContext } from '../../../context/ThemeContext';
+import { themeDark, themeLight } from '../../../types/ColorTheme';
 
 export const LanguageToggle = () => {
+  const { theme, setTheme } = useThemeContext();
   const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -15,6 +18,9 @@ export const LanguageToggle = () => {
     <div>
       <button onClick={toggleLanguage}>
         {i18n.language === 'en' ? 'Switch to Ukrainian' : 'Переключити на англійську'}
+      </button>
+      <button onClick={() => setTheme(theme === themeLight.id ? themeDark.id : themeLight.id)}>
+        Switch to {theme === themeLight.id ? 'dark' : 'light'}
       </button>
     </div>
   );

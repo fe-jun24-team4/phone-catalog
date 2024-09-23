@@ -9,8 +9,11 @@
   width: 100vw;
   height: 48px;
 
+  background-color: var(--colorBackground);
+  border-bottom: 2px solid var(--colorElements);
+
   @include onTabletAndUp {
-    height: auto;
+    height: fit-content;
   }
 }
 
@@ -26,10 +29,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 32px;
-
-  border-bottom: 2px solid var(--colorElements);
-
-  background-color: var(--colorBackground);
 
   transition-property: background-color, border-color;
   transition-duration: $transitionDuration;
@@ -150,7 +149,7 @@
   align-items: center;
 
   font-size: $fontSizeSmall;
-  font-weight: $fontWeightSemiBlack;
+  font-weight: $fontWeightBold;
   text-transform: uppercase;
 
   transition-duration: $transitionDuration;

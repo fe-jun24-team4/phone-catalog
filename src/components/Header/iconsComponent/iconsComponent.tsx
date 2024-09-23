@@ -5,20 +5,15 @@ import { RouteNames } from '../../../enums/RouteNames';
 
 import styles from './iconsComponent.module.scss';
 import { isLinkActive } from '../isLinkActive';
-import { useHandleMenuAction } from '../hooks/useHandleMenuAction';
-import { useThemeContext } from '../../../context/ThemeContext';
-import { themeDark, themeLight } from '../../../types/ColorTheme';
 import { useFavouritesContext } from '../../../pages/FavouritesPage/context/FavouritesContext';
 import { useCartContext } from '../../../pages/CartPage/context/CartContext';
 
 interface Props {
   mobile?: boolean;
+  handleMenuAction?: () => void;
 }
 
-export const IconsComponent: FC<Props> = ({ mobile }) => {
-  const { handleMenuAction } = useHandleMenuAction();
-  const { theme, setTheme } = useThemeContext();
-
+export const IconsComponent: FC<Props> = ({ mobile, handleMenuAction }) => {
   const { favourites } = useFavouritesContext();
   const favoritesNotifications = favourites.length < 100 ? favourites.length : 99;
 
@@ -34,10 +29,6 @@ export const IconsComponent: FC<Props> = ({ mobile }) => {
         [styles.mobile]: mobile,
       })}
     >
-      <button onClick={() => setTheme(theme === themeLight.id ? themeDark.id : themeLight.id)}>
-        Switch to {theme === themeLight.id ? 'dark' : 'light'}
-      </button>
-
       <NavLink
         to={RouteNames.favorites}
         className={getIconActiveClassName}
