@@ -13,6 +13,7 @@ import { ButtonRounded } from '../buttons';
 import { Direction } from '../../enums/Direction';
 import React from 'react';
 import { ProductCard } from '../ProductCard';
+import { Product } from '../../types/Product';
 
 interface Settings {
   slidesPerView: number;
@@ -29,7 +30,7 @@ interface Settings {
 }
 
 interface SliderProps {
-  sliders: Array<React.ReactNode> | string[];
+  sliders: Product[] | string[];
   settings: Settings;
   sliderHeader?: {
     title: string;
