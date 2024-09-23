@@ -13,7 +13,7 @@
   transition-duration: $transitionDuration;
 
   @include onHover {
-    color: $themePurplePrimary;
+    color: var(--colorPrimary);
 
     transition-duration: $transitionDuration;
   }

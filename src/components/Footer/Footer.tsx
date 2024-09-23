@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import logo from './Logo.svg';
+//import logo from './Logo.svg';
 import { ButtonRounded } from '../buttons';
 import { Direction } from '../../enums/Direction';
-import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { RouteNames } from '../../enums/RouteNames';
+import { Logo } from '../Logo';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -12,14 +14,13 @@ const scrollToTop = () => {
 };
 
 export const Footer: React.FC = () => {
-  const { t } = useTranslation();
-
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <a href="#" className={styles.logo}>
-          <img src={`${logo}`} alt="Logo" className={styles.logoImg} />
-        </a>
+        <Link to={RouteNames.home} className={styles.logo}>
+          {/* <img src={logo} className={styles.logoImage} alt="Nice Gadgets Logo" /> */}
+          <Logo />
+        </Link>
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li className={styles.navItem}>
@@ -29,7 +30,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                {t('footer.github')}
+                GITHUB
               </a>
             </li>
             <li className={styles.navItem}>
@@ -39,7 +40,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                {t('footer.contacts')}
+                CONTACTS
               </a>
             </li>
             <li className={styles.navItem}>
@@ -49,14 +50,14 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                {t('footer.rights')}
+                RIGHTS
               </a>
             </li>
           </ul>
         </nav>
 
         <div className={styles.sectionBack}>
-          <p className={styles.backText}>{t('footer.backToTop')}</p>
+          <p className={styles.backText}>Back to top</p>
 
           <ButtonRounded rotate={Direction.up} onClick={scrollToTop} />
         </div>

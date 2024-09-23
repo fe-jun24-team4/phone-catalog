@@ -35,12 +35,12 @@
 
   span {
     font-size: 15px;
-    color: $themePurplePrimary;
+    color: var(--colorPrimary);
   }
 }
 
 .title {
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   font-weight: $fontWeightSemiBlack;
   font-size: $fontSizeBig;
   line-height: $lineHeightAdditional;

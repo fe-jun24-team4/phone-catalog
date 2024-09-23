@@ -20,7 +20,7 @@
 .title {
   font-size: $fontSizeMedium;
   font-weight: $fontWeightSemiBlack;
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
 }
 
 .buttons {
@@ -56,12 +56,12 @@
     max-height: 189px;
   }
 
- @media (min-width: 760px) {
-   max-height: 400px;
- }
+  @media (min-width: 760px) {
+    max-height: 400px;
+  }
 
   img {
-    width:100%;
+    width: 100%;
     height: 100%;
 
     object-fit: cover;
@@ -87,11 +87,11 @@
   width: 14px;
   height: 4px;
 
-  background-color: $themePurpleElements;
+  background-color: var(--colorElements);
   cursor: pointer;
 
   &.active {
-  background-color: $themePurplePrimary;
+    background-color: var(--colorPrimary);
   }
 }
 
@@ -108,26 +108,26 @@
   align-items: center;
 
   border-radius: 48px;
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
 
   @include before {
     content: '\e900';
     font-family: 'icomoon';
   }
 
-  &.prev{
+  &.prev {
     left: 0;
 
     &::before {
       transform: rotate(180deg);
     }
   }
-  &.next{
+  &.next {
     right: 0;
   }
 
   &:active {
-    background-color: $themePurpleElements;
+    background-color: var(--colorElements);
   }
 
   @include onLaptopAndUp {

@@ -14,8 +14,8 @@
 h2 {
   margin-bottom: 24px;
   font-size: 22px;
-  color: $themePurplePrimary;
-  font-weight: $fontWeightBold;;
+  color: var(--colorPrimary);
+  font-weight: $fontWeightBold;
 
   @include onTabletAndUp {
     font-size: 32px;

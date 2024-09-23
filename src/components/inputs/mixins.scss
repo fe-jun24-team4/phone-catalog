@@ -1,7 +1,7 @@
 @import '../../styles/generals/index.scss';
 
 @mixin label() {
-  color: $themePurpleSecondary;
+  color: var(--colorSecondary);
   font-size: 12px;
   line-height: $lineHeightAdditional;
 }
@@ -9,7 +9,7 @@
 @mixin error() {
   opacity: 0;
 
-  color: $themePurpleRed;
+  color: var(--colorEyeCatchingPrimary);
   font-size: 12px;
   line-height: $lineHeightAdditional;
 

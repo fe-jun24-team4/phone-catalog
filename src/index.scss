@@ -2,6 +2,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -10,12 +11,17 @@ body {
   font-weight: 400;
   line-height: 1.5;
 
-  color: $themePurpleSecondary;
-  background-color: $themePurpleBgHover;
+  color: var(--colorSecondary);
+  background-color: var(--colorBackgroundOnHover);
+
+  transition-property: color, background-color;
+  transition-duration: $transitionDuration;
 }
 
 .wrapper {
+  width: 100vw;
   min-height: 100vh;
+
   overflow: hidden;
   position: relative;
 

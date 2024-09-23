@@ -6,13 +6,11 @@ import { RouteNames } from '../../enums/RouteNames';
 import { isLinkActive } from './isLinkActive';
 import { IconsComponent } from './iconsComponent/iconsComponent';
 import { useHandleMenuAction } from './hooks/useHandleMenuAction';
-import logo from './Logo.svg';
-import { LanguageToggle } from './languageButton/LanguageButton';
-import { useTranslation } from 'react-i18next';
+//import logo from './Logo.svg';
+import { Logo } from '../Logo/Logo';
 
 export const Header: React.FC = () => {
   const { isMenuActive, setIsMenuActive, handleMenuAction } = useHandleMenuAction();
-  const { t } = useTranslation();
 
   const getLinkActiveClassName = (params: { isActive: boolean }) =>
     classnames(styles.link, isLinkActive(styles.active, params));
@@ -29,7 +27,8 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to={RouteNames.home} className={styles.logo}>
-          <img src={logo} className={styles.logoImage} alt="Nice Gadgets Logo" />
+          {/* <img src={logo} className={styles.logoImage} alt="Nice Gadgets Logo" /> */}
+          <Logo />
         </Link>
 
         <nav
@@ -45,7 +44,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  {t('header.home')}
+                  Home
                 </NavLink>
               </li>
 
@@ -55,7 +54,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  {t('header.phones')}
+                  Phones
                 </NavLink>
               </li>
 
@@ -65,7 +64,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  {t('header.tablets')}
+                  Tablets
                 </NavLink>
               </li>
 
@@ -75,7 +74,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  {t('header.accessories')}
+                  Accessories
                 </NavLink>
               </li>
             </ul>
@@ -83,7 +82,7 @@ export const Header: React.FC = () => {
             <IconsComponent mobile />
           </div>
         </nav>
-        <LanguageToggle />
+
         <IconsComponent />
 
         <div
