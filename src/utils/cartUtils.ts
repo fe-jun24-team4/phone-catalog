@@ -1,26 +1,23 @@
-import { CartState } from '../../src/types/Cart';
-import { OrderItem } from '../types/OrderItem';
+import { OrderRecord } from '../types/OrderItem';
 
-import data from '../api/phones.json';
-
-export const getInitialCartState = (): CartState => {
-  const localData = localStorage.getItem('cart');
-
-  return localData
-    ? JSON.parse(localData)
-    : data.slice(0, 3).map((product, index) => ({ product, amount: index + 1 }));
-};
-
-export const addItemToCart = (prevCart: CartState, item: OrderItem): CartState => {
-  const existingItem = prevCart.find(cartItem => cartItem.product.id === item.product.id);
+export const addItemToCart = (cart: OrderRecord[], record: OrderRecord): OrderRecord[] => {
+  const existingItem = cart.find(cartRecord => cartRecord.productId === record.productId);
 
   if (existingItem) {
-    return prevCart.map(cartItem =>
-      cartItem.product.id === item.product.id
-        ? { ...cartItem, quantity: cartItem.amount + item.amount }
-        : cartItem,
+    return cart.map(cartRecord =>
+      cartRecord.productId === record.productId
+        ? { ...cartRecord, quantity: cartRecord.amount + record.amount }
+        : cartRecord,
     );
   }
 
-  return [...prevCart, item];
+  return [...cart, record];
+};
+
+export const removeItemFromCart = (cart: OrderRecord[], id: string): OrderRecord[] => {
+  return cart.filter(record => record.productId !== id);
+};
+
+export const updateQuantityInCart = (cart: OrderRecord[], record: OrderRecord): OrderRecord[] => {
+  return cart.map(cartRecord => (cartRecord.productId === record.productId ? record : cartRecord));
 };

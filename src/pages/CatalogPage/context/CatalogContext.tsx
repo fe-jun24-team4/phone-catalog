@@ -1,8 +1,9 @@
-import React, { createContext, PropsWithChildren, useContext } from 'react';
+import React, { createContext, PropsWithChildren, useContext, useMemo } from 'react';
 import { Product } from '../../../types/Product';
 
 import { useFetchData } from '../../../hooks/useFetch';
 import { HOST } from '../../../utils/constants/host';
+import { Category } from '../../../types/Category';
 
 type State = {
   products: Product[];
@@ -11,17 +12,22 @@ type State = {
 const StateContext = createContext<State | null>(null);
 
 type CatalogContextProviderProps = {
-  source: string;
+  category: Category;
 };
 
 export const CatalogContextProvider = ({
-  source,
+  category,
   children,
 }: PropsWithChildren<CatalogContextProviderProps>) => {
-  const { data } = useFetchData(`${HOST}/${source}.json`);
+  const { data: products } = useFetchData<Product>(`${HOST}/api/products.json`);
+
+  const productsInCategory = useMemo(
+    () => products.filter(product => product.category === category),
+    [category, products],
+  );
 
   const contextValue = {
-    products: data as Product[],
+    products: productsInCategory,
   };
 
   return <StateContext.Provider value={contextValue}>{children}</StateContext.Provider>;

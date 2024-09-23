@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useFetchData } from '../../hooks/useFetch';
 import { HOST } from '../../utils/constants/host';
-import { Product } from '../../types/Product';
+import { ProductDetails } from '../../types/Product';
 import styles from './DetailsPage.module.scss';
 
 import AboutSection from './components/AboutSection/AboutSection';
@@ -13,17 +13,19 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
 import { useFetchRecommended } from '../../hooks/useFetchRecommended';
 import { Slider } from '../../components/slider/Slider';
+import { Category } from '../../types/Category';
 
 export const DetailsPage = () => {
   const { t } = useTranslation();
-  const { recommendedData } = useFetchRecommended<Product>();
+
   const location = useLocation();
   const navigate = useNavigate();
-  const path = location.pathname.split('/')[1];
 
-  const { data } = useFetchData<Product>(`${HOST}/api/${path}.json`);
+  const [category, id] = location.pathname.split('/').slice(1);
+  const { data } = useFetchData<ProductDetails>(`${HOST}/api/${category}.json`);
+  const product = data.find(item => item.id === id) || null;
 
-  const product = data.find(item => item.id === location.pathname.split('/')[2]) || null;
+  const recommendedData = useFetchRecommended(category as Category, 6);
 
   const recommendedSlider = {
     sliders: recommendedData,
