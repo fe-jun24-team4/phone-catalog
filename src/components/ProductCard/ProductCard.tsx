@@ -82,7 +82,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             selected={isInCart}
             onClick={handleAddToCart}
           />
-          <ButtonFavorite icon="icon-heart" selected={isInFavourite} onClick={toggleFavourite} />
+          <ButtonFavorite selected={isInFavourite} onClick={toggleFavourite} />
         </div>
       </div>
     </div>

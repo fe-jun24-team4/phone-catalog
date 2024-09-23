@@ -5,12 +5,11 @@ import React from 'react';
 import { FC } from 'react';
 
 export interface Props {
-  icon?: string;
   selected?: boolean;
   onClick?: () => void;
 }
 
-const ButtonFavorite: FC<Props> = ({ icon = 'icon-heart', selected, onClick = () => {} }) => {
+const ButtonFavorite: FC<Props> = ({ selected, onClick = () => {} }) => {
   return (
     <button
       className={classNames(styles.buttonFavorite, {
@@ -18,7 +17,7 @@ const ButtonFavorite: FC<Props> = ({ icon = 'icon-heart', selected, onClick = ()
       })}
       onClick={onClick}
     >
-      <span className={icon}></span>
+      <span className={selected ? 'icon-heart-filled' : 'icon-heart'} />
     </button>
   );
 };

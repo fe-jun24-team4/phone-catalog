@@ -33,8 +33,7 @@ export const themeLight = Object.freeze<ColorTheme>({
   secondary: '#89939a',
 
   accentPrimary: '#4219d0',
-  //accentSecondary: '#f4ba47',
-  accentSecondary: '#216cff',
+  accentSecondary: '#f4ba47',
 });
 
 export const themeDark = Object.freeze<ColorTheme>({
@@ -53,7 +52,7 @@ export const themeDark = Object.freeze<ColorTheme>({
   secondary: '#75767f',
 
   accentPrimary: '#e8e9ee',
-  accentSecondary: '#216cff',
+  accentSecondary: '#f4ba47',
 });
 
 export const themes = [themeLight, themeDark];
