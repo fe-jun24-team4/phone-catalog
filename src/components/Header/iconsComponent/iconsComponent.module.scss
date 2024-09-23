@@ -83,3 +83,30 @@
     }
   }
 }
+
+.bubble {
+  font-family: 'Mont';
+
+  position: relative;
+  top: -20px;
+  right: -7px;
+
+  width: 14px;
+  height: 14px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 9px;
+  font-weight: $fontWeightSemiBold;
+
+  color: var(--colorBackground);
+  background-color: var(--colorAccentPrimary);
+
+  border: 2px, solid, var(--colorBackground);
+  border-radius: 7px;
+
+  transition-duration: $transitionDuration;
+}
