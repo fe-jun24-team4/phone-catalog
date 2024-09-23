@@ -28,12 +28,14 @@ interface Settings {
 }
 
 interface SliderProps {
-  sliders: JSX.Element[] | string[];
-  settings: Settings;
-  sliderHeader?: {
-    title: string;
+  slider: {
+    sliders: JSX.Element[] | string[];
+    settings: Settings;
+    sliderHeader?: {
+      title: string;
+    };
+    width?: boolean;
   };
-  width?: boolean;
 }
 
 interface Props {
