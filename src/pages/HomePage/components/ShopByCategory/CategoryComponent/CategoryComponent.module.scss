@@ -1,4 +1,4 @@
-@import '../../../styles/generals/index.scss';
+@import '../../../../../styles/generals/index.scss';
 
 .cart_box {
   display: flex;
@@ -16,12 +16,9 @@
   overflow: hidden;
 
   @include onTabletAndUp {
-    width: 187px;
+    width: 100%;
   }
 
-  @include onLaptopAndUp {
-    width: 368px;
-  }
 
   img {
     width: 100%;

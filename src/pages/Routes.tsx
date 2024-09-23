@@ -5,6 +5,7 @@ import { RouteNames } from '../enums/RouteNames';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 import { App } from '../components/App';
+import { HomePage } from './HomePage/HomePage';
 import { PhonesPage } from './PhonesPage';
 import { TabletsPage } from './TabletsPage';
 import { AccessoriesPage } from './AccessoriesPage';
@@ -28,6 +29,7 @@ export const Routes = () => {
             </Breadcrumbs.Checkpoint>
           }
         >
+          <Route index element={<HomePage />} />
           <Route
             path={RouteNames.phones}
             element={
