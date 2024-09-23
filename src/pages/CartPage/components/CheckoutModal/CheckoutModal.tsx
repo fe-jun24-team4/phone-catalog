@@ -10,12 +10,28 @@ import { shippingOptions } from '../../../../utils/constants/dropdownOptions';
 import { calculateOrderTotal } from '../../../../features/calculateOrderTotal';
 import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
 import { useCartContext } from '../../context/CartContext';
+
 import debounce from 'lodash.debounce';
-import { validateCreditCard, validateEmail, validateName } from '../../../../utils/validation';
+import {
+  validateExpirationDate,
+  validateCvc,
+  validateCardNumber,
+  validateEmail,
+  validateName,
+} from '../../../../utils/validation';
 
 type CheckoutModalProps = {
   onConfirm?: () => void;
   onReject?: () => void;
+};
+
+type Errors = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  cardNumber: string;
+  cardCvc: string;
+  cardExpiration: string;
 };
 
 // TODO: disable confirm on errors
@@ -26,11 +42,13 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
     setIsCheckoutVisible: setIsVisible,
   } = useCartContext();
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<Errors>({
     firstName: '',
     lastName: '',
     email: '',
-    creditCardNumber: '',
+    cardNumber: '',
+    cardCvc: '',
+    cardExpiration: '',
   });
 
   const totalCost = calculateOrderTotal(cart);
@@ -43,53 +61,51 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
     }
   }, ref);
 
-  const validateFirstNameDebounced = debounce((firstName: string) => {
-    if (!validateName(firstName)) {
-      setErrors(prev => ({ ...prev, firstName: 'First name is required' }));
-    }
-  }, 300);
+  function debounceValidator(validator: (str: string) => boolean, error: Partial<Errors>) {
+    return debounce((str: string) => {
+      if (!validator(str)) {
+        setErrors(prev => ({ ...prev, ...error }));
+      }
+    }, 300);
+  }
 
-  const validateLastNameDebounced = debounce((lastName: string) => {
-    if (!validateName(lastName)) {
-      setErrors(prev => ({ ...prev, lastName: 'Last name is required' }));
-    }
-  }, 300);
+  function handleChangeOf(field: keyof Errors, debouncedValidator: (str: string) => void) {
+    return (str: string) => {
+      setErrors(prev => ({ ...prev, [field]: '' }));
 
-  const validateEmailDebounced = debounce((email: string) => {
-    if (!validateEmail(email)) {
-      setErrors(prev => ({ ...prev, email: 'Invalid E-mail' }));
-    }
-  }, 300);
+      debouncedValidator(str);
+    };
+  }
 
-  const validateCreditCardNumberDebounced = debounce((number: string) => {
-    if (!validateCreditCard(number)) {
-      setErrors(prev => ({ ...prev, creditCardNumber: 'Invalid card number' }));
-    }
-  }, 300);
+  const validateFirstNameDebounced = debounceValidator(validateName, {
+    firstName: 'First name is required',
+  });
 
-  const handleFirstNameChange = (firstName: string) => {
-    setErrors(prev => ({ ...prev, firstName: '' }));
+  const validateLastNameDebounced = debounceValidator(validateName, {
+    lastName: 'Last name is required',
+  });
 
-    validateFirstNameDebounced(firstName);
-  };
+  const validateEmailDebounced = debounceValidator(validateEmail, { email: 'Invalid E-mail' });
 
-  const handleLastNameChange = (lastName: string) => {
-    setErrors(prev => ({ ...prev, lastName: '' }));
+  const validateCardNumberDebounced = debounceValidator(validateCardNumber, {
+    cardNumber: 'Invalid credit card number',
+  });
 
-    validateLastNameDebounced(lastName);
-  };
+  const validateCardCvcDebounced = debounceValidator(validateCvc, { cardCvc: 'Invalid CVC code' });
 
-  const handleEmailChange = (email: string) => {
-    setErrors(prev => ({ ...prev, email: '' }));
+  const validateCardExpirationDebounced = debounceValidator(validateExpirationDate, {
+    cardExpiration: 'Invalid expiration date',
+  });
 
-    validateEmailDebounced(email);
-  };
-
-  const handleCreditCardChange = (number: string) => {
-    setErrors(prev => ({ ...prev, creditCardNumber: '' }));
-
-    validateCreditCardNumberDebounced(number);
-  };
+  const handleFirstNameChange = handleChangeOf('firstName', validateFirstNameDebounced);
+  const handleLastNameChange = handleChangeOf('lastName', validateLastNameDebounced);
+  const handleEmailChange = handleChangeOf('email', validateEmailDebounced);
+  const handleCardNumberChange = handleChangeOf('cardNumber', validateCardNumberDebounced);
+  const handleCvcChange = handleChangeOf('cardCvc', validateCardCvcDebounced);
+  const handleExpirationDateChange = handleChangeOf(
+    'cardExpiration',
+    validateCardExpirationDebounced,
+  );
 
   return (
     <div ref={ref} className={cn(styles.container, { [styles.isVisible]: isVisible })}>
@@ -109,12 +125,39 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
           error={errors.email}
           onChange={handleEmailChange}
         />
-        <Input.Dropdown label="Ship to:" options={shippingOptions} />
-        <Input.CreditCard
-          label="Credit card info"
-          error={errors.creditCardNumber}
-          onChange={handleCreditCardChange}
+
+        <div className={styles.shipToMargin}>
+          <Input.Dropdown label="Ship to:" options={shippingOptions} />
+        </div>
+
+        <Input.Format
+          label="Credit card number"
+          format="....-....-....-...."
+          placeholder="X"
+          charset={/[0-9]/}
+          error={errors.cardNumber}
+          onChange={handleCardNumberChange}
         />
+
+        <div className={styles.cvcAndExpDate}>
+          <Input.Format
+            label="Expiration date"
+            format="../.."
+            placeholder="X"
+            charset={/[0-9]/}
+            error={errors.cardExpiration}
+            onChange={handleExpirationDateChange}
+          />
+
+          <Input.Format
+            label="CVC"
+            format="..."
+            placeholder="X"
+            charset={/[0-9]/}
+            error={errors.cardCvc}
+            onChange={handleCvcChange}
+          />
+        </div>
       </form>
 
       <div className={styles.spacer} />

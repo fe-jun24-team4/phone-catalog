@@ -49,6 +49,16 @@
   gap: 6px;
 }
 
+.shipToMargin {
+  margin-bottom: 16px;
+}
+
+.cvcAndExpDate {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 16px;
+}
+
 .spacer {
   flex-grow: 1;
 }
