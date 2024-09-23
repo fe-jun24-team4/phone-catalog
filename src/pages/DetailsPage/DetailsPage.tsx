@@ -16,7 +16,7 @@ import { Slider } from '../../components/slider/Slider';
 
 export const DetailsPage = () => {
   const { t } = useTranslation();
-  const { recommendedData } = useFetchRecommended<Product[]>();
+  const { recommendedData } = useFetchRecommended<Product>();
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.pathname.split('/')[1];
@@ -26,7 +26,7 @@ export const DetailsPage = () => {
   const product = data.find(item => item.id === location.pathname.split('/')[2]) || null;
 
   const recommendedSlider = {
-    sliders: recommendedData.flat(),
+    sliders: recommendedData,
     settings: {
       slidesPerView: 1,
       spaceBetween: 16,
