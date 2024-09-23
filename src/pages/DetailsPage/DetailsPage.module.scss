@@ -1,0 +1,112 @@
+@import '../../styles/generals/index';
+
+.productDetailsWrapper {
+  padding: 24px 0 56px;
+
+  @include onTabletAndUp {
+    padding-bottom: 64px;
+  }
+
+  @include onLaptopAndUp {
+    padding-bottom: 81px;
+  }
+}
+
+.productHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include exceptLastChild {
+    margin-bottom: 16px;
+  }
+
+  @include onTabletAndUp {
+    gap: 40px;
+  }
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.productMain {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include exceptLastChild {
+    margin-bottom: 56px;
+  }
+
+  @include onTabletAndUp {
+    gap: 64px;
+  }
+
+  @include onLaptopAndUp {
+    gap: 80px;
+  }
+}
+
+.productFeatures {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr);
+  align-items: start;
+  justify-items: center;
+
+  gap: 40px;
+
+  @include onTabletAndUp {
+    grid-template-columns: 0.6fr 0.4fr;
+    gap: 0;
+    justify-items: unset;
+
+    .productTitle {
+      grid-column: 1/span 2;
+    }
+  }
+
+  @include onLaptopAndUp {
+    row-gap: 40px;
+    column-gap: 64px;
+  }
+}
+
+.productTitle {
+  color: $themePurplePrimary;
+  font-size: $fontSizeMedium;
+  font-weight: $fontWeightBold;
+  line-height: $lineHeightAdditional;
+
+  justify-self: start;
+
+  @include onTabletAndUp {
+    font-size: $fontSizeBig;
+    margin-bottom: 16px;
+  }
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include onTabletAndUp {
+    gap: 64px;
+  }
+
+  @include onLaptopAndUp {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 80px;
+  }
+}
+
+.productRecommended {
+  max-width: 440px;
+  width: 100%;
+  height: 495px;
+  background-color: aquamarine;
+}

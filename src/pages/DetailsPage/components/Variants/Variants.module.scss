@@ -17,6 +17,8 @@
 }
 
 .description {
+  flex-shrink: 0;
+
   font-size: $fontSizeSmall;
   font-weight: $fontWeightSemiBold;
   line-height: $lineHeightAdditional;
@@ -24,19 +26,19 @@
 
 .id {
   font-size: $fontSizeSmall;
-  font-weight: $fontWeightBold;
   line-height: $lineHeightAdditional;
 }
 
 .colorVariantsAndId {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .variants {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
 }
 
 .variantButtonsContainer {
