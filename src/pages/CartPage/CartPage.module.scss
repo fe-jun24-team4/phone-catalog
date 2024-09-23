@@ -33,9 +33,16 @@
   align-items: center;
   gap: 6px;
 
-  span {
-    font-size: 15px;
+  transition-duration: $transitionDuration;
+
+  & > span {
+    line-height: 15px;
+  }
+
+  @include onHover {
     color: var(--colorPrimary);
+
+    transition-duration: $transitionDuration;
   }
 }
 

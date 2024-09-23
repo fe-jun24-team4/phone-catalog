@@ -3,7 +3,7 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { HOST } from '../../utils/constants/host';
 import { ButtonFavorite, ButtonPrimary } from '../buttons';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
 
@@ -14,6 +14,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
+
   const navigate = useNavigate();
 
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
@@ -22,7 +23,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { cart, addItem: addToCart } = useCartContext();
   const isInCart = Boolean(cart.find(item => item.product.id === product.id));
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
     if (isInCart) {
       navigate(`/cart`);
     } else {
@@ -30,7 +33,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }
   };
 
-  const toggleFavourite = () => {
+  const toggleFavourite = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
     if (isInFavourite) {
       removeFavourite(product);
     } else {
@@ -39,7 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className={styles.card}>
+    <Link to={`${product.id}`} className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
           <img src={`${HOST}/${images[0]}`} alt={name} className={styles.image} />
@@ -82,9 +87,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             selected={isInCart}
             onClick={handleAddToCart}
           />
-          <ButtonFavorite icon="icon-heart" selected={isInFavourite} onClick={toggleFavourite} />
+          <ButtonFavorite selected={isInFavourite} onClick={toggleFavourite} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

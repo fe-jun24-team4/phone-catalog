@@ -21,12 +21,12 @@
   }
 
   &.selected {
-    border-color: var(--colorPrimary);
-    background-color: var(--colorAccentPrimary);
-    color: var(--colorBackground);
+    border-color: var(--colorElements);
+    color: var(--colorAccentSecondary);
 
     @include onHover {
-      box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
+      border-color: var(--colorPrimary);
+      //box-shadow: 0 3px 3px rgba(23, 32, 49, 0.4);
     }
   }
 }
