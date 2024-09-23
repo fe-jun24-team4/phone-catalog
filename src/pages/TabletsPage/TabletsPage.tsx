@@ -1,11 +1,14 @@
 import React from 'react';
 import { CatalogPage } from '../CatalogPage';
 import { CatalogContextProvider } from '../CatalogPage/context/CatalogContext';
+import { useTranslation } from 'react-i18next';
 
 export const TabletsPage = () => {
+  const { t } = useTranslation();
+
   return (
     <CatalogContextProvider source="api/tablets">
-      <CatalogPage title="Tablets" />
+      <CatalogPage title={t('pageTitles.tablets')} />
     </CatalogContextProvider>
   );
 };

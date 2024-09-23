@@ -7,9 +7,12 @@ import { isLinkActive } from './isLinkActive';
 import { IconsComponent } from './iconsComponent/iconsComponent';
 import { useHandleMenuAction } from './hooks/useHandleMenuAction';
 import logo from './Logo.svg';
+import { LanguageToggle } from './languageButton/LanguageButton';
+import { useTranslation } from 'react-i18next';
 
 export const Header: React.FC = () => {
   const { isMenuActive, setIsMenuActive, handleMenuAction } = useHandleMenuAction();
+  const { t } = useTranslation();
 
   const getLinkActiveClassName = (params: { isActive: boolean }) =>
     classnames(styles.link, isLinkActive(styles.active, params));
@@ -42,7 +45,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  Home
+                  {t('header.home')}
                 </NavLink>
               </li>
 
@@ -52,7 +55,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  Phones
+                  {t('header.phones')}
                 </NavLink>
               </li>
 
@@ -62,7 +65,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  Tablets
+                  {t('header.tablets')}
                 </NavLink>
               </li>
 
@@ -72,7 +75,7 @@ export const Header: React.FC = () => {
                   className={getLinkActiveClassName}
                   onClick={handleMenuAction}
                 >
-                  Accessories
+                  {t('header.accessories')}
                 </NavLink>
               </li>
             </ul>
@@ -80,7 +83,7 @@ export const Header: React.FC = () => {
             <IconsComponent mobile />
           </div>
         </nav>
-
+        <LanguageToggle />
         <IconsComponent />
 
         <div
