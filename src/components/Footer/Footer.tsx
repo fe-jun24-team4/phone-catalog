@@ -6,6 +6,7 @@ import { Direction } from '../../enums/Direction';
 import { Link } from 'react-router-dom';
 import { RouteNames } from '../../enums/RouteNames';
 import { Logo } from '../Logo';
+import { useTranslation } from 'react-i18next';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -14,6 +15,8 @@ const scrollToTop = () => {
 };
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -30,7 +33,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                GITHUB
+                {t('footer.github')}
               </a>
             </li>
             <li className={styles.navItem}>
@@ -40,7 +43,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                CONTACTS
+                {t('footer.contacts')}
               </a>
             </li>
             <li className={styles.navItem}>
@@ -50,14 +53,14 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className={styles.link}
               >
-                RIGHTS
+                {t('footer.rights')}
               </a>
             </li>
           </ul>
         </nav>
 
         <div className={styles.sectionBack}>
-          <p className={styles.backText}>Back to top</p>
+          <p className={styles.backText}>{t('footer.backToTop')}</p>
 
           <ButtonRounded rotate={Direction.up} onClick={scrollToTop} />
         </div>
