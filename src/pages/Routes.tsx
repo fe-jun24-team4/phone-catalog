@@ -12,15 +12,18 @@ import { FavouritesPage } from './FavouritesPage';
 import { CartPage } from './CartPage/CartPage';
 import { NotFoundPage } from './NotFoundPage';
 import { DetailsPage } from './DetailsPage/DetailsPage';
+import { useTranslation } from 'react-i18next';
 
 export const Routes = () => {
+  const { t } = useTranslation();
+
   return (
     <Router>
       <RouterRoutes>
         <Route
           path={RouteNames.home}
           element={
-            <Breadcrumbs.Checkpoint title="Home">
+            <Breadcrumbs.Checkpoint title={t('header.home')}>
               <App />
             </Breadcrumbs.Checkpoint>
           }
@@ -28,7 +31,7 @@ export const Routes = () => {
           <Route
             path={RouteNames.phones}
             element={
-              <Breadcrumbs.Checkpoint title="Phones">
+              <Breadcrumbs.Checkpoint title={t('header.phones')}>
                 <Outlet />
               </Breadcrumbs.Checkpoint>
             }
@@ -39,7 +42,7 @@ export const Routes = () => {
           <Route
             path={RouteNames.tablets}
             element={
-              <Breadcrumbs.Checkpoint title="Tablets">
+              <Breadcrumbs.Checkpoint title={t('header.tablets')}>
                 <Outlet />
               </Breadcrumbs.Checkpoint>
             }
@@ -50,7 +53,7 @@ export const Routes = () => {
           <Route
             path={RouteNames.accessories}
             element={
-              <Breadcrumbs.Checkpoint title="Accessories">
+              <Breadcrumbs.Checkpoint title={t('header.accessories')}>
                 <Outlet />
               </Breadcrumbs.Checkpoint>
             }
@@ -61,7 +64,7 @@ export const Routes = () => {
           <Route
             path={RouteNames.favorites}
             element={
-              <Breadcrumbs.Checkpoint title="Favourites">
+              <Breadcrumbs.Checkpoint title={t('pageTitles.favorite')}>
                 <FavouritesPage />
               </Breadcrumbs.Checkpoint>
             }
@@ -69,7 +72,7 @@ export const Routes = () => {
           <Route
             path={RouteNames.cart}
             element={
-              <Breadcrumbs.Checkpoint title="Cart">
+              <Breadcrumbs.Checkpoint title={t('pageTitles.cart')}>
                 <CartPage />
               </Breadcrumbs.Checkpoint>
             }
