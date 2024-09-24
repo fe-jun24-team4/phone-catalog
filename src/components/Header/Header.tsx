@@ -8,7 +8,7 @@ import { IconsComponent } from './iconsComponent/iconsComponent';
 import { useHandleMenuAction } from './hooks/useHandleMenuAction';
 import { Logo } from '../Logo/Logo';
 import { useTranslation } from 'react-i18next';
-import { LanguageToggle } from './languageButton/LanguageButton.tsx';
+import { ThemeLanguageToggles } from './themeLanguageToggles/themeLanguageToggles.tsx';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -81,12 +81,14 @@ export const Header: React.FC = () => {
               </li>
             </ul>
 
-            <IconsComponent mobile />
+            <IconsComponent mobile handleMenuAction={handleMenuAction} />
           </div>
         </nav>
 
-        <LanguageToggle/>
-        <IconsComponent />
+        <div className={styles.features}>
+          <ThemeLanguageToggles />
+          <IconsComponent />
+        </div>
 
         <div
           className={classnames(styles.burgerMenu, {

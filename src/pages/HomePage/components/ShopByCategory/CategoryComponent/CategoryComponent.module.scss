@@ -9,15 +9,14 @@
 }
 
 .picture {
-  width: 288px;
-  aspect-ratio: 1;
+  max-width: 100%;
+  width: 100%;
+  height: 60vh;
+  max-height: 350px;
 
   border-radius: 8px;
   overflow: hidden;
 
-  @include onTabletAndUp {
-    width: 100%;
-  }
 
 
   img {
@@ -35,7 +34,6 @@
 
 .tablet {
   background-color: #806262;
-  object-position: 40px 65px;
   object-position: left bottom;
 }
 

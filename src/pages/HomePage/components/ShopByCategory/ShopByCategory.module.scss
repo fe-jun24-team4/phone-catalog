@@ -1,6 +1,36 @@
 @import '../../../../styles/generals/index.scss';
 
 .categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include exceptLastChild {
+    margin-bottom: 56px;
+
+    @include exceptLastChild {
+      margin-bottom: 64px;
+    }
+
+    @include onTabletAndUp {
+      margin-bottom: 80px;
+    }
+  }
+
+  &:not(:first-child) {
+    margin-top: 28px;
+
+    @include onTabletAndUp {
+      margin-top: 40px;
+    }
+
+    @include onLaptopAndUp {
+      margin-top: 56px;
+    }
+  }
+}
+
+.categoriesBlock {
   display: grid;
   grid-template-columns: minmax(200px, 1fr);
   gap: 24px;
@@ -11,14 +41,14 @@
   }
 }
 
-h2 {
-  margin-bottom: 24px;
-  font-size: 22px;
+.title {
+  font-size: $fontSizeMedium;
   color: var(--colorPrimary);
   font-weight: $fontWeightBold;
 
+  line-height: 1.3;
+
   @include onTabletAndUp {
-    font-size: 32px;
-    line-height: $lineHeightAdditional;
+    font-size: $fontSizeBig;
   }
 }
