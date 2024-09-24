@@ -17,7 +17,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { image, name, price, fullPrice, screen, capacity, ram } = product;
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();

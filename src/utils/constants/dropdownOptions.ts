@@ -21,10 +21,12 @@ export const createSortByOptions = (t: (key: string) => string) => {
   );
 };
 
-export const shippingOptions = Object.freeze(
-  new Options<ShippingDestinations>({
-    Ukraine: { value: ShippingDestinations.Ukraine },
-    Poland: { value: ShippingDestinations.Poland },
-    Moldova: { value: ShippingDestinations.Moldova },
-  }),
-);
+export const createShippingOptions = (t: (key: string) => string) => {
+  return Object.freeze(
+    new Options<ShippingDestinations>({
+      [t('cart.destination.ua')]: { value: ShippingDestinations.Ukraine },
+      [t('cart.destination.pl')]: { value: ShippingDestinations.Poland },
+      [t('cart.destination.md')]: { value: ShippingDestinations.Moldova },
+    }),
+  );
+};

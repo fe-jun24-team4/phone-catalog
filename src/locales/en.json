@@ -75,6 +75,11 @@
       "surname": "Last name",
       "email": "email@domain.com"
     },
+    "destination": {
+      "ua": "Ukraine",
+      "pl": "Poland",
+      "md": "Moldova"
+    },
     "errors": {
       "name": "First name is required",
       "surname": "Last name is required",
