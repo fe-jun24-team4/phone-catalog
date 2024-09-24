@@ -1,7 +1,7 @@
 import styles from './CartItem.module.scss';
 import classNames from 'classnames';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { OrderItem } from '../../../../types/OrderItem';
 import { useCartContext } from '../../context/CartContext';
 import { ButtonRounded } from '../../../../components/buttons';
@@ -17,9 +17,13 @@ export const CartItem = ({ item }: CartItemProps) => {
   const image = images[0];
 
   const { removeItem, updateQuantity } = useCartContext();
+  const [isRemoving, setIsRemoving] = useState(false);
 
   const handleRemove = () => {
-    removeItem(product.id);
+    setIsRemoving(true);
+    setTimeout(() => {
+      removeItem(product.id);
+    }, 500);
   };
 
   const handleQuantityChange = (newAmount: number) => {
@@ -29,7 +33,7 @@ export const CartItem = ({ item }: CartItemProps) => {
   };
 
   return (
-    <div className={styles.cart}>
+    <div className={classNames(styles.cart, { [styles.removing]: isRemoving })}>
       <div className={styles.container}>
         <div className={styles.position}>
           <span className="icon-plus" onClick={handleRemove} />
