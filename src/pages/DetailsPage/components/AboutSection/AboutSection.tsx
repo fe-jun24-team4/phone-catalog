@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './aboutSection.module.scss';
+import styles from './AboutSection.module.scss';
 import { useTranslation } from 'react-i18next';
 
 interface AboutPhone {
