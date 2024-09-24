@@ -43,8 +43,10 @@
 
 .title {
   font-size: $fontSizeMedium;
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   font-weight: $fontWeightBold;
+  line-height: 1.3;
+
   line-height: 1.3;
 
   @include onTabletAndUp {

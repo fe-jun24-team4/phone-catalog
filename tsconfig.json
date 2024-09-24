@@ -4,6 +4,6 @@
   "compilerOptions": {
     "jsx": "react",
     "sourceMap": false,
-    "types": ["node"]
+    "types": ["node"],
   }
 }
