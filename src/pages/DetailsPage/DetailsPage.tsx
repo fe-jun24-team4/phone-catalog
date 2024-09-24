@@ -48,6 +48,12 @@ export const DetailsPage = () => {
     width: true,
   };
 
+  const navigateToVariant = (capacity: string, color: string) => {
+    const newId = `${product?.namespaceId}-${capacity}-${color}`;
+
+    navigate(`../${newId}`);
+  };
+
   return (
     <Breadcrumbs.Checkpoint title={product?.name ?? 'Unknown'}>
       <div className={styles.productDetails}>
@@ -64,9 +70,9 @@ export const DetailsPage = () => {
             <div className={styles.productFeatures}>
               <h2 className={styles.productTitle}>{product?.name}</h2>
 
-              {product && <Photos product={product} />}
+              {product && <Photos key={product.images[0]} product={product} />}
 
-              {product && <Variants product={product} />}
+              {product && <Variants product={product} onChange={navigateToVariant} />}
             </div>
 
             <div className={styles.productInfo}>

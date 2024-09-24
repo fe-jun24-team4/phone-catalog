@@ -13,8 +13,6 @@
     "@types/react-i18next": "^8.1.0",
     "classnames": "^2.5.1",
     "i18next": "^23.15.1",
-    "i18next-browser-languagedetector": "^8.0.0",
-    "i18next-http-backend": "^2.6.1",
     "lodash.debounce": "^4.0.8",
     "phone-catalog": "file:",
     "react": "^18.3.1",
