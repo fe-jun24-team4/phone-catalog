@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useThemeContext } from '../../../context/ThemeContext';
 import { themeDark, themeLight } from '../../../types/ColorTheme';
