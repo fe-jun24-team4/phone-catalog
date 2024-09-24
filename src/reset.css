@@ -25,6 +25,7 @@ nav,
 section,
 audio,
 video,
+button,
 *::before,
 *::after {
   margin: 0;
@@ -45,6 +46,7 @@ li {
 
 input {
   width: 100%;
+  background-color: inherit;
 }
 
 a {

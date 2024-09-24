@@ -1,0 +1,63 @@
+@import '../../styles/generals/index.scss';
+
+.container {
+    padding: 0;
+}
+
+.homeHeader {
+    display: flex;
+    align-items: center;
+    margin: 24px 16px;
+    
+    @include titleMain;
+
+    @include onTabletAndUp {
+        margin: 32px 24px;
+    }
+
+    @include onLaptopAndUp {
+        margin: 56px 32px;
+    }
+}
+
+h2 {
+    margin-bottom: 24px;
+    font-size: 22px;
+    color: $themePurplePrimary;
+    font-weight: $fontWeightBold;
+  
+    @include onTabletAndUp {
+      font-size: 32px;
+      line-height: $lineHeightAdditional;
+    }
+  }
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.lines {
+    font-size: $fontSizeBig;
+    color: $themePurplePrimary;
+}
+
+.firstLine {
+    color: $themePurpleAccent;
+}
+
+.itemSlider {
+    margin: 56px 16px;
+
+    @include onTabletAndUp {
+        margin: 64px 24px;
+    }
+
+    @include onLaptopAndUp {
+        margin: 80px 32px;
+    }
+}
+

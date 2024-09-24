@@ -1,30 +1,30 @@
-import { FavouritesContextProvider } from '../pages/FavouritesPage/context/FavouritesContext';
-import { CartContextProvider } from '../pages/CartPage/context/CartContext';
-import { ShopByCategory } from './ShopByCategory/ShopByCategory';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import React from 'react';
 
-function App() {
+import { FavouritesContextProvider } from '../pages/FavouritesPage/context/FavouritesContext';
+import { CartContextProvider } from '../pages/CartPage/context/CartContext';
+import { ThemeContextProvider } from '../context/ThemeContext';
+
+export function App() {
   return (
-    <CartContextProvider>
-      <FavouritesContextProvider>
-        <div className="wrapper">
-          <header className="header">
-            <Header />
-          </header>
+    <ThemeContextProvider>
+      <CartContextProvider>
+        <FavouritesContextProvider>
+          <div className="wrapper">
+            <header className="header">
+              <Header />
+            </header>
 
-          <main className="page">
-            <Outlet />
-            <ShopByCategory />
-          </main>
+            <main className="page">
+              <Outlet />
+            </main>
 
-          <Footer />
-        </div>
-      </FavouritesContextProvider>
-    </CartContextProvider>
+            <Footer />
+          </div>
+        </FavouritesContextProvider>
+      </CartContextProvider>
+    </ThemeContextProvider>
   );
 }
-
-export default App;

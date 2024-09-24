@@ -22,8 +22,8 @@ export const FilterControls = ({
   return (
     <div className={style.container}>
       <div className={style.dropdowns}>
-        <Input.Dropdown options={sortByOptions} onChange={onSortByChange} />
-        <Input.Dropdown options={perPageOptions} onChange={onPerPageChange} />
+        <Input.Dropdown label="Sort by" options={sortByOptions} onChange={onSortByChange} />
+        <Input.Dropdown label="Items on page" options={perPageOptions} onChange={onPerPageChange} />
       </div>
     </div>
   );

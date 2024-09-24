@@ -16,11 +16,11 @@
   overflow: auto;
 
   padding: 20px 16px;
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
 
   transition-duration: 0.5s;
 
-  background-color: $themePurpleWhite;
+  background-color: var(--colorBackground);
 
   &.isVisible {
     left: 0;
@@ -49,6 +49,16 @@
   gap: 6px;
 }
 
+.shipToMargin {
+  margin-bottom: 16px;
+}
+
+.cvcAndExpDate {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 16px;
+}
+
 .spacer {
   flex-grow: 1;
 }
@@ -68,7 +78,7 @@
   align-items: center;
 
   &Price {
-    color: $themePurplePrimary;
+    color: var(--colorPrimary);
 
     font-size: $fontSizeBig;
     font-weight: $fontWeightSemiBlack;
@@ -80,7 +90,7 @@
   width: 100%;
   height: 1px;
 
-  background-color: $themePurpleElements;
+  background-color: var(--colorElements);
 }
 
 .buttons {

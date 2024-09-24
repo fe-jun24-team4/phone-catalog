@@ -9,7 +9,7 @@
 
   &.isError {
     & > .input {
-      border-color: $themePurpleRed;
+      border-color: var(--colorEyeCatchingPrimary);
     }
 
     & > .error {
@@ -30,9 +30,10 @@
   box-sizing: border-box;
   padding: 0 12px;
 
-  border: 1px solid $themePurpleIcons;
+  border: 1px solid var(--colorIcons);
   border-radius: 8px;
 
+  color: var(--colorPrimary);
   font-weight: $fontWeightBold;
 
   cursor: pointer;
@@ -40,7 +41,7 @@
   transition-duration: $transitionDuration;
 
   &:focus {
-    border-color: $themePurplePrimary;
+    border-color: var(--colorPrimary);
     outline: none;
   }
 

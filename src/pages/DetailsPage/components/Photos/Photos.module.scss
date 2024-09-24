@@ -1,0 +1,85 @@
+@import '../../../../styles/generals/index.scss';
+
+.container {
+  justify-self:center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  transition-duration: $transitionDuration;
+
+  @include onTabletAndUp {
+    align-self: center;
+    justify-self: stretch;
+
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+}
+
+.aside {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  @include onTabletAndUp {
+    flex-direction: column;
+  }
+}
+
+.asideItem {
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid var(--colorIcons);
+  border-radius: 8px;
+
+  transition-duration: $transitionDuration;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  @include onHover {
+    border-color: var(--colorElements);
+  }
+
+  @include onLaptopAndUp {
+    width: 80px;
+    height: 80px;
+  }
+
+  &.isHero {
+    border-color: var(--colorPrimary);
+  }
+}
+
+.hero {
+  width: 288px;
+  height: 288px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition-duration: $transitionDuration;
+
+  @include onTabletAndUp {
+    width: 400px;
+    height: 50vh;
+    max-height: 600px;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}

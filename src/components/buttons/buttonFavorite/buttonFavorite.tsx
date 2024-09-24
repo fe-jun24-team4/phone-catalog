@@ -2,23 +2,22 @@ import styles from './buttonFavorite.module.scss';
 import classNames from 'classnames';
 import React from 'react';
 
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 export interface Props {
-  icon: string;
+  selected?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const ButtonFavorite: FC<Props> = ({ icon }) => {
-  const [isSelected, setIsSelected] = useState(false);
-
+const ButtonFavorite: FC<Props> = ({ selected, onClick = () => {} }) => {
   return (
     <button
       className={classNames(styles.buttonFavorite, {
-        [styles.selected]: isSelected,
+        [styles.selected]: selected,
       })}
-      onClick={() => setIsSelected(true)}
+      onClick={onClick}
     >
-      <span className={icon}></span>
+      <span className={selected ? 'icon-heart-filled' : 'icon-heart'} />
     </button>
   );
 };

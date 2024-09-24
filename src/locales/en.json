@@ -1,0 +1,76 @@
+{
+  "header": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+  "pageTitles": {
+    "home": "Welcome to Nice Gadgets store!",
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favorite": "Favorites",
+    "cart": "Cart"
+  },
+  "sliderTitles": {
+    "newModels": "Brand new models",
+    "hotPrices": "Hot prices",
+    "youMayAlsoLike": "You may also like"
+  },
+  "buttons": {
+    "addToCart": "Add to cart",
+    "viewInCart": "View in cart",
+    "checkout": "Checkout"
+  },
+  "home": {
+    "categories": {
+      "title": "Shop by category",
+      "models": "models",
+      "categoryPhoneTitle": "Mobile phones",
+      "categoryTabletTitle": "Tablets",
+      "categoryAccessoryTitle": "Accessories"
+    }
+  },
+  "catalog": {
+    "models": "models",
+    "sortBy": {
+      "title": "Sort by",
+        "newest": "Newest",
+        "topRated": "Top rated",
+        "topSales": "Top sales",
+        "biggestDiscount": "Biggest discount"
+    },
+    "itemsOnPage": "Items on page"
+  },
+  "detailsPage": {
+    "titles": {
+      "about": "About",
+      "techSpecs": "Tech specs"
+    },
+    "back": "Back",
+    "availableColors": "Available colors",
+    "selectCapacity": "Select capacity",
+    "screen": "Screen",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "ram": "RAM",
+    "memory": "Built in memory",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell"
+  },
+  "cart": {
+    "emptyCart": "Your cart is empty",
+    "item": "item",
+    "items": "items",
+    "back": "Back",
+    "totalFor": "Total for"
+  },
+  "footer": {
+    "github": "GitHub",
+    "contacts": "Contacts",
+    "rights": "Rights",
+    "backToTop": "Back to top"
+  }
+}

@@ -1,40 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
+import { Product } from '../types/Product';
+import { HOST } from '../utils/constants/host';
+import { useFetchData } from './useFetch';
+import { sortByRating } from '../features/sortProducts';
+import { Category } from '../types/Category';
 
-interface FetchState<T> {
-  data: T | null;
-  isLoading: boolean;
-  isError: boolean;
+export function useFetchRecommended(category: Category, count: number = 10) {
+  const { data: products } = useFetchData<Product>(`${HOST}/api/products.json`);
+
+  const recommendedProducts = useMemo(() => {
+    const productsFromCategory = products.filter(product => product.category === category);
+    const sortedProducts = sortByRating(productsFromCategory);
+
+    return sortedProducts.slice(0, count);
+  }, [category, count, products]);
+
+  return recommendedProducts;
 }
-
-export const useFetchRecommended = <T>(endpoint: string): FetchState<T> => {
-  const [data, setData] = useState<T | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      setIsError(false);
-
-      try {
-        const response = await fetch(endpoint);
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const result = await response.json();
-
-        setData(result);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [endpoint]); // Залежність endpoint
-
-  return { data, isLoading, isError };
-};

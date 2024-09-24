@@ -9,22 +9,22 @@
   align-items: center;
   flex-shrink: 0;
 
-  border: 1px solid $themePurpleElements;
+  border: 1px solid var(--colorElements);
   border-radius: 50%;
   overflow: hidden;
 
   background-color: transparent;
 
-  color: $themePurplePrimary;
+  color: var(--colorPrimary);
   transition-duration: $transitionDuration;
 
   @include onHover {
-    border-color: $themePurplePrimary;
+    border-color: var(--colorPrimary);
   }
 
   &.selected {
-    background-color: $themePurplePrimary;
-    color: $themePurpleWhite;
+    background-color: var(--colorPrimary);
+    color: var(--colorBackground);
   }
 
   &:disabled {

@@ -1,0 +1,51 @@
+@import '../../../../styles/generals/index';
+
+.aboutWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  color: var(--colorPrimary);
+  font-weight: $fontWeightBold;
+  font-size: 20px;
+  line-height: $lineHeightAdditional;
+}
+
+.line {
+  height: 1px;
+  background-color: var(--colorElements);
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.descriptionTitle {
+  font-size: 16px;
+  font-weight: $fontWeightBold;
+  line-height: $lineHeightAdditional;
+
+  color: var(--colorPrimary);
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
