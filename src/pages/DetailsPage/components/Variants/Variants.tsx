@@ -1,7 +1,7 @@
 import styles from './Variants.module.scss';
 import cn from 'classnames';
 
-import { Product } from '../../../../types/Product';
+import { ProductDetails } from '../../../../types/Product';
 import React, { useState } from 'react';
 import { ButtonFavorite, ButtonPrimary } from '../../../../components/buttons';
 import { colorNameToRgb } from '../../../../utils/colorNameToRgb';
@@ -12,7 +12,7 @@ import { RouteNames } from '../../../../enums/RouteNames';
 import { useTranslation } from 'react-i18next';
 
 type Props = {
-  product: Product;
+  product: ProductDetails;
   onColorChange?: (color: string) => void;
   onCapacityChange?: (capacity: string) => void;
 };
@@ -44,10 +44,10 @@ export const Variants = ({
   const navigate = useNavigate();
 
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
-  const isInFavourite = Boolean(favourites.find(item => item.id === product.id));
+  const isInFavourite = Boolean(favourites.find(item => item.itemId === product.id));
 
   const { cart, addItem: addToCart } = useCartContext();
-  const isInCart = Boolean(cart.find(item => item.product.id === product.id));
+  const isInCart = Boolean(cart.find(item => item.product.itemId === product.id));
 
   const [color, setColor] = useState(defaultColor);
   const [capacity, setCapacity] = useState(defaultCapacity);
@@ -68,17 +68,17 @@ export const Variants = ({
 
   const handleAddToCart = () => {
     if (isInCart) {
-      navigate(RouteNames.cart);
+      navigate(`/${RouteNames.cart}`);
     } else {
-      addToCart({ product, amount: 1 });
+      addToCart({ productId: product.id, amount: 1 });
     }
   };
 
   const toggleFavourite = () => {
     if (isInFavourite) {
-      removeFavourite(product);
+      removeFavourite(product.id);
     } else {
-      addFavourite(product);
+      addFavourite(product.id);
     }
   };
 

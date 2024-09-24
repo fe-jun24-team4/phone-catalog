@@ -1,34 +1,46 @@
-export type ProductShort = {
+export type Product = {
   id: number;
-  category: string;
   itemId: string;
+
   name: string;
-  fullPrice: number;
+  category: string;
+  image: string;
+
   price: number;
+  fullPrice: number;
+  year: number;
+  rating: number;
+  sold: number;
+
   screen: string;
   capacity: string;
   color: string;
   ram: string;
-  year: number;
-  image: string;
 };
 
-export type Product = {
+export type ProductDetails = {
   id: string;
-  category: string;
   namespaceId: string;
+
   name: string;
-  capacityAvailable: string[];
-  capacity: string;
+  category: string;
+
   priceRegular: number;
   priceDiscount: number;
+
+  capacityAvailable: string[];
+  capacity: string;
+
   colorsAvailable: string[];
   color: string;
+
   images: string[];
+
   description: {
     title: string;
     text: string[];
   }[];
+
   screen: string;
   resolution: string;
   processor: string;

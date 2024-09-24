@@ -7,7 +7,7 @@ export const TabletsPage = () => {
   const { t } = useTranslation();
 
   return (
-    <CatalogContextProvider source="api/tablets">
+    <CatalogContextProvider category="tablets">
       <CatalogPage title={t('pageTitles.tablets')} />
     </CatalogContextProvider>
   );

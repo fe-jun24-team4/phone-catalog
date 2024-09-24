@@ -3,11 +3,11 @@ import cn from 'classnames';
 
 import React from 'react';
 import { useState } from 'react';
-import { Product } from '../../../../types/Product';
+import { ProductDetails } from '../../../../types/Product';
 import { HOST } from '../../../../utils/constants/host';
 
 type Props = {
-  product: Product;
+  product: ProductDetails;
 };
 
 export const Photos = ({ product }: Props) => {

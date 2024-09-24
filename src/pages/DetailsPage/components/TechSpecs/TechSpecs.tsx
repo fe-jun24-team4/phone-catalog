@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import styles from './TechSpecs.module.scss';
 import { getDescriptionContent } from './helpers/helpers';
-import { Product } from '../../../../types/Product';
+import { ProductDetails } from '../../../../types/Product';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
-  product: Product;
+  product: ProductDetails;
 }
 
 export const TechSpecs: FC<Props> = ({ product }) => {
@@ -21,9 +21,7 @@ export const TechSpecs: FC<Props> = ({ product }) => {
       <div className={styles.containers}>
         {Object.entries(techSpecs).map(([key, value]) => {
           const specsContent =
-            key === 'capacity'
-              ? t('detailsPage.memory')
-              : t(`detailsPage.${key}`, key);
+            key === 'capacity' ? t('detailsPage.memory') : t(`detailsPage.${key}`, key);
 
           const descriptionContent = getDescriptionContent(value);
 
