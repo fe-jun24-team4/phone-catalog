@@ -11,6 +11,7 @@ import { RouteNames } from '../../enums/RouteNames';
 interface ProductCardProps {
   key?: number;
   product: Product;
+  onRemove?: () => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
