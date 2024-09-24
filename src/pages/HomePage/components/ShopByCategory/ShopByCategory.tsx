@@ -6,8 +6,10 @@ import { HOST } from '../../../../utils/constants/host';
 import { useFetchData } from '../../../../hooks/useFetch';
 import { Product } from '../../../../types/Product';
 import { RouteNames } from '../../../../enums/RouteNames';
+import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory = () => {
+  const { t } = useTranslation();
   const { data: phones } = useFetchData<Product>(`${HOST}/api/phones.json`);
   const { data: tablets } = useFetchData<Product>(`${HOST}/api/tablets.json`);
   const { data: accessories } = useFetchData<Product>(`${HOST}/api/accessories.json`);
@@ -15,28 +17,28 @@ export const ShopByCategory = () => {
   const categories = [
     {
       imgSrc: './img/category-phones.webp',
-      title: 'Mobile phones',
+      title: t('home.categories.categoryPhoneTitle'),
       productsAmount: phones.length,
       linkRoute: RouteNames.phones,
     },
     {
       imgSrc: './img/category-tablets.webp',
-      title: 'Tablets',
+      title: t('home.categories.categoryTabletTitle'),
       productsAmount: tablets.length,
       linkRoute: RouteNames.tablets,
     },
     {
       imgSrc: './img/category-accessories.png',
-      title: 'Accessories',
+      title: t('home.categories.categoryAccessoryTitle'),
       productsAmount: accessories.length,
       linkRoute: RouteNames.accessories,
     },
   ];
 
   return (
-    <div className="page">
-      <h2>Shop by categories</h2>
-      <div className={styles.categories}>
+    <div className={styles.categories}>
+      <h2 className={styles.title}>{t('home.categories.title')}</h2>
+      <div className={styles.categoriesBlock}>
         {categories.map((category, index) => (
           <CategoryComponent
             key={index}

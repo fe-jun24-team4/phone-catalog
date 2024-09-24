@@ -1,0 +1,64 @@
+@import '../../../styles/generals/index';
+
+.features {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.theme {
+  padding: 3px;
+
+  width: 60px;
+  height: 30px;
+
+  border-radius: 20px;
+  overflow: hidden;
+
+  background-color: $themePurpleBgHover;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  transform: scale(0.65);
+  transition-duration: $transitionDuration;
+
+  &.active {
+
+    background-color: $themePurplePrimary;
+
+    .themeItem {
+      transform: translateX(122%);
+
+      background: linear-gradient(to right, white, #f0f0f0, #d9d9d9, #b3b3b3, #808080);
+    }
+  }
+}
+
+.themeItem {
+  width: 24px;
+  min-height: 100%;
+
+  border-radius: 50%;
+  background: linear-gradient(to right, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+
+  transition-duration: $transitionDuration;
+}

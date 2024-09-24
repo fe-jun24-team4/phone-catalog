@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-i18next": "^8.1.0",
     "classnames": "^2.5.1",
     "i18next": "^23.15.1",
     "lodash.debounce": "^4.0.8",

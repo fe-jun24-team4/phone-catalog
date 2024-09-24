@@ -5,20 +5,15 @@ import { RouteNames } from '../../../enums/RouteNames';
 
 import styles from './iconsComponent.module.scss';
 import { isLinkActive } from '../isLinkActive';
-import { useHandleMenuAction } from '../hooks/useHandleMenuAction';
-import { useThemeContext } from '../../../context/ThemeContext';
-import { themeDark, themeLight } from '../../../types/ColorTheme';
 import { useFavouritesContext } from '../../../pages/FavouritesPage/context/FavouritesContext';
 import { useCartContext } from '../../../pages/CartPage/context/CartContext';
 
 interface Props {
   mobile?: boolean;
+  handleMenuAction?: () => void;
 }
 
-export const IconsComponent: FC<Props> = ({ mobile }) => {
-  const { handleMenuAction } = useHandleMenuAction();
-  const { theme, setTheme } = useThemeContext();
-
+export const IconsComponent: FC<Props> = ({ mobile, handleMenuAction }) => {
   const { favourites } = useFavouritesContext();
   const favoritesNotifications = favourites.length < 100 ? favourites.length : 99;
 
@@ -34,26 +29,22 @@ export const IconsComponent: FC<Props> = ({ mobile }) => {
         [styles.mobile]: mobile,
       })}
     >
-      <button onClick={() => setTheme(theme === themeLight.id ? themeDark.id : themeLight.id)}>
-        Switch to {theme === themeLight.id ? 'dark' : 'light'}
-      </button>
-
       <NavLink
         to={RouteNames.favorites}
         className={getIconActiveClassName}
         onClick={handleMenuAction}
       >
-        <span className="icon-heart">
+        <div className="icon-heart">
           {favoritesNotifications !== 0 && (
-            <div className={styles.bubble}>{favoritesNotifications}</div>
+            <span className={styles.bubble}>{favoritesNotifications}</span>
           )}
-        </span>
+        </div>
       </NavLink>
 
       <NavLink to={RouteNames.cart} className={getIconActiveClassName} onClick={handleMenuAction}>
-        <span className="icon-shopping-bag">
-          {cartNotifications !== 0 && <div className={styles.bubble}>{cartNotifications}</div>}
-        </span>
+        <div className="icon-shopping-bag">
+          {cartNotifications !== 0 && <span className={styles.bubble}>{cartNotifications}</span>}
+        </div>
       </NavLink>
     </div>
   );

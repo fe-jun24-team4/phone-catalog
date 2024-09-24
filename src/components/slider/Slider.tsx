@@ -102,10 +102,10 @@ export const Slider: FC<Props> = ({ slider }) => {
               slidesPerView: breakpoints?.['1200'].slidesPerView ?? 1,
             },
           }}
-          autoplay={{
+          /*autoplay={{
             delay: delay,
             disableOnInteraction: false,
-          }}
+          }}*/
           className={classnames(styles.responsiveSwiper, {
             [styles.width]: width,
           })}
