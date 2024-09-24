@@ -121,7 +121,7 @@
 .specItem {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   gap: 10px;
 
   font-size: $fontSizeSmall;
@@ -129,6 +129,13 @@
 }
 
 .specValue {
+  width: 120px;
+  text-align: right;
+
+  text-wrap: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--colorPrimary);
 
   transition-property: color;

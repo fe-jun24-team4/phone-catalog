@@ -34,17 +34,17 @@ export const IconsComponent: FC<Props> = ({ mobile, handleMenuAction }) => {
         className={getIconActiveClassName}
         onClick={handleMenuAction}
       >
-        <span className="icon-heart">
+        <div className="icon-heart">
           {favoritesNotifications !== 0 && (
-            <div className={styles.bubble}>{favoritesNotifications}</div>
+            <span className={styles.bubble}>{favoritesNotifications}</span>
           )}
-        </span>
+        </div>
       </NavLink>
 
       <NavLink to={RouteNames.cart} className={getIconActiveClassName} onClick={handleMenuAction}>
-        <span className="icon-shopping-bag">
-          {cartNotifications !== 0 && <div className={styles.bubble}>{cartNotifications}</div>}
-        </span>
+        <div className="icon-shopping-bag">
+          {cartNotifications !== 0 && <span className={styles.bubble}>{cartNotifications}</span>}
+        </div>
       </NavLink>
     </div>
   );

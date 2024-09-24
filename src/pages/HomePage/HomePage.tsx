@@ -55,7 +55,7 @@ export const HomePage = () => {
     <div className={styles.home}>
       <div className={styles.container}>
         <div className={styles.homeHeader}>
-          <h1 className={styles.title}>Welcome to Nice Gadgets Store!</h1>
+          <h1 className={styles.title}>{t('pageTitles.home')}</h1>
           <Slider slider={bannerSlider} />
         </div>
 

@@ -49,12 +49,15 @@
     transition-duration: $transitionDuration;
   }
 
-  span {
+  div {
+    position: relative;
+
+    font-size: 18px;
     transition-duration: $transitionDuration;
   }
 
   @include onHover {
-    span {
+    div {
       color: var(--colorPrimary);
       transform: $transformScale;
     }
@@ -67,6 +70,10 @@
 
     &:nth-child(1) {
       border-left: 2px solid var(--colorElements);
+    }
+
+    &:nth-child(2) {
+      border-right: 2px solid var(--colorElements);
     }
   }
 
@@ -85,15 +92,12 @@
 }
 
 .bubble {
-  font-family: 'Mont';
-
-  position: relative;
-  top: -20px;
+  position: absolute;
+  top: -5px;
   right: -7px;
 
-  width: 14px;
-  height: 14px;
-  box-sizing: border-box;
+  width: 15px;
+  height: 15px;
 
   display: flex;
   align-items: center;
@@ -105,7 +109,7 @@
   color: var(--colorBackground);
   background-color: var(--colorAccentPrimary);
 
-  border: 2px, solid, var(--colorBackground);
+  border: 1px, solid, var(--colorBackground);
   border-radius: 7px;
 
   transition-duration: $transitionDuration;

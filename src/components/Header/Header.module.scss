@@ -6,7 +6,8 @@
   top: 0;
   z-index: 10;
 
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   height: 48px;
 
   background-color: var(--colorBackground);
@@ -23,7 +24,7 @@
   min-height: 100%;
 
   margin: 0 auto;
-  padding-left: 16px;
+  padding: 0 16px;
 
   display: flex;
   justify-content: space-between;
@@ -39,9 +40,10 @@
 
   @include onLaptopAndUp {
     gap: 48px;
+  }
 
-    border-left: 2px solid var(--colorElements);
-    border-right: 2px solid var(--colorElements);
+  @media(min-width: 1456px) {
+    padding: 0;
   }
 }
 
@@ -77,14 +79,13 @@
 
   flex-grow: 1;
 
-  overflow: auto;
-
   transform: translateX(100%);
   transition-duration: 0.5s;
 
   background-color: var(--colorBackground);
 
   &.active {
+    overflow: auto;
     transform: translateX(0);
   }
 
@@ -93,7 +94,7 @@
     top: unset;
     left: unset;
 
-    height: auto;
+    height: fit-content;
     width: max-content;
 
     transform: none;
@@ -191,6 +192,12 @@
       width: 100%;
     }
   }
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .burgerMenu {
