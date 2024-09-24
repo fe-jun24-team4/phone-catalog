@@ -1,18 +1,16 @@
 @font-face {
   font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?szc1ug');
-  src:
-    url('./icons_files/icomoon.eot?szc1ug#iefix') format('embedded-opentype'),
-    url('./icons_files/icomoon.ttf?szc1ug') format('truetype'),
-    url('./icons_files/icomoon.woff?szc1ug') format('woff'),
-    url('./icons_files/icomoon.svg?szc1ug#icomoon') format('svg');
+  src:  url('icons_files/icomoon.eot?tta1s3');
+  src:  url('icons_files/icomoon.eot?tta1s3#iefix') format('embedded-opentype'),
+  url('icons_files/icomoon.ttf?tta1s3') format('truetype'),
+  url('icons_files/icomoon.woff?tta1s3') format('woff'),
+  url('icons_files/icomoon.svg?tta1s3#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^='icon-'],
-[class*=' icon-'] {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: never;
@@ -28,35 +26,41 @@
 }
 
 .icon-chevron-right:before {
-  content: '\e900';
+  content: "\e902";
 }
 .icon-chevron-left:before {
-  content: '\e901';
+  content: "\e903";
 }
 .icon-chevron-down:before {
-  content: '\e902';
+  content: "\e904";
 }
 .icon-chevron-up:before {
-  content: '\e903';
+  content: "\e905";
 }
 .icon-plus:before {
-  content: '\e904';
+  content: "\e906";
 }
 .icon-minus:before {
-  content: '\e905';
+  content: "\e907";
 }
 .icon-heart:before {
-  content: '\e906';
+  content: "\e908";
 }
 .icon-heart-filled:before {
-  content: '\e907';
+  content: "\e909";
 }
 .icon-shopping-bag:before {
-  content: '\e908';
+  content: "\e90a";
 }
 .icon-search:before {
-  content: '\e909';
+  content: "\e90b";
 }
 .icon-home:before {
-  content: '\e90a';
+  content: "\e90c";
+}
+.icon-moon-stars:before {
+  content: "\e900";
+}
+.icon-sun:before {
+  content: "\e901";
 }

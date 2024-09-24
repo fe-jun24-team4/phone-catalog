@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useThemeContext } from '../../../context/ThemeContext';
 import { themeDark, themeLight } from '../../../types/ColorTheme';
-import ukrFlag from './images/ukr_flag.png';
-import engFlag from './images/english_flag.svg';
 import classNames from 'classnames';
 
 import styles from './themeLanguageToggles.module.scss';
 
-export const ThemeLanguageToggles = () => {
+interface Props {
+  mobile?: boolean;
+}
+
+export const ThemeLanguageToggles: FC<Props> = ({mobile}) => {
   const { theme, setTheme } = useThemeContext();
   const { i18n } = useTranslation();
 
   const isUkrainian = i18n.language === 'ua';
+  const isThemeLight = theme === themeLight.id;
 
   const toggleLanguage = () => {
     const newLang = isUkrainian ? 'en' : 'ua';
@@ -22,28 +25,30 @@ export const ThemeLanguageToggles = () => {
   };
 
   return (
-    <div className={styles.features}>
-      <button className={styles.language} onClick={toggleLanguage}>
-        {isUkrainian ? (
-          <img
-            src={ukrFlag}
-            className={`${styles.flag} ${isUkrainian ? styles.visible : styles.hidden}`}
-            alt="Ukrainian flag"
-          />
-        ) : (
-          <img
-            src={engFlag}
-            className={`${styles.flag} ${isUkrainian ? styles.hidden : styles.visible}`}
-            alt="English flag"
-          />
-        )}
-      </button>
-      <button
-        className={classNames(styles.theme, { [styles.active]: theme === themeDark.id })}
-        onClick={() => setTheme(theme === themeLight.id ? themeDark.id : themeLight.id)}
+    <div className={classNames(styles.features, { [styles.mobile]: mobile })}>
+      <div className={styles.languages} onClick={toggleLanguage}>
+        <span
+          className={classNames(styles.language, styles.en, {
+            [styles.active]: !isUkrainian,
+          })}
+        >
+          EN
+        </span>
+        <div className={styles.separator} />
+        <span
+          className={classNames(styles.language, styles.ua, {
+            [styles.active]: isUkrainian,
+          })}
+        >
+          UA
+        </span>
+      </div>
+      <div
+        className={classNames(styles.theme)}
+        onClick={() => setTheme(isThemeLight ? themeDark.id : themeLight.id)}
       >
-        <span className={styles.themeItem} />
-      </button>
+        <span className={`${isThemeLight ? 'icon-sun' : 'icon-moon-stars'}`} />
+      </div>
     </div>
   );
 };

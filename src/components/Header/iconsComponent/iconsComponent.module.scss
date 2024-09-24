@@ -1,20 +1,31 @@
-@import '../../../styles/generals/index.scss';
+@import '../../../styles/generals/index';
 
 .icons {
   display: none;
 
-  @include onTabletAndUp {
+  @media (min-width: 768px) {
     display: flex;
   }
 
   &.mobile {
+    position: relative;
+
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    align-items: center;
+    justify-items: center;
 
     border-top: 2px solid var(--colorElements);
 
-    @include onTabletAndUp {
-      display: none;
+    @include before {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 1px);
+
+      width: 1px;
+      height: 100%;
+
+      background-color: var(--colorElements);
     }
   }
 }
@@ -31,9 +42,6 @@
 
   cursor: pointer;
 
-  &:nth-child(1) {
-    border-right: 2px solid var(--colorElements);
-  }
 
   @include before {
     position: absolute;
@@ -51,9 +59,11 @@
 
   div {
     position: relative;
-
-    font-size: 18px;
     transition-duration: $transitionDuration;
+
+    @include onTabletAndUp {
+      font-size: 18px;
+    }
   }
 
   @include onHover {
@@ -63,14 +73,14 @@
     }
   }
 
-  @include onTabletAndUp {
+  @media (min-width: 768px) {
     width: 48px;
     height: 48px;
     flex-shrink: 0;
 
-    &:nth-child(1) {
-      border-left: 2px solid var(--colorElements);
-    }
+
+    border-left: 2px solid var(--colorElements);
+
 
     &:nth-child(2) {
       border-right: 2px solid var(--colorElements);

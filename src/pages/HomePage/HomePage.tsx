@@ -2,14 +2,14 @@ import React from 'react';
 import styles from './HomePage.module.scss';
 import { ShopByCategory } from './components/ShopByCategory';
 import { Slider } from '../../components/slider/Slider';
-import { useFetchRecommended } from '../../hooks/useFetchRecommended';
 import { useTranslation } from 'react-i18next';
-import { Product } from '../../types/Product';
+import { useFetchNewest } from '../../hooks/useFetchNewest';
 
 export const HomePage = () => {
   const { t } = useTranslation();
 
-  const { recommendedData } = useFetchRecommended<Product>();
+  const newestProducts = useFetchNewest('phones');
+
   const bannerSlider = {
     sliders: [
       'src/pages/HomePage/img/banners/banner-1-large.png',
@@ -31,7 +31,7 @@ export const HomePage = () => {
     },
   };
   const newModelsSlider = {
-    sliders: recommendedData,
+    sliders: newestProducts,
     settings: {
       slidesPerView: 1,
       spaceBetween: 16,

@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
 import { RouteNames } from '../../enums/RouteNames';
+import { useTranslation } from 'react-i18next';
 
 interface ProductCardProps {
   key?: number;
@@ -16,6 +17,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { image, name, price, fullPrice, screen, capacity, ram } = product;
 
+  const {t} = useTranslation();
   const navigate = useNavigate();
 
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
@@ -63,19 +65,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
           <div className={styles.specs}>
             <div className={styles.specItem}>
-              <p className={styles.specLabel}>Screen</p>
+              <p className={styles.specLabel}>{t('detailsPage.screen')}</p>
 
               <p className={styles.specValue}>{screen}</p>
             </div>
 
             <div className={styles.specItem}>
-              <p className={styles.specLabel}>Capacity</p>
+              <p className={styles.specLabel}>{t('detailsPage.capacity')}</p>
 
               <p className={styles.specValue}>{capacity}</p>
             </div>
 
             <div className={styles.specItem}>
-              <p className={styles.specLabel}>RAM</p>
+              <p className={styles.specLabel}>{t('detailsPage.ram')}</p>
 
               <p className={styles.specValue}>{ram}</p>
             </div>

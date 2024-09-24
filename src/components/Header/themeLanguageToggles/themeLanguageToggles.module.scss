@@ -1,64 +1,108 @@
 @import '../../../styles/generals/index';
 
 .features {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: none;
+
+  @media(min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &.mobile {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    align-items: center;
+    justify-items: center;
+  }
 }
 
-.language {
-  width: 30px;
-  height: 30px;
+.languages {
+  position: relative;
+
+  width: 50px;
+  height: 35px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  img {
-    width: 100%;
-    height: 100%;
+  cursor: pointer;
 
-    border-radius: 50%;
-
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-.theme {
-  padding: 3px;
-
-  width: 60px;
-  height: 30px;
-
-  border-radius: 20px;
-  overflow: hidden;
-
-  background-color: $themePurpleBgHover;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-
-  display: flex;
-  transform: scale(0.65);
-  transition-duration: $transitionDuration;
-
-  &.active {
-
-    background-color: $themePurplePrimary;
-
-    .themeItem {
-      transform: translateX(122%);
-
-      background: linear-gradient(to right, white, #f0f0f0, #d9d9d9, #b3b3b3, #808080);
+  @include onHover {
+    .separator {
+       background-color: var(--colorAccentSecondary);
     }
   }
 }
 
-.themeItem {
-  width: 24px;
-  min-height: 100%;
+.language {
+  position: absolute;
 
-  border-radius: 50%;
-  background: linear-gradient(to right, #000000, #1a1a1a, #333333, #4d4d4d, #666666);
+  font-size: $fontSizeSmall;
 
   transition-duration: $transitionDuration;
+
+  &.en {
+    top: 0;
+    left: 0;
+  }
+
+  &.ua {
+    bottom: 0;
+    right: 0;
+  }
+
+  &.active {
+    color: var(--colorPrimary);
+    font-size: 14px;
+
+    @include onTabletAndUp {
+      font-size: 16px;
+    }
+  }
+}
+
+.separator {
+  width: 1px;
+  height: 35px;
+
+  flex-shrink: 0;
+
+  background-color: var(--colorSecondary);
+
+  transform: rotate(45deg);
+
+  transition-duration: $transitionDuration;
+}
+
+.theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 5px;
+  overflow: hidden;
+
+  transition-duration: $transitionDuration;
+  cursor: pointer;
+
+  span {
+    font-size: 35px;
+    color: var(--colorSecondary);
+
+    transition-duration: $transitionDuration;
+
+    @include onHover {
+      color: var(--colorAccentSecondary);
+    }
+
+    @include onTabletAndUp {
+      font-size: 40px;
+    }
+
+    @include onLaptopAndUp {
+      font-size: 45px;
+    }
+  }
 }
