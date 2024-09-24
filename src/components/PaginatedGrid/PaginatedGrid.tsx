@@ -1,6 +1,6 @@
 import styles from './PaginateGrid.module.scss';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import { PaginationControls } from './PaginationControls';
