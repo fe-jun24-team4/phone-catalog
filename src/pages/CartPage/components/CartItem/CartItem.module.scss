@@ -35,7 +35,7 @@
   border: 1px solid var(--colorElements);
   border-radius: 16px;
 
-  transition-property: background-color, border-color, height;
+  transition-property: background-color, border-color;
   transition-duration: $transitionDuration;
 
   @include onTabletAndUp {
