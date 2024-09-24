@@ -34,7 +34,7 @@
   border-radius: 20px;
   overflow: hidden;
 
-  background-color: $themePurpleBgHover;
+  background-color: var(--colorBackgroundOnHover);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 
   display: flex;
@@ -42,8 +42,7 @@
   transition-duration: $transitionDuration;
 
   &.active {
-
-    background-color: $themePurplePrimary;
+    background-color: var(--colorPrimary);
 
     .themeItem {
       transform: translateX(122%);
