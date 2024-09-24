@@ -23,6 +23,7 @@ export const ShopByCategory = () => {
       title: 'Mobile phones',
       productsAmount: phones.length,
       linkRoute: RouteNames.phones,
+      className: 'phone',
     },
     {
       id: 1,
@@ -30,20 +31,22 @@ export const ShopByCategory = () => {
       title: 'Tablets',
       productsAmount: tablets.length,
       linkRoute: RouteNames.tablets,
+      className: 'tablet',
     },
     {
       id: 1,
-      imgSrc: './img/category-accessories.png',
+      imgSrc: './img/accessories/apple-watch-series-6/space-gray/00.webp',
       title: 'Accessories',
       productsAmount: accessories.length,
       linkRoute: RouteNames.accessories,
+      className: 'accessories',
     },
   ];
 
   return (
-    <div className="page">
-      <h2>Shop by categories</h2>
-      <div className={styles.categories}>
+    <div className={styles.categories}>
+      <h2 className={styles.title}>Shop by categories</h2>
+      <div className={styles.categoriesBlock}>
         {categories.map(category => (
           <CategoryComponent
             key={category.id}
@@ -51,6 +54,7 @@ export const ShopByCategory = () => {
             title={category.title}
             productsAmount={category.productsAmount}
             linkRoute={category.linkRoute}
+            className={category.className}
           />
         ))}
       </div>

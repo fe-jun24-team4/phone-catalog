@@ -8,43 +8,43 @@
   cursor: pointer;
 }
 
-.picture {
-  width: 288px;
-  aspect-ratio: 1;
+.cart_box:hover {
+  transform: scale(1.05)
+}
 
+.picture {
+  width: 100%;
+
+  aspect-ratio: 1;
   border-radius: 8px;
   overflow: hidden;
 
   @include onTabletAndUp {
-    width: 187px;
+    max-width: clamp(187px, 50vw, 368px);
   }
 
   @include onLaptopAndUp {
-    width: 368px;
+    max-width: 368px;
   }
 
   img {
     width: 100%;
     height: 100%;
-  
     object-fit: cover;
+    object-position: 45px 35px;
   }
 }
 
 .phone {
-  background-color: rgb(156, 155, 155);
-  object-position: 60px 50px;
+  background-color: #6D6474;
 }
 
 .tablet {
-  background-color: #806262;
-  object-position: 40px 65px;
-  object-position: left bottom;
+  background-color: rgb(156, 155, 155);
 }
 
 .accessories {
-  background-color: #852f52;
-  object-position: 40px 50px;
+  background-color: #74173c;
 }
 
 .titleAndCount {
@@ -59,4 +59,3 @@
   line-height: $lineHeightAdditional;
   font-weight: $fontWeightSemiBold;
 }
-

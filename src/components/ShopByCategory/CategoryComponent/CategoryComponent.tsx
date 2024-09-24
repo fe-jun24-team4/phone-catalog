@@ -8,13 +8,20 @@ interface Props {
   title: string;
   productsAmount: number;
   linkRoute: RouteNames;
+  className: string;
 }
 
-export const CategoryComponent: FC<Props> = ({ imgSrc, title, productsAmount, linkRoute }) => {
+export const CategoryComponent: FC<Props> = ({
+  imgSrc,
+  title,
+  productsAmount,
+  linkRoute,
+  className,
+}) => {
   return (
     <Link to={linkRoute} className={styles.cart_box}>
-      <div className={`${styles.picture} ${styles.phone}`}>
-        <img className={styles.phone} src={imgSrc} alt={title} />
+      <div className={`${styles.picture} ${styles[className]}`}>
+        <img className={styles[className]} src={imgSrc} alt={title} />
       </div>
       <div className={styles.titleAndCount}>
         <h3 className={styles.title}>{title}</h3>
