@@ -1,5 +1,5 @@
 import { SortBy } from '../enums/sortBy';
-import { ProductShort as Product } from '../types/Product';
+import { Product } from '../types/Product';
 
 export function sortByNewest(products: Product[]) {
   return [...products].sort(({ year: a }, { year: b }) => b - a);
