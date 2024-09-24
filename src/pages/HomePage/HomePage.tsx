@@ -2,14 +2,15 @@ import React from 'react';
 import styles from './HomePage.module.scss';
 import { ShopByCategory } from './components/ShopByCategory';
 import { Slider } from '../../components/slider/Slider';
-import { useFetchRecommended } from '../../hooks/useFetchRecommended';
 import { useTranslation } from 'react-i18next';
+
+import { useFetchNewest } from '../../hooks/useFetchNewest';
 import { useFetchHotPrices } from '../../hooks/useFetchHotPrices';
 
 export const HomePage = () => {
   const { t } = useTranslation();
 
-  const recommended = useFetchRecommended('tablets', 10);
+  const newestProducts = useFetchNewest('phones');
   const hotPrices = useFetchHotPrices('phones', 10);
 
   const bannerSlider = {
@@ -32,9 +33,9 @@ export const HomePage = () => {
       },
     },
   };
-
-  const recommndedSlider = {
-    sliders: recommended,
+  
+  const newModelsSlider = {
+    sliders: newestProducts,
     settings: {
       slidesPerView: 1,
       spaceBetween: 16,

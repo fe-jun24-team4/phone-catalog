@@ -21,7 +21,9 @@
   "buttons": {
     "addToCart": "Додати до корзини",
     "viewInCart": "Подивитись в корзині",
-    "checkout": "Підтвердження замовлення"
+    "checkout": "Підтвердження замовлення",
+    "confirm": "Підтвердити",
+    "returnToCart": "Повернутися до корзини"
   },
   "home": {
     "categories": {
@@ -58,14 +60,33 @@
     "memory": "Пам'ять",
     "camera": "Камера",
     "zoom": "Зум",
-    "cell": "Cell"
+    "cell": "Cell",
+    "capacity": "Пам'ять"
   },
   "cart": {
     "empty": "Ваша корзина пуста",
     "item": "продукт",
     "items": "продукти",
     "back": "Назад",
-    "totalFor": "Загальна вартість за"
+    "totalFor": "Загальна вартість за",
+    "total": "Загальна вартість",
+    "placeholders": {
+      "name": "Ваше ім'я",
+      "surname": "Ваше прізвище",
+      "email": "email@domain.com"
+    },
+    "errors": {
+      "name": "Ім'я не може бути пустим",
+      "surname": "Прізвище не може бути пустим",
+      "email": "Невірний email",
+      "creditCard": "Невірна кредитна карта",
+      "expiryDate": "Невірна дата завершення",
+      "cvv": "Невірний CVC код"
+    },
+    "shipTo": "Доставка до",
+    "creditCard": "Кредитна карта",
+    "expiryDate": "Дата завершення",
+    "cvv": "CVC"
   },
   "footer": {
     "github": "GitHub",

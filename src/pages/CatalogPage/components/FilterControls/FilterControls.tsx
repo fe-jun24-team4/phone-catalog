@@ -5,6 +5,7 @@ import React from 'react';
 import { Options } from '../../../../types/Option';
 import { SortBy } from '../../../../enums/sortBy';
 import { Input } from '../../../../components/inputs';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   sortByOptions: Options<SortBy>;
@@ -19,11 +20,21 @@ export const FilterControls = ({
   perPageOptions,
   onPerPageChange = () => {},
 }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <div className={style.container}>
       <div className={style.dropdowns}>
-        <Input.Dropdown label="Sort by" options={sortByOptions} onChange={onSortByChange} />
-        <Input.Dropdown label="Items on page" options={perPageOptions} onChange={onPerPageChange} />
+        <Input.Dropdown
+          label={t('catalog.sortBy.title')}
+          options={sortByOptions}
+          onChange={onSortByChange}
+        />
+        <Input.Dropdown
+          label={t('catalog.itemsOnPage')}
+          options={perPageOptions}
+          onChange={onPerPageChange}
+        />
       </div>
     </div>
   );

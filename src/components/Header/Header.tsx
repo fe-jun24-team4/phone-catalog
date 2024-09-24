@@ -81,7 +81,10 @@ export const Header: React.FC = () => {
               </li>
             </ul>
 
-            <IconsComponent mobile handleMenuAction={handleMenuAction} />
+            <div className={classnames(styles.features, styles.mobile)}>
+              <ThemeLanguageToggles mobile />
+              <IconsComponent mobile handleMenuAction={handleMenuAction} />
+            </div>
           </div>
         </nav>
 
