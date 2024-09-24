@@ -9,7 +9,9 @@
 }
 
 .cart_box:hover {
-  transform: scale(1.05)
+  .picture {
+    transform: scale(1.05);
+  }
 }
 
 .picture {
@@ -19,6 +21,8 @@
   border-radius: 8px;
   overflow: hidden;
 
+  transition-duration: $transitionDuration;
+  
   @include onTabletAndUp {
     max-width: clamp(187px, 50vw, 368px);
   }
