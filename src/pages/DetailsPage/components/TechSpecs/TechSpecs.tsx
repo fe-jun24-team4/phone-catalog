@@ -21,7 +21,7 @@ export const TechSpecs: FC<Props> = ({ product }) => {
       <div className={styles.containers}>
         {Object.entries(techSpecs).map(([key, value]) => {
           const specsContent =
-            key === 'capacity' ? t('detailsPage.memory') : t(`detailsPage.${key}`, key);
+            key === 'capacity' ? t('detailsPage.memory') : t(`detailsPage.${key}`);
 
           const descriptionContent = getDescriptionContent(value);
 
