@@ -6,6 +6,7 @@ import { ButtonFavorite, ButtonPrimary } from '../buttons';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
+import { RouteNames } from '../../enums/RouteNames';
 
 interface ProductCardProps {
   key?: number;
@@ -27,7 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     event.stopPropagation();
     event.preventDefault();
     if (isInCart) {
-      navigate(`/cart`);
+      navigate(`/${RouteNames.cart}`);
     } else {
       addToCart({ productId: product.itemId, amount: 1 });
     }

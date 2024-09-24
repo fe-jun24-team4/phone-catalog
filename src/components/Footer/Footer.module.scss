@@ -7,6 +7,8 @@
 
   transition-property: background-color;
   transition-duration: $transitionDuration;
+
+  border-top: 2px solid var(--colorElements);
 }
 
 .container {

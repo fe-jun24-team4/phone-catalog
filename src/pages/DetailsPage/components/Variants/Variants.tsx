@@ -13,15 +13,10 @@ import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: ProductDetails;
-  onColorChange?: (color: string) => void;
-  onCapacityChange?: (capacity: string) => void;
+  onChange?: (capacity: string, color: string) => void;
 };
 
-export const Variants = ({
-  product,
-  onColorChange = () => {},
-  onCapacityChange = () => {},
-}: Props) => {
+export const Variants = ({ product, onChange = () => {} }: Props) => {
   const { t } = useTranslation();
 
   const {
@@ -55,14 +50,14 @@ export const Variants = ({
   const selectColor = (newColor: string) => {
     if (newColor !== color) {
       setColor(newColor);
-      onColorChange(newColor);
+      onChange(capacity.toLowerCase(), newColor.toLowerCase().replace(/\s+/, '-'));
     }
   };
 
   const selectCapacity = (newCapacity: string) => {
     if (newCapacity !== capacity) {
       setCapacity(newCapacity);
-      onCapacityChange(newCapacity);
+      onChange(newCapacity.toLowerCase(), color.toLowerCase().replace(/\s+/, '-'));
     }
   };
 

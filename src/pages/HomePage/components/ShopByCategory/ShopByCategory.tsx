@@ -14,21 +14,18 @@ export const ShopByCategory = () => {
 
   const categories = [
     {
-      id: 1,
       imgSrc: './img/category-phones.webp',
       title: 'Mobile phones',
       productsAmount: phones.length,
       linkRoute: RouteNames.phones,
     },
     {
-      id: 1,
       imgSrc: './img/category-tablets.webp',
       title: 'Tablets',
       productsAmount: tablets.length,
       linkRoute: RouteNames.tablets,
     },
     {
-      id: 1,
       imgSrc: './img/category-accessories.png',
       title: 'Accessories',
       productsAmount: accessories.length,
@@ -40,9 +37,9 @@ export const ShopByCategory = () => {
     <div className="page">
       <h2>Shop by categories</h2>
       <div className={styles.categories}>
-        {categories.map(category => (
+        {categories.map((category, index) => (
           <CategoryComponent
-            key={category.id}
+            key={index}
             imgSrc={category.imgSrc}
             title={category.title}
             productsAmount={category.productsAmount}
