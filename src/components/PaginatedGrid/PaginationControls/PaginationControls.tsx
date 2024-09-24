@@ -2,44 +2,32 @@ import style from './PaginationControls.module.scss';
 import cn from 'classnames';
 
 import React from 'react';
-import { useState } from 'react';
 
 import { range } from '../../../utils/range';
 import { ButtonRounded } from '../../buttons';
 import { Direction } from '../../../enums/Direction';
 
 type Props = {
-  itemsCount: number;
-  perPage: number;
-  startPage?: number;
+  selected: number;
+  pages: number;
   onPageChange?: (page: number) => void;
 };
 
-export const PaginationControls = ({
-  itemsCount,
-  perPage,
-  startPage = 1,
-  onPageChange = () => {},
-}: Props) => {
-  const [currentPage, setCurrentPage] = useState(startPage);
-
-  const pagesCount = Math.ceil(itemsCount / perPage);
-  const pagesRange = range(1, pagesCount + 1);
-  const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === pagesCount;
+export const PaginationControls = ({ pages, selected, onPageChange = () => {} }: Props) => {
+  const pagesRange = range(1, pages + 1);
+  const isFirstPage = selected === 1;
+  const isLastPage = selected === pages;
 
   const selectPage = (page: number) => {
-    setCurrentPage(page);
-
     onPageChange(page);
   };
 
   const selectPrevPage = () => {
-    selectPage(currentPage - 1);
+    selectPage(selected - 1);
   };
 
   const selectNextPage = () => {
-    selectPage(currentPage + 1);
+    selectPage(selected + 1);
   };
 
   return (
@@ -53,7 +41,7 @@ export const PaginationControls = ({
           title={`${page}`}
           key={page}
           onClick={() => selectPage(page)}
-          selected={page === currentPage}
+          selected={page === selected}
         />
       ))}
 
