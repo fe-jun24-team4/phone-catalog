@@ -13,8 +13,7 @@ type CartItemProps = {
 export const CartItem = ({ item }: CartItemProps) => {
   const { product, amount } = item;
 
-  const { images, name, priceDiscount } = product;
-  const image = images[0];
+  const { image, name, price } = product;
 
   const { removeItem, updateQuantity } = useCartContext();
   const [isRemoving, setIsRemoving] = useState(false);
@@ -22,13 +21,13 @@ export const CartItem = ({ item }: CartItemProps) => {
   const handleRemove = () => {
     setIsRemoving(true);
     setTimeout(() => {
-      removeItem(product.id);
+      removeItem(product.itemId);
     }, 500);
   };
 
   const handleQuantityChange = (newAmount: number) => {
     if (newAmount > 0) {
-      updateQuantity(product.id, newAmount);
+      updateQuantity(product.itemId, newAmount);
     }
   };
 
@@ -59,7 +58,7 @@ export const CartItem = ({ item }: CartItemProps) => {
               onClick={() => handleQuantityChange(amount + 1)}
             />
           </div>
-          <p className={styles.price}>${priceDiscount}</p>
+          <p className={styles.price}>${price}</p>
         </div>
       </div>
     </div>

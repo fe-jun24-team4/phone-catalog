@@ -6,6 +6,7 @@ import { ButtonFavorite, ButtonPrimary } from '../buttons';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
+import { RouteNames } from '../../enums/RouteNames';
 
 interface ProductCardProps {
   key?: number;
@@ -13,7 +14,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
+  const { image, name, price, fullPrice, screen, capacity, ram } = product;
 
   const navigate = useNavigate();
 
@@ -27,9 +28,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     event.stopPropagation();
     event.preventDefault();
     if (isInCart) {
-      navigate(`/cart`);
+      navigate(`/${RouteNames.cart}`);
     } else {
-      addToCart({ product, amount: 1 });
+      addToCart({ productId: product.itemId, amount: 1 });
     }
   };
 
@@ -37,17 +38,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     event.stopPropagation();
     event.preventDefault();
     if (isInFavourite) {
-      removeFavourite(product);
+      removeFavourite(product.itemId);
     } else {
-      addFavourite(product);
+      addFavourite(product.itemId);
     }
   };
 
   return (
-    <Link to={`${product.id}`} className={styles.card}>
+    <Link to={`/${product.category}/${product.itemId}`} className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
-          <img src={`${HOST}/${images[0]}`} alt={name} className={styles.image} />
+          <img src={`${HOST}/${image}`} alt={name} className={styles.image} />
         </div>
 
         <div className={styles.content}>
@@ -55,8 +56,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <h4 className={styles.title}>{name}</h4>
 
             <div className={styles.priceBlock}>
-              <p className={styles.price}>${priceDiscount}</p>
-              {priceRegular && <span className={styles.fullPrice}>${priceRegular}</span>}
+              <p className={styles.price}>${price}</p>
+              {fullPrice && <span className={styles.fullPrice}>${fullPrice}</span>}
             </div>
           </div>
 

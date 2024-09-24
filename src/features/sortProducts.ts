@@ -1,28 +1,36 @@
 import { SortBy } from '../enums/sortBy';
 import { Product } from '../types/Product';
 
-export function sortProducts(products: Product[], sortBy: SortBy) {
-  const result = [...products];
+export function sortByNewest(products: Product[]) {
+  return [...products].sort(({ year: a }, { year: b }) => b - a);
+}
 
+export function sortByRating(products: Product[]) {
+  return [...products].sort(({ rating: a }, { rating: b }) => b - a);
+}
+
+export function sortBySales(products: Product[]) {
+  return [...products].sort(({ sold: a }, { sold: b }) => b - a);
+}
+
+export function sortByDiscount(products: Product[]) {
+  return [...products].sort((a, b) => {
+    const aDiscountPercent = 1 - a.price / a.fullPrice;
+    const bDiscountPercent = 1 - b.price / b.fullPrice;
+
+    return bDiscountPercent - aDiscountPercent;
+  });
+}
+
+export function sortProducts(products: Product[], sortBy: SortBy) {
   switch (sortBy) {
     case SortBy.newest:
-      //result.sort(({ year: a }, { year: b }) => b - a);
-      break;
+      return sortByNewest(products);
     case SortBy.topRated:
-      //throw new Error('Not implemented');
-      break;
+      return sortByRating(products);
     case SortBy.topSales:
-      //throw new Error('Not implemented');
-      break;
+      return sortBySales(products);
     case SortBy.biggestDiscount:
-      result.sort((a, b) => {
-        const aDiscount = 1 - a.priceDiscount / a.priceRegular;
-        const bDiscount = 1 - b.priceDiscount / b.priceRegular;
-
-        return bDiscount - aDiscount;
-      });
-      break;
+      return sortByDiscount(products);
   }
-
-  return result;
 }

@@ -2,8 +2,10 @@ import React, { FC } from 'react';
 import styles from './CategoryComponent.module.scss';
 import { Link } from 'react-router-dom';
 import { RouteNames } from '../../../../../enums/RouteNames';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
+  key?: number;
   imgSrc: string;
   title: string;
   productsAmount: number;
@@ -11,6 +13,8 @@ interface Props {
 }
 
 export const CategoryComponent: FC<Props> = ({ imgSrc, title, productsAmount, linkRoute }) => {
+  const { t } = useTranslation();
+
   return (
     <Link to={linkRoute} className={styles.cart_box}>
       <div className={`${styles.picture} ${styles.phone}`}>
@@ -18,7 +22,9 @@ export const CategoryComponent: FC<Props> = ({ imgSrc, title, productsAmount, li
       </div>
       <div className={styles.titleAndCount}>
         <h3 className={styles.title}>{title}</h3>
-        <p className={styles.quantity}>{productsAmount || 0} models</p>
+        <p className={styles.quantity}>
+          {productsAmount || 0} {t('home.categories.models')}
+        </p>
       </div>
     </Link>
   );

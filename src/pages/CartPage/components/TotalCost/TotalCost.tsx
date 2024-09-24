@@ -41,7 +41,8 @@ export const TotalCost: FC<TotalCostProps> = ({ order }) => {
         <div className={styles.totalBlock}>
           <p className={styles.price}>${total}</p>
           <p className={styles.text}>
-            {t('cart.totalFor')} {itemsCount} {itemsCount === 1 ? `${t('cart.item')}` : `${t('cart.items')}`}
+            {t('cart.totalFor')} {itemsCount}{' '}
+            {itemsCount === 1 ? `${t('cart.item')}` : `${t('cart.items')}`}
           </p>
         </div>
 
