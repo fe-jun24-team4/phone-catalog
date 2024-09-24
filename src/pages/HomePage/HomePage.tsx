@@ -70,7 +70,7 @@ export const HomePage = () => {
       },
     },
     sliderHeader: {
-      title: t('sliderTitles.newModels'),
+      title: t('sliderTitles.hotPrices'),
     },
     width: true,
   };
