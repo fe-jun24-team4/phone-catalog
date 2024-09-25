@@ -20,12 +20,27 @@
 }
 
 .link {
-  color: var(--colorPrimary);
+  color: var(--colorSecondary);
   text-decoration: none;
   font-weight: $fontWeightSemiBlack;
   transition-duration: $transitionDuration;
 
   &:hover {
-    color: var(--colorAccentPrimary);
+    color: var(--colorPrimary);
+  }
+}
+
+.robot {
+  animation: 2s ease-in-out infinite alternate rockSideToSide;
+  transform-origin: bottom center;
+}
+
+@keyframes rockSideToSide {
+  from {
+    transform: rotate(-15deg);
+  }
+
+  to {
+    transform: rotate(15deg);
   }
 }
