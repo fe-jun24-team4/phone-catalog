@@ -20,14 +20,11 @@ export const TechSpecs: FC<Props> = ({ product }) => {
 
       <div className={styles.containers}>
         {Object.entries(techSpecs).map(([key, value]) => {
-          const specsContent =
-            key === 'capacity' ? t('detailsPage.memory') : t(`detailsPage.${key}`);
-
           const descriptionContent = getDescriptionContent(value);
 
           return (
             <div key={key} className={styles.specs_box}>
-              <div className={styles.specs}>{specsContent}</div>
+              <div className={styles.specs}>{t(`detailsPage.${key}`)}</div>
               <div className={styles.description}>{descriptionContent}</div>
             </div>
           );

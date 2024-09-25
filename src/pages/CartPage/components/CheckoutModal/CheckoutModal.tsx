@@ -1,11 +1,11 @@
 import styles from './CheckoutModal.module.scss';
 import cn from 'classnames';
 
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 
 import { ButtonPrimary } from '../../../../components/buttons';
 import { Input } from '../../../../components/inputs';
-import { shippingOptions } from '../../../../utils/constants/dropdownOptions';
+import { createShippingOptions } from '../../../../utils/constants/dropdownOptions';
 
 import { calculateOrderTotal } from '../../../../features/calculateOrderTotal';
 import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
@@ -34,6 +34,9 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
   const [snoose, setSnoose] = useState(true);
 
   const { t } = useTranslation();
+
+  const shippingOptions = useMemo(() => createShippingOptions(t), [t]);
+
   const {
     cart,
     clearCart,
@@ -97,7 +100,8 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
   };
 
   return (
-    <div ref={ref} className={cn(styles.container, { [styles.isVisible]: isVisible })}>
+   <div className={cn(styles.checkoutModal, { [styles.isVisible]: isVisible })}>
+    <div ref={ref} className={styles.container}>
       <form className={styles.form}>
         <Input.Text
           key={t('cart.placeholders.name')}
@@ -138,32 +142,65 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
             error={snoose ? '' : expDateValidator.error}
             onChange={expDateValidator.setValue}
           />
+          <Input.Text
+            placeholder={t('cart.placeholders.email')}
+            error={errors.email}
+            onChange={handleEmailChange}
+          />
+
+          <div className={styles.shipToMargin}>
+            <Input.Dropdown
+              key={t('cart.shipTo')}
+              label={t('cart.shipTo')}
+              options={shippingOptions}
+            />
+          </div>
 
           <Input.Format
-            label={t('cart.cvv')}
-            format="..."
+            label={t('cart.creditCard')}
+            format="....-....-....-...."
             placeholder="X"
             charset={/[0-9]/}
             error={snoose ? '' : cvcValidator.error}
             onChange={cvcValidator.setValue}
           />
-        </div>
-      </form>
 
-      <div className={styles.spacer} />
+          <div className={styles.cvcAndExpDate}>
+            <Input.Format
+              label={t('cart.expiryDate')}
+              format="../.."
+              placeholder="X"
+              charset={/[0-9]/}
+              error={errors.cardExpiration}
+              onChange={handleExpirationDateChange}
+            />
 
-      <div className={styles.final}>
-        <div className={styles.total}>
-          <p className={styles.totalSuperscript}>{t('cart.total')}</p>
+            <Input.Format
+              label={t('cart.cvv')}
+              format="..."
+              placeholder="X"
+              charset={/[0-9]/}
+              error={errors.cardCvc}
+              onChange={handleCvcChange}
+            />
+          </div>
+        </form>
 
-          <h3 className={styles.totalPrice}>${totalCost}</h3>
-        </div>
+        <div className={styles.spacer} />
 
-        <div className={styles.separator} />
+        <div className={styles.final}>
+          <div className={styles.total}>
+            <p className={styles.totalSuperscript}>{t('cart.total')}</p>
 
-        <div className={styles.buttons}>
-          <ButtonPrimary title={t('buttons.confirm')} onClick={handleConfirm} />
-          <ButtonPrimary title={t('buttons.returnToCart')} onClick={handleCancel} />
+            <h3 className={styles.totalPrice}>${totalCost}</h3>
+          </div>
+
+          <div className={styles.separator} />
+
+          <div className={styles.buttons}>
+            <ButtonPrimary title={t('buttons.confirm')} onClick={() => setIsVisible(false)} />
+            <ButtonPrimary title={t('buttons.returnToCart')} onClick={() => setIsVisible(false)} />
+          </div>
         </div>
       </div>
     </div>

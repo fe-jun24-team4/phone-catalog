@@ -17,7 +17,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { image, name, price, fullPrice, screen, capacity, ram } = product;
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
@@ -47,7 +47,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <Link to={`/${product.category}/${product.itemId}`} className={styles.card}>
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      className={styles.card}
+      onClick={() => scrollTo(0, 0)}
+    >
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
           <img src={`${HOST}/${image}`} alt={name} className={styles.image} />

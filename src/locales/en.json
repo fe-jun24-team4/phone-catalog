@@ -57,11 +57,14 @@
     "resolution": "Resolution",
     "processor": "Processor",
     "ram": "RAM",
-    "memory": "Built in memory",
+    "capacity": "Built in memory",
     "camera": "Camera",
     "zoom": "Zoom",
     "cell": "Cell",
-    "capacity": "Capacity"
+    "memory": "Capacity"
+  },
+  "favourites": {
+    "emptyMessage": "Keep your favorite items here"
   },
   "cart": {
     "emptyCart": "Your cart is empty",
@@ -74,6 +77,11 @@
       "name": "First name",
       "surname": "Last name",
       "email": "email@domain.com"
+    },
+    "destination": {
+      "ua": "Ukraine",
+      "pl": "Poland",
+      "md": "Moldova"
     },
     "errors": {
       "name": "First name is required",
