@@ -21,6 +21,10 @@
   font-size: $fontSizeMedium;
   font-weight: $fontWeightSemiBlack;
   color: var(--colorPrimary);
+
+  @include onTabletAndUp {
+    font-size: $fontSizeBig;
+  }
 }
 
 .buttons {
