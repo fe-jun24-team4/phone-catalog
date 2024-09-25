@@ -1,7 +1,7 @@
 import styles from './CheckoutModal.module.scss';
 import cn from 'classnames';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { ButtonPrimary } from '../../../../components/buttons';
 import { Input } from '../../../../components/inputs';
@@ -11,7 +11,6 @@ import { calculateOrderTotal } from '../../../../features/calculateOrderTotal';
 import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
 import { useCartContext } from '../../context/CartContext';
 
-import debounce from 'lodash.debounce';
 import {
   validateExpirationDate,
   validateCvc,
@@ -19,21 +18,13 @@ import {
   validateEmail,
   validateName,
 } from '../../../../utils/validation';
+
 import { useTranslation } from 'react-i18next';
-import { Validator } from '../../../../types/Validator';
+import { useValidator } from '../../../../hooks/useValidator';
 
 type CheckoutModalProps = {
   onConfirm?: () => void;
   onReject?: () => void;
-};
-
-type Errors = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  cardNumber: string;
-  cardCvc: string;
-  cardExpiration: string;
 };
 
 export const CheckoutModal = ({}: CheckoutModalProps) => {
@@ -43,15 +34,6 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
     isCheckoutVisible: isVisible,
     setIsCheckoutVisible: setIsVisible,
   } = useCartContext();
-
-  const [errors, setErrors] = useState<Errors>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    cardNumber: '',
-    cardCvc: '',
-    cardExpiration: '',
-  });
 
   const totalCost = calculateOrderTotal(cart);
 
@@ -63,66 +45,47 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
     }
   }, ref);
 
-  function debounceValidator(validator: (str: string) => boolean, error: Partial<Errors>) {
-    return debounce((str: string) => {
-      if (!validator(str)) {
-        setErrors(prev => ({ ...prev, ...error }));
-      }
-    }, 300);
-  }
-
-  function handleChangeOf(field: keyof Errors, debouncedValidator: (str: string) => void) {
-    return (str: string) => {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-
-      debouncedValidator(str);
-    };
-  }
-
-  const validateFirstNameDebounced = debounceValidator(validateName, {
-    firstName: t('cart.errors.name'),
-  });
-
-  const validateLastNameDebounced = debounceValidator(validateName, {
-    lastName: t('cart.errors.surname'),
-  });
-
-  const validateEmailDebounced = debounceValidator(validateEmail, {
-    email: t('cart.errors.email'),
-  });
-
-  const validateCardNumberDebounced = debounceValidator(validateCardNumber, {
-    cardNumber: t('cart.errors.creditCard'),
-  });
-
-  const validateCardCvcDebounced = debounceValidator(validateCvc, {
-    cardCvc: t('cart.errors.cvv'),
-  });
-
-  const validateCardExpirationDebounced = debounceValidator(validateExpirationDate, {
-    cardExpiration: t('cart.errors.expiryDate'),
-  });
-
-  const creditCardValidator = new Validator(
-    s => (validateCardNumber(s) ? t('cart.errors.creditCard') : null),
+  const firstNameValidator = useValidator(
+    s => (validateName(s) ? null : t('cart.errors.name')),
     300,
   );
 
-  const 
+  const lastNameValidator = useValidator(
+    s => (validateName(s) ? null : t('cart.errors.surname')),
+    300,
+  );
 
-  const handleFirstNameChange = handleChangeOf('firstName', validateFirstNameDebounced);
-  const handleLastNameChange = handleChangeOf('lastName', validateLastNameDebounced);
-  const handleEmailChange = handleChangeOf('email', validateEmailDebounced);
-  const handleCardNumberChange = handleChangeOf('cardNumber', validateCardNumberDebounced);
-  const handleCvcChange = handleChangeOf('cardCvc', validateCardCvcDebounced);
-  const handleExpirationDateChange = handleChangeOf(
-    'cardExpiration',
-    validateCardExpirationDebounced,
+  const emailValidator = useValidator(s => (validateEmail(s) ? null : t('cart.errors.email')), 300);
+
+  const cardNumberValidator = useValidator(
+    s => (validateCardNumber(s) ? null : t('cart.errors.creditCard')),
+    300,
+  );
+
+  const cvcValidator = useValidator(s => (validateCvc(s) ? null : t('cart.errors.cvv')), 300);
+
+  const expDateValidator = useValidator(
+    s => (validateExpirationDate(s) ? null : t('cart.errors.expiryDate')),
+    300,
   );
 
   const handleConfirm = () => {
-    if (Object.values(errors).every(error => !error)) {
+    const validators = [
+      firstNameValidator,
+      lastNameValidator,
+      emailValidator,
+      cardNumberValidator,
+      cvcValidator,
+      expDateValidator,
+    ];
+
+    for (const validator of validators) {
+      validator.validateImmediately();
+    }
+
+    if (validators.every(validator => !validator.isError())) {
       setIsVisible(false);
+      alert(t('cart.thanks'));
     }
   };
 
@@ -133,21 +96,9 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
   return (
     <div ref={ref} className={cn(styles.container, { [styles.isVisible]: isVisible })}>
       <form className={styles.form}>
-        <Input.Text
-          placeholder={t('cart.placeholders.name')}
-          error={errors.firstName}
-          onChange={handleFirstNameChange}
-        />
-        <Input.Text
-          placeholder={t('cart.placeholders.surname')}
-          error={errors.lastName}
-          onChange={handleLastNameChange}
-        />
-        <Input.Text
-          placeholder={t('cart.placeholders.email')}
-          error={errors.email}
-          onChange={handleEmailChange}
-        />
+        <Input.Text placeholder={t('cart.placeholders.name')} validator={firstNameValidator} />
+        <Input.Text placeholder={t('cart.placeholders.surname')} validator={lastNameValidator} />
+        <Input.Text placeholder={t('cart.placeholders.email')} validator={emailValidator} />
 
         <div className={styles.shipToMargin}>
           <Input.Dropdown label={t('cart.shipTo')} options={shippingOptions} />
@@ -158,8 +109,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
           format="....-....-....-...."
           placeholder="X"
           charset={/[0-9]/}
-          error={errors.cardNumber}
-          onChange={handleCardNumberChange}
+          validator={cardNumberValidator}
         />
 
         <div className={styles.cvcAndExpDate}>
@@ -168,8 +118,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
             format="../.."
             placeholder="X"
             charset={/[0-9]/}
-            error={errors.cardExpiration}
-            onChange={handleExpirationDateChange}
+            validator={expDateValidator}
           />
 
           <Input.Format
@@ -177,8 +126,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
             format="..."
             placeholder="X"
             charset={/[0-9]/}
-            error={errors.cardCvc}
-            onChange={handleCvcChange}
+            validator={cvcValidator}
           />
         </div>
       </form>

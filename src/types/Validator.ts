@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
 
-type ValidatorFunc = (str: string) => string | null;
+export type ValidatorFunc = (str: string) => string | null;
 
 export class Validator {
   public validateImmediately;

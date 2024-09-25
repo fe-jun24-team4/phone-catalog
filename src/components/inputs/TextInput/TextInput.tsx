@@ -3,10 +3,11 @@ import cn from 'classnames';
 
 import { ChangeEvent, useRef, useState } from 'react';
 import React from 'react';
+import { Validator } from '../../../types/Validator';
 
 type TextInputProps = {
   label?: string;
-  error?: string;
+  validator?: Validator;
   email?: boolean;
   placeholder?: string;
   defaultValue?: string;
@@ -15,7 +16,7 @@ type TextInputProps = {
 
 export const TextInput = ({
   label = '',
-  error = '',
+  validator = new Validator(() => null, 0),
   email,
   placeholder,
   defaultValue = '',
@@ -26,6 +27,7 @@ export const TextInput = ({
 
   const handleValueChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
+    validator.setValue(event.target.value);
     onChange(event.target.value);
   };
 
@@ -36,7 +38,10 @@ export const TextInput = ({
   };
 
   return (
-    <div className={cn(styles.container, { [styles.isError]: error })} onClick={focusInput}>
+    <div
+      className={cn(styles.container, { [styles.isError]: validator.isError() })}
+      onClick={focusInput}
+    >
       {label && <label className={styles.label}>{label}</label>}
 
       <input
@@ -50,7 +55,7 @@ export const TextInput = ({
         onBlur={() => onChange(value)}
       />
 
-      <span className={styles.error}>{error}</span>
+      <span className={styles.error}>{validator.error}</span>
     </div>
   );
 };
