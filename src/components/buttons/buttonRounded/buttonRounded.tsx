@@ -28,7 +28,7 @@ export interface Props {
   title?: string;
   icon?: string;
   rotate?: Degrees | Direction;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   disabled?: boolean;
   selected?: boolean;
 }
@@ -43,16 +43,12 @@ const ButtonRounded: FC<Props> = ({
 }) => {
   const rotationDegrees = getRotationDegrees(rotate ?? 0);
 
-  const handleClick = () => {
-    onClick();
-  };
-
   return (
     <button
       className={classNames(styles.buttonRounded, {
         [styles.selected]: selected,
       })}
-      onClick={handleClick}
+      onClick={onClick}
       disabled={disabled}
     >
       {title ? (

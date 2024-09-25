@@ -24,6 +24,8 @@ export const PaginatedGrid = ({ products, perPage }: Props) => {
   const fitsOnOnePage = products.length <= perPage;
 
   const handlePageChange = (page: number) => {
+    scrollTo(0, 0);
+
     const newPageQuery = page === 1 ? null : `${page}`;
 
     setSearchParams(updateSearchParams(searchParams, { [PAGE]: newPageQuery }));

@@ -47,7 +47,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <Link to={`/${product.category}/${product.itemId}`} className={styles.card}>
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      className={styles.card}
+      onClick={() => scrollTo(0, 0)}
+    >
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
           <img src={`${HOST}/${image}`} alt={name} className={styles.image} />
