@@ -20,18 +20,21 @@ export const ShopByCategory = () => {
       title: t('home.categories.categoryPhoneTitle'),
       productsAmount: phones.length,
       linkRoute: RouteNames.phones,
+      className: 'phone',
     },
     {
       imgSrc: './img/category-tablets.webp',
       title: t('home.categories.categoryTabletTitle'),
       productsAmount: tablets.length,
       linkRoute: RouteNames.tablets,
+      className: 'tablet',
     },
     {
-      imgSrc: './img/category-accessories.png',
+      imgSrc: './img/accessories/apple-watch-series-6/space-gray/00.webp',
       title: t('home.categories.categoryAccessoryTitle'),
       productsAmount: accessories.length,
       linkRoute: RouteNames.accessories,
+      className: 'accessories',
     },
   ];
 
@@ -46,6 +49,7 @@ export const ShopByCategory = () => {
             title={category.title}
             productsAmount={category.productsAmount}
             linkRoute={category.linkRoute}
+            className={category.className}
           />
         ))}
       </div>

@@ -3,12 +3,12 @@ import styles from './HomePage.module.scss';
 import { ShopByCategory } from './components/ShopByCategory';
 import { Slider } from '../../components/slider/Slider';
 import { useTranslation } from 'react-i18next';
-
 import { useFetchNewest } from '../../hooks/useFetchNewest';
 import { useFetchHotPrices } from '../../hooks/useFetchHotPrices';
 
 export const HomePage = () => {
   const { t } = useTranslation();
+
 
   const newestProducts = useFetchNewest('phones');
   const hotPrices = useFetchHotPrices('phones', 10);
