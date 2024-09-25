@@ -6,6 +6,8 @@ import { ButtonFavorite, ButtonPrimary } from '../buttons';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../pages/CartPage/context/CartContext';
 import { useFavouritesContext } from '../../pages/FavouritesPage/context/FavouritesContext';
+import { RouteNames } from '../../enums/RouteNames';
+import { useTranslation } from 'react-i18next';
 
 interface ProductCardProps {
   key?: number;
@@ -15,6 +17,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { image, name, price, fullPrice, screen, capacity, ram } = product;
 
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();
@@ -27,7 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     event.stopPropagation();
     event.preventDefault();
     if (isInCart) {
-      navigate(`/cart`);
+      navigate(`/${RouteNames.cart}`);
     } else {
       addToCart({ productId: product.itemId, amount: 1 });
     }
@@ -44,7 +47,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <Link to={`/${product.category}/${product.itemId}`} className={styles.card}>
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      className={styles.card}
+      onClick={() => scrollTo(0, 0)}
+    >
       <div className={styles.wrapper}>
         <div className={styles.imageContent}>
           <img src={`${HOST}/${image}`} alt={name} className={styles.image} />
@@ -62,19 +69,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
           <div className={styles.specs}>
             <div className={styles.specItem}>
-              <p className={styles.specLabel}>Screen</p>
+              <p className={styles.specLabel}>{t('detailsPage.screen')}</p>
 
               <p className={styles.specValue}>{screen}</p>
             </div>
 
             <div className={styles.specItem}>
-              <p className={styles.specLabel}>Capacity</p>
+              <p className={styles.specLabel}>{t('detailsPage.capacity')}</p>
 
               <p className={styles.specValue}>{capacity}</p>
             </div>
 
             <div className={styles.specItem}>
-              <p className={styles.specLabel}>RAM</p>
+              <p className={styles.specLabel}>{t('detailsPage.ram')}</p>
 
               <p className={styles.specValue}>{ram}</p>
             </div>

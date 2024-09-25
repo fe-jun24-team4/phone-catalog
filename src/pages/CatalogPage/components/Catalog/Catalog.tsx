@@ -4,7 +4,7 @@ import { FilterControls } from '../FilterControls/FilterControls';
 
 import React from 'react';
 import { useMemo } from 'react';
-import { perPageOptions, sortByOptions } from '../../../../utils/constants/dropdownOptions';
+import { perPageOptions, createSortByOptions } from '../../../../utils/constants/dropdownOptions';
 import { Product } from '../../../../types/Product';
 import { sortProducts } from '../../../../features/sortProducts';
 import { PaginatedGrid } from '../../../../components/PaginatedGrid';
@@ -12,17 +12,20 @@ import { useSearchParams } from 'react-router-dom';
 import { PER_PAGE, SORT_BY } from '../../../../utils/constants/urlSearchParams';
 import { SortBy } from '../../../../enums/sortBy';
 import { updateSearchParams } from '../../../../utils/updateSearchParams';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   products: Product[];
 };
 
 export const Catalog = ({ products }: Props) => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortByOptions = useMemo(() => createSortByOptions(t), [t]);
 
   const sortBy = (searchParams.get(SORT_BY) ?? sortByOptions.defaultValue) as SortBy;
   const perPage = Number(searchParams.get(PER_PAGE) ?? perPageOptions.defaultValue);
-
   const sortByLocalOptions = sortByOptions.clone(sortBy);
   const perPageLocalOptions = perPageOptions.clone(perPage);
 

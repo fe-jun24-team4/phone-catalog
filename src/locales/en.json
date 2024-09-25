@@ -21,7 +21,9 @@
   "buttons": {
     "addToCart": "Add to cart",
     "viewInCart": "View in cart",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "confirm": "Confirm",
+    "returnToCart": "Return to cart"
   },
   "home": {
     "categories": {
@@ -36,10 +38,10 @@
     "models": "models",
     "sortBy": {
       "title": "Sort by",
-        "newest": "Newest",
-        "topRated": "Top rated",
-        "topSales": "Top sales",
-        "biggestDiscount": "Biggest discount"
+      "newest": "Newest",
+      "topRated": "Top rated",
+      "topSales": "Top sales",
+      "biggestDiscount": "Biggest discount"
     },
     "itemsOnPage": "Items on page"
   },
@@ -58,14 +60,38 @@
     "memory": "Built in memory",
     "camera": "Camera",
     "zoom": "Zoom",
-    "cell": "Cell"
+    "cell": "Cell",
+    "capacity": "Capacity"
   },
   "cart": {
     "emptyCart": "Your cart is empty",
     "item": "item",
     "items": "items",
     "back": "Back",
-    "totalFor": "Total for"
+    "totalFor": "Total for",
+    "total": "Your total is",
+    "placeholders": {
+      "name": "First name",
+      "surname": "Last name",
+      "email": "email@domain.com"
+    },
+    "destination": {
+      "ua": "Ukraine",
+      "pl": "Poland",
+      "md": "Moldova"
+    },
+    "errors": {
+      "name": "First name is required",
+      "surname": "Last name is required",
+      "email": "Invalid E-mail",
+      "creditCard": "Invalid credit card number",
+      "expiryDate": "Invalid expiration date",
+      "cvv": "Invalid CVC code"
+    },
+    "shipTo": "Ship to:",
+    "creditCard": "Credit card number",
+    "expiryDate": "Expiration date",
+    "cvv": "CVC"
   },
   "footer": {
     "github": "GitHub",

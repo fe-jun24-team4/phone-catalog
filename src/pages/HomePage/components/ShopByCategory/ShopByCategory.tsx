@@ -16,7 +16,6 @@ export const ShopByCategory = () => {
 
   const categories = [
     {
-      id: 1,
       imgSrc: './img/category-phones.webp',
       title: t('home.categories.categoryPhoneTitle'),
       productsAmount: phones.length,
@@ -24,7 +23,6 @@ export const ShopByCategory = () => {
       className: 'phone',
     },
     {
-      id: 2,
       imgSrc: './img/category-tablets.webp',
       title: t('home.categories.categoryTabletTitle'),
       productsAmount: tablets.length,
@@ -32,9 +30,8 @@ export const ShopByCategory = () => {
       className: 'tablet',
     },
     {
-      id: 1,
       imgSrc: './img/accessories/apple-watch-series-6/space-gray/00.webp',
-      title: 'Accessories',
+      title: t('home.categories.categoryAccessoryTitle'),
       productsAmount: accessories.length,
       linkRoute: RouteNames.accessories,
       className: 'accessories',
@@ -45,9 +42,9 @@ export const ShopByCategory = () => {
     <div className={styles.categories}>
       <h2 className={styles.title}>{t('home.categories.title')}</h2>
       <div className={styles.categoriesBlock}>
-        {categories.map(category => (
+        {categories.map((category, index) => (
           <CategoryComponent
-            key={category.id}
+            key={index}
             imgSrc={category.imgSrc}
             title={category.title}
             productsAmount={category.productsAmount}

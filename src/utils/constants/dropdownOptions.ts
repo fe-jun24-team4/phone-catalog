@@ -10,19 +10,23 @@ export const perPageOptions = Object.freeze(
   }),
 );
 
-export const sortByOptions = Object.freeze(
-  new Options<SortBy>({
-    Newest: { value: SortBy.newest },
-    'Best rated': { value: SortBy.topRated },
-    'Top sales': { value: SortBy.topSales },
-    'Best deal': { value: SortBy.biggestDiscount },
-  }),
-);
+export const createSortByOptions = (t: (key: string) => string) => {
+  return Object.freeze(
+    new Options<SortBy>({
+      [t('catalog.sortBy.newest')]: { value: SortBy.newest },
+      [t('catalog.sortBy.topRated')]: { value: SortBy.topRated },
+      [t('catalog.sortBy.topSales')]: { value: SortBy.topSales },
+      [t('catalog.sortBy.biggestDiscount')]: { value: SortBy.biggestDiscount },
+    }),
+  );
+};
 
-export const shippingOptions = Object.freeze(
-  new Options<ShippingDestinations>({
-    Ukraine: { value: ShippingDestinations.Ukraine },
-    Poland: { value: ShippingDestinations.Poland },
-    Moldova: { value: ShippingDestinations.Moldova },
-  }),
-);
+export const createShippingOptions = (t: (key: string) => string) => {
+  return Object.freeze(
+    new Options<ShippingDestinations>({
+      [t('cart.destination.ua')]: { value: ShippingDestinations.Ukraine },
+      [t('cart.destination.pl')]: { value: ShippingDestinations.Poland },
+      [t('cart.destination.md')]: { value: ShippingDestinations.Moldova },
+    }),
+  );
+};

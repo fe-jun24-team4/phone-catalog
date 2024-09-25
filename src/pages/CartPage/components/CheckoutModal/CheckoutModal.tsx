@@ -1,11 +1,11 @@
 import styles from './CheckoutModal.module.scss';
 import cn from 'classnames';
 
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 
 import { ButtonPrimary } from '../../../../components/buttons';
 import { Input } from '../../../../components/inputs';
-import { shippingOptions } from '../../../../utils/constants/dropdownOptions';
+import { createShippingOptions } from '../../../../utils/constants/dropdownOptions';
 
 import { calculateOrderTotal } from '../../../../features/calculateOrderTotal';
 import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
@@ -19,6 +19,7 @@ import {
   validateEmail,
   validateName,
 } from '../../../../utils/validation';
+import { useTranslation } from 'react-i18next';
 
 type CheckoutModalProps = {
   onConfirm?: () => void;
@@ -36,6 +37,10 @@ type Errors = {
 
 // TODO: disable confirm on errors
 export const CheckoutModal = ({}: CheckoutModalProps) => {
+  const { t } = useTranslation();
+
+  const shippingOptions = useMemo(() => createShippingOptions(t), [t]);
+
   const {
     cart,
     isCheckoutVisible: isVisible,
@@ -78,23 +83,27 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
   }
 
   const validateFirstNameDebounced = debounceValidator(validateName, {
-    firstName: 'First name is required',
+    firstName: t('cart.errors.name'),
   });
 
   const validateLastNameDebounced = debounceValidator(validateName, {
-    lastName: 'Last name is required',
+    lastName: t('cart.errors.surname'),
   });
 
-  const validateEmailDebounced = debounceValidator(validateEmail, { email: 'Invalid E-mail' });
+  const validateEmailDebounced = debounceValidator(validateEmail, {
+    email: t('cart.errors.email'),
+  });
 
   const validateCardNumberDebounced = debounceValidator(validateCardNumber, {
-    cardNumber: 'Invalid credit card number',
+    cardNumber: t('cart.errors.creditCard'),
   });
 
-  const validateCardCvcDebounced = debounceValidator(validateCvc, { cardCvc: 'Invalid CVC code' });
+  const validateCardCvcDebounced = debounceValidator(validateCvc, {
+    cardCvc: t('cart.errors.cvv'),
+  });
 
   const validateCardExpirationDebounced = debounceValidator(validateExpirationDate, {
-    cardExpiration: 'Invalid expiration date',
+    cardExpiration: t('cart.errors.expiryDate'),
   });
 
   const handleFirstNameChange = handleChangeOf('firstName', validateFirstNameDebounced);
@@ -111,27 +120,31 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
     <div ref={ref} className={cn(styles.container, { [styles.isVisible]: isVisible })}>
       <form className={styles.form}>
         <Input.Text
-          placeholder="First name"
+          placeholder={t('cart.placeholders.name')}
           error={errors.firstName}
           onChange={handleFirstNameChange}
         />
         <Input.Text
-          placeholder="Last name"
+          placeholder={t('cart.placeholders.surname')}
           error={errors.lastName}
           onChange={handleLastNameChange}
         />
         <Input.Text
-          placeholder="email@domain.com"
+          placeholder={t('cart.placeholders.email')}
           error={errors.email}
           onChange={handleEmailChange}
         />
 
         <div className={styles.shipToMargin}>
-          <Input.Dropdown label="Ship to:" options={shippingOptions} />
+          <Input.Dropdown
+            key={t('cart.shipTo')}
+            label={t('cart.shipTo')}
+            options={shippingOptions}
+          />
         </div>
 
         <Input.Format
-          label="Credit card number"
+          label={t('cart.creditCard')}
           format="....-....-....-...."
           placeholder="X"
           charset={/[0-9]/}
@@ -141,7 +154,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
 
         <div className={styles.cvcAndExpDate}>
           <Input.Format
-            label="Expiration date"
+            label={t('cart.expiryDate')}
             format="../.."
             placeholder="X"
             charset={/[0-9]/}
@@ -150,7 +163,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
           />
 
           <Input.Format
-            label="CVC"
+            label={t('cart.cvv')}
             format="..."
             placeholder="X"
             charset={/[0-9]/}
@@ -164,7 +177,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
 
       <div className={styles.final}>
         <div className={styles.total}>
-          <p className={styles.totalSuperscript}>Your total is</p>
+          <p className={styles.totalSuperscript}>{t('cart.total')}</p>
 
           <h3 className={styles.totalPrice}>${totalCost}</h3>
         </div>
@@ -172,8 +185,8 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
         <div className={styles.separator} />
 
         <div className={styles.buttons}>
-          <ButtonPrimary title="Confirm" onClick={() => setIsVisible(false)} />
-          <ButtonPrimary title="Return to Cart" onClick={() => setIsVisible(false)} />
+          <ButtonPrimary title={t('buttons.confirm')} onClick={() => setIsVisible(false)} />
+          <ButtonPrimary title={t('buttons.returnToCart')} onClick={() => setIsVisible(false)} />
         </div>
       </div>
     </div>

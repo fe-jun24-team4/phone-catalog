@@ -1,7 +1,7 @@
 @import '../../../../styles/generals/index.scss';
 
 .container {
-  justify-self:center;
+  justify-self: center;
 
   display: flex;
   flex-direction: column;
@@ -14,8 +14,14 @@
     align-self: center;
     justify-self: stretch;
 
+    gap: 32px;
+
     flex-direction: row-reverse;
     justify-content: center;
+  }
+
+  @include onLaptopAndUp {
+    gap: 64px;
   }
 }
 

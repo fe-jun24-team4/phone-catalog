@@ -8,7 +8,7 @@ import { IconsComponent } from './iconsComponent/iconsComponent';
 import { useHandleMenuAction } from './hooks/useHandleMenuAction';
 import { Logo } from '../Logo/Logo';
 import { useTranslation } from 'react-i18next';
-import { ThemeLanguageToggles } from './themeLanguageToggles/themeLanguageToggles.tsx';
+import { ThemeLanguageToggles } from './themeLanguageToggles/themeLanguageToggles';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -81,7 +81,10 @@ export const Header: React.FC = () => {
               </li>
             </ul>
 
-            <IconsComponent mobile handleMenuAction={handleMenuAction} />
+            <div className={classnames(styles.features, styles.mobile)}>
+              <ThemeLanguageToggles mobile />
+              <IconsComponent mobile handleMenuAction={handleMenuAction} />
+            </div>
           </div>
         </nav>
 
