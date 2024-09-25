@@ -86,6 +86,8 @@ export const Slider: FC<Props> = ({ slider }) => {
           spaceBetween={spaceBetween}
           slidesPerView={slidesPerView}
           centeredSlides={true}
+          freeMode={false}
+          touchRatio={0.5}
           autoplay={{
             delay: delay,
             disableOnInteraction: true,
