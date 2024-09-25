@@ -101,7 +101,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
 
   return (
     <div className={cn(styles.checkoutModal, { [styles.isVisible]: isVisible })}>
-      <div ref={ref} className={styles.container}>
+      <div ref={ref} className={styles.checkoutWrapper}>
         <form className={styles.form}>
           <Input.Text
             key={t('cart.placeholders.name')}

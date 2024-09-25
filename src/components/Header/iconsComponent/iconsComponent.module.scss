@@ -42,7 +42,6 @@
 
   cursor: pointer;
 
-
   @include before {
     position: absolute;
     left: 0;
@@ -78,9 +77,7 @@
     height: 48px;
     flex-shrink: 0;
 
-
     border-left: 2px solid var(--colorElements);
-
 
     &:nth-child(2) {
       border-right: 2px solid var(--colorElements);
