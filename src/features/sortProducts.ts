@@ -6,11 +6,11 @@ export function sortByNewest(products: Product[]) {
 }
 
 export function sortByRating(products: Product[]) {
-  return [...products].sort(({ rating: a }, { rating: b }) => b - a);
+  return [...products];
 }
 
 export function sortBySales(products: Product[]) {
-  return [...products].sort(({ sold: a }, { sold: b }) => b - a);
+  return [...products].reverse();
 }
 
 export function sortByDiscount(products: Product[]) {
