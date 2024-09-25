@@ -88,7 +88,7 @@ export const Slider: FC<Props> = ({ slider }) => {
           centeredSlides={true}
           autoplay={{
             delay: delay,
-            disableOnInteraction: false,
+            disableOnInteraction: true,
             pauseOnMouseEnter: true,
           }}
           className={classnames(styles.responsiveSwiper, {

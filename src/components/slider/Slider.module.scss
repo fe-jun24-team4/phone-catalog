@@ -46,6 +46,14 @@
     padding: 25px 10px;
 
     @media (min-width: 540px) {
+      -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 1) 55px,
+        rgba(0, 0, 0, 1) calc(100% - 55px),
+        rgba(0, 0, 0, 0) 100%
+      );
+
       mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 0px,
