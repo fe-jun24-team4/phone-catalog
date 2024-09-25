@@ -13,7 +13,6 @@ import banner3 from './img/banner_3.jpg';
 export const HomePage = () => {
   const { t } = useTranslation();
 
-
   const newestProducts = useFetchNewest('phones');
   const hotPrices = useFetchHotPrices('phones', 10);
 
@@ -23,14 +22,6 @@ export const HomePage = () => {
       slidesPerView: 1,
       spaceBetween: 0,
       delay: 4500,
-      breakpoints: {
-        640: {
-          slidesPerView: 1,
-        },
-        1200: {
-          slidesPerView: 1,
-        },
-      },
     },
   };
 
@@ -38,14 +29,16 @@ export const HomePage = () => {
     sliders: newestProducts,
     settings: {
       slidesPerView: 1,
-      spaceBetween: 16,
+      spaceBetween: 10,
       delay: 2500,
       breakpoints: {
         640: {
           slidesPerView: 2.5,
+          spaceBetween: 16,
         },
         1200: {
           slidesPerView: 4,
+          spaceBetween: 16,
         },
       },
     },
@@ -59,14 +52,16 @@ export const HomePage = () => {
     sliders: hotPrices,
     settings: {
       slidesPerView: 1,
-      spaceBetween: 16,
+      spaceBetween: 10,
       delay: 2500,
       breakpoints: {
         640: {
           slidesPerView: 2.5,
+          spaceBetween: 16,
         },
         1200: {
           slidesPerView: 4,
+          spaceBetween: 16,
         },
       },
     },

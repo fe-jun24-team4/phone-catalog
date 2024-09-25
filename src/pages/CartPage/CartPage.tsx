@@ -8,6 +8,7 @@ import { CartItem } from './components/CartItem/CartItem';
 import { CheckoutModal } from './components/CheckoutModal/CheckoutModal';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { EmptyMessage } from '../../components/EmptyMessage';
 
 export const CartPage: FC = () => {
   const { t } = useTranslation();
@@ -29,12 +30,18 @@ export const CartPage: FC = () => {
           </div>
 
           <div className={styles.main}>
-            <div className={styles.productsBlock}>
-              {cart.map(item => (
-                <CartItem key={item.product.id} item={item} />
-              ))}
-            </div>
-            <TotalCost order={cart} />
+            {!!cart.length ? (
+              <>
+                <div className={styles.productsBlock}>
+                  {cart.map(item => (
+                    <CartItem key={item.product.id} item={item} />
+                  ))}
+                </div>
+                <TotalCost order={cart} />
+              </>
+            ) : (
+              <EmptyMessage iconClass={'icon-shopping-bag'} message={t('cart.emptyCart')} />
+            )}
           </div>
         </div>
       </div>
