@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Mousewheel } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import SwiperCore from 'swiper';
 
 import 'swiper/scss';
@@ -91,11 +91,10 @@ export const Slider: FC<Props> = ({ slider }) => {
         <Swiper
           onSwiper={handleSwiperInit}
           onSlideChange={handleSlideChange}
-          modules={[Navigation, Autoplay, Mousewheel]}
+          modules={[Navigation, Autoplay]}
           loop
           spaceBetween={spaceBetween}
           slidesPerView={slidesPerView}
-          mousewheel={true}
           breakpoints={{
             640: {
               slidesPerView: breakpoints?.['640'].slidesPerView ?? 1,
@@ -109,6 +108,7 @@ export const Slider: FC<Props> = ({ slider }) => {
           autoplay={{
             delay: delay,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           className={classnames(styles.responsiveSwiper, {
             [styles.width]: width,
