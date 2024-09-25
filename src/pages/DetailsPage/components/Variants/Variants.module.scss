@@ -6,7 +6,8 @@
   gap: 24px;
 
   & > :not(:first-child) {
-    max-width: 320px;
+    max-width: 100%;
+    width: 100%;
   }
 }
 

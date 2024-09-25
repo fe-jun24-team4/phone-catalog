@@ -66,9 +66,9 @@
 
   gap: 40px;
 
-  @include onTabletAndUp {
-    grid-template-columns: 0.6fr 0.4fr;
-    gap: 0;
+  @media (min-width: 768px) {
+    grid-template-columns: 6fr 4fr;
+    gap: 40px 20px;
     justify-items: unset;
 
     .productTitle {
