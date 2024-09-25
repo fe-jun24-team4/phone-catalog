@@ -1,8 +1,19 @@
-import { useState } from 'react';
-import { Validator, ValidatorFunc } from '../types/Validator';
+import debounce from 'lodash.debounce';
+import { useEffect, useState } from 'react';
 
-export function useValidator(validator: ValidatorFunc, wait: number) {
-  const [state] = useState(new Validator(validator, wait));
+export function useValidator(validator: (str: string) => string, wait: number) {
+  const [value, setValue] = useState('');
+  const [error, setError] = useState('');
 
-  return state;
+  const validateDebounced = debounce(() => setError(validator(value)), wait);
+
+  useEffect(() => {
+    validateDebounced();
+  }, [value, validateDebounced]);
+
+  return {
+    value,
+    error,
+    setValue,
+  };
 }

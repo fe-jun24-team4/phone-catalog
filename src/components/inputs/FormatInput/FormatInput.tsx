@@ -1,16 +1,15 @@
 import styles from './FormatImput.module.scss';
 import cn from 'classnames';
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
-import { Validator } from '../../../types/Validator';
 
 type Props = {
   format: string;
   placeholder: string;
   charset?: RegExp;
   label?: string;
-  validator?: Validator;
+  error?: string;
   onChange?: (value: string) => void;
 };
 
@@ -21,7 +20,7 @@ export const FormatInput = ({
   placeholder,
   charset = /^.$/,
   label,
-  validator = new Validator(() => null, 0),
+  error = '',
   onChange = () => {},
 }: Props) => {
   const formatArr: CharData[] = format.split('').map(char => {
@@ -46,9 +45,12 @@ export const FormatInput = ({
   const handleValueChange = (finalData: CharData[]) => {
     const joinedData = finalData.map(([char]) => char).join('');
 
-    validator.setValue(joinedData);
     onChange(joinedData);
   };
+
+  useEffect(() => {
+    handleValueChange(data);
+  }, []);
 
   const focusInput = () => {
     if (!isFocused) {
@@ -105,7 +107,7 @@ export const FormatInput = ({
   return (
     <div
       ref={ref}
-      className={cn(styles.container, { [styles.isError]: validator.isError() })}
+      className={cn(styles.container, { [styles.isError]: error })}
       onClick={focusInput}
     >
       {label && <label className={styles.label}>{label}</label>}
@@ -130,7 +132,7 @@ export const FormatInput = ({
         ))}
       </div>
 
-      <span className={styles.error}>{validator.error}</span>
+      <span className={styles.error}>{error}</span>
     </div>
   );
 };

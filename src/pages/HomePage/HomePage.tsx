@@ -33,7 +33,7 @@ export const HomePage = () => {
       },
     },
   };
-  
+
   const newModelsSlider = {
     sliders: newestProducts,
     settings: {
@@ -84,7 +84,7 @@ export const HomePage = () => {
           <Slider slider={bannerSlider} />
         </div>
 
-        <Slider slider={recommndedSlider} />
+        <Slider slider={newModelsSlider} />
 
         <ShopByCategory />
 
