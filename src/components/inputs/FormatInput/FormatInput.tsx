@@ -114,6 +114,7 @@ export const FormatInput = ({
         <label className={styles.label}>
           {label}
           <input
+            type="tel"
             className={styles.fakeInput}
             onFocus={focusInput}
             onBlur={blurInput}

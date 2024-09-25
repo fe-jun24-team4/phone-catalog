@@ -42,9 +42,8 @@
 
   transition-duration: $transitionDuration;
 
-  &:focus {
+  &.isFocused {
     border-color: var(--colorPrimary);
-    outline: none;
   }
 }
 
@@ -73,6 +72,8 @@
 
 .fakeInput {
   position: absolute;
+  top: 18.4px;
+  border-radius: 8px;
 
   display: block;
 
