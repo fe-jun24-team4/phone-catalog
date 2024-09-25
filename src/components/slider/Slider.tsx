@@ -15,13 +15,13 @@ import React from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
 
-interface Settings {
+export interface Settings {
   slidesPerView: number | 'auto';
   spaceBetween: number;
   delay: number;
 }
 
-interface SliderProps {
+export interface SliderProps {
   sliders: Product[] | string[];
   settings: Settings;
   sliderHeader?: {

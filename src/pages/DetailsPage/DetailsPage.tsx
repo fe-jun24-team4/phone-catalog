@@ -12,7 +12,7 @@ import { Variants } from './components/Variants';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
 import { useFetchRecommended } from '../../hooks/useFetchRecommended';
-import { Slider } from '../../components/slider/Slider';
+import { Slider, SliderProps } from '../../components/slider/Slider';
 import { Category } from '../../types/Category';
 
 export const DetailsPage = () => {
@@ -27,7 +27,7 @@ export const DetailsPage = () => {
 
   const recommendedData = useFetchRecommended(category as Category, 6);
 
-  const recommendedSlider = {
+  const recommendedSlider: SliderProps = {
     sliders: recommendedData,
     settings: {
       slidesPerView: 'auto',

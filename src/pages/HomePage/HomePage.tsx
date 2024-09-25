@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './HomePage.module.scss';
 import { ShopByCategory } from './components/ShopByCategory';
-import { Slider } from '../../components/slider/Slider';
+import { Slider, SliderProps } from '../../components/slider/Slider';
 import { useTranslation } from 'react-i18next';
 import { useFetchNewest } from '../../hooks/useFetchNewest';
 import { useFetchHotPrices } from '../../hooks/useFetchHotPrices';
@@ -16,7 +16,7 @@ export const HomePage = () => {
   const newestProducts = useFetchNewest('phones');
   const hotPrices = useFetchHotPrices('phones', 10);
 
-  const bannerSlider = {
+  const bannerSlider: SliderProps = {
     sliders: [banner1, banner2, banner3],
     settings: {
       slidesPerView: 1,
@@ -25,7 +25,7 @@ export const HomePage = () => {
     },
   };
 
-  const newModelsSlider = {
+  const newModelsSlider: SliderProps = {
     sliders: newestProducts,
     settings: {
       slidesPerView: 'auto',
@@ -38,7 +38,7 @@ export const HomePage = () => {
     width: true,
   };
 
-  const hotPricesSlider = {
+  const hotPricesSlider: SliderProps = {
     sliders: hotPrices,
     settings: {
       slidesPerView: 'auto',
