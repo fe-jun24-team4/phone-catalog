@@ -41,7 +41,7 @@
     padding: 25px 10px;
 
     display: flex;
-    align-items: stretch;
+    align-items: center;
 
     @include onLaptopAndUp {
       max-width: 100%;

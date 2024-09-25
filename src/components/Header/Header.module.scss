@@ -12,7 +12,7 @@
   background-color: var(--colorBackground);
   border-bottom: 2px solid var(--colorElements);
 
-  @include onTabletAndUp {
+  @media (min-width: 768px) {
     height: fit-content;
   }
 }
@@ -71,10 +71,10 @@
 
 .menu {
   position: fixed;
-  top: 50px;
+  top: 48px;
   left: 0;
 
-  height: calc(100svh - 50px);
+  height: calc(100svh - 48px);
   width: 100vw;
 
   flex-grow: 1;
@@ -173,7 +173,7 @@
     color: var(--colorPrimary);
   }
 
-  @include onTabletAndUp {
+  @media (min-width: 768px) {
     height: 48px;
 
     &::before {

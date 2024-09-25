@@ -1,39 +1,9 @@
-@import '../../styles/generals/mixins.scss';
-@import '../../styles/generals/variables.scss';
+@import '../../styles/generals/index';
 
 .container {
-  padding-top: 24px;
-  padding-bottom: 64px;
+  padding: 24px 0 56px;
 
-  @include onTabletAndUp {
+  @include onLaptopAndUp {
     padding-bottom: 80px;
-  }
-}
-
-.emptyMessage {
-  text-align: center;
-  font-size: $fontSizeBig;
-  color: $themePurplePrimary;
-  margin-top: 20px;
-
-  @include onTabletAndUp {
-    margin-top: 80px;
-  }
-}
-
-.iconHeart {
-  font-size: $fontSizeBig;
-  color: $themePurpleSecondaryAccent;
-  margin-bottom: 20px;
-  display: inline-block;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
   }
 }

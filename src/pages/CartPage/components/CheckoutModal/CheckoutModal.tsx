@@ -117,76 +117,78 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
   );
 
   return (
-    <div ref={ref} className={cn(styles.container, { [styles.isVisible]: isVisible })}>
-      <form className={styles.form}>
-        <Input.Text
-          placeholder={t('cart.placeholders.name')}
-          error={errors.firstName}
-          onChange={handleFirstNameChange}
-        />
-        <Input.Text
-          placeholder={t('cart.placeholders.surname')}
-          error={errors.lastName}
-          onChange={handleLastNameChange}
-        />
-        <Input.Text
-          placeholder={t('cart.placeholders.email')}
-          error={errors.email}
-          onChange={handleEmailChange}
-        />
-
-        <div className={styles.shipToMargin}>
-          <Input.Dropdown
-            key={t('cart.shipTo')}
-            label={t('cart.shipTo')}
-            options={shippingOptions}
+    <div className={cn(styles.checkoutModal, { [styles.isVisible]: isVisible })}>
+      <div ref={ref} className={cn(styles.checkoutWrapper)}>
+        <form className={styles.form}>
+          <Input.Text
+            placeholder={t('cart.placeholders.name')}
+            error={errors.firstName}
+            onChange={handleFirstNameChange}
           />
-        </div>
-
-        <Input.Format
-          label={t('cart.creditCard')}
-          format="....-....-....-...."
-          placeholder="X"
-          charset={/[0-9]/}
-          error={errors.cardNumber}
-          onChange={handleCardNumberChange}
-        />
-
-        <div className={styles.cvcAndExpDate}>
-          <Input.Format
-            label={t('cart.expiryDate')}
-            format="../.."
-            placeholder="X"
-            charset={/[0-9]/}
-            error={errors.cardExpiration}
-            onChange={handleExpirationDateChange}
+          <Input.Text
+            placeholder={t('cart.placeholders.surname')}
+            error={errors.lastName}
+            onChange={handleLastNameChange}
           />
+          <Input.Text
+            placeholder={t('cart.placeholders.email')}
+            error={errors.email}
+            onChange={handleEmailChange}
+          />
+
+          <div className={styles.shipToMargin}>
+            <Input.Dropdown
+              key={t('cart.shipTo')}
+              label={t('cart.shipTo')}
+              options={shippingOptions}
+            />
+          </div>
 
           <Input.Format
-            label={t('cart.cvv')}
-            format="..."
+            label={t('cart.creditCard')}
+            format="....-....-....-...."
             placeholder="X"
             charset={/[0-9]/}
-            error={errors.cardCvc}
-            onChange={handleCvcChange}
+            error={errors.cardNumber}
+            onChange={handleCardNumberChange}
           />
-        </div>
-      </form>
 
-      <div className={styles.spacer} />
+          <div className={styles.cvcAndExpDate}>
+            <Input.Format
+              label={t('cart.expiryDate')}
+              format="../.."
+              placeholder="X"
+              charset={/[0-9]/}
+              error={errors.cardExpiration}
+              onChange={handleExpirationDateChange}
+            />
 
-      <div className={styles.final}>
-        <div className={styles.total}>
-          <p className={styles.totalSuperscript}>{t('cart.total')}</p>
+            <Input.Format
+              label={t('cart.cvv')}
+              format="..."
+              placeholder="X"
+              charset={/[0-9]/}
+              error={errors.cardCvc}
+              onChange={handleCvcChange}
+            />
+          </div>
+        </form>
 
-          <h3 className={styles.totalPrice}>${totalCost}</h3>
-        </div>
+        <div className={styles.spacer} />
 
-        <div className={styles.separator} />
+        <div className={styles.final}>
+          <div className={styles.total}>
+            <p className={styles.totalSuperscript}>{t('cart.total')}</p>
 
-        <div className={styles.buttons}>
-          <ButtonPrimary title={t('buttons.confirm')} onClick={() => setIsVisible(false)} />
-          <ButtonPrimary title={t('buttons.returnToCart')} onClick={() => setIsVisible(false)} />
+            <h3 className={styles.totalPrice}>${totalCost}</h3>
+          </div>
+
+          <div className={styles.separator} />
+
+          <div className={styles.buttons}>
+            <ButtonPrimary title={t('buttons.confirm')} onClick={() => setIsVisible(false)} />
+            <ButtonPrimary title={t('buttons.returnToCart')} onClick={() => setIsVisible(false)} />
+          </div>
         </div>
       </div>
     </div>
