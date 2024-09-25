@@ -26,6 +26,7 @@ export const FilterControls = ({
     <div className={style.container}>
       <div className={style.dropdowns}>
         <Input.Dropdown
+          key={t('catalog.sortBy.title')}
           label={t('catalog.sortBy.title')}
           options={sortByOptions}
           onChange={onSortByChange}

@@ -2,7 +2,7 @@ import styles from './Catalog.module.scss';
 
 import { FilterControls } from '../FilterControls/FilterControls';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useMemo } from 'react';
 import { perPageOptions, createSortByOptions } from '../../../../utils/constants/dropdownOptions';
 import { Product } from '../../../../types/Product';

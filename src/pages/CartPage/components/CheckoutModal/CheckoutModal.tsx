@@ -1,11 +1,11 @@
 import styles from './CheckoutModal.module.scss';
 import cn from 'classnames';
 
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 
 import { ButtonPrimary } from '../../../../components/buttons';
 import { Input } from '../../../../components/inputs';
-import { shippingOptions } from '../../../../utils/constants/dropdownOptions';
+import { createShippingOptions } from '../../../../utils/constants/dropdownOptions';
 
 import { calculateOrderTotal } from '../../../../features/calculateOrderTotal';
 import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
@@ -38,6 +38,9 @@ type Errors = {
 // TODO: disable confirm on errors
 export const CheckoutModal = ({}: CheckoutModalProps) => {
   const { t } = useTranslation();
+
+  const shippingOptions = useMemo(() => createShippingOptions(t), [t]);
+
   const {
     cart,
     isCheckoutVisible: isVisible,
@@ -133,7 +136,11 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
         />
 
         <div className={styles.shipToMargin}>
-          <Input.Dropdown label={t('cart.shipTo')} options={shippingOptions} />
+          <Input.Dropdown
+            key={t('cart.shipTo')}
+            label={t('cart.shipTo')}
+            options={shippingOptions}
+          />
         </div>
 
         <Input.Format
