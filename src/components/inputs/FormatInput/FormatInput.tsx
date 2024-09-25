@@ -110,15 +110,19 @@ export const FormatInput = ({
       className={cn(styles.container, { [styles.isError]: error })}
       onClick={focusInput}
     >
-      {label && <label className={styles.label}>{label}</label>}
+      {label && (
+        <label className={styles.label}>
+          {label}
+          <input
+            className={styles.fakeInput}
+            onFocus={focusInput}
+            onBlur={blurInput}
+            onKeyDown={handleKeydown}
+          />
+        </label>
+      )}
 
-      <div
-        tabIndex={0}
-        className={cn(styles.chars, { [styles.isFocused]: isFocused })}
-        onFocus={focusInput}
-        onBlur={blurInput}
-        onKeyDown={handleKeydown}
-      >
+      <div className={cn(styles.chars, { [styles.isFocused]: isFocused })}>
         {[...data].map(([char, _, isEntered], index) => (
           <span
             key={index}
