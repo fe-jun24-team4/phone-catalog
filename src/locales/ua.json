@@ -16,14 +16,14 @@
   "sliderTitles": {
     "newModels": "Найновіші моделі",
     "hotPrices": "Вигідні ціни",
-    "youMayAlsoLike": "Вам теж може сподобатись"
+    "youMayAlsoLike": "Вам також може сподобатись"
   },
   "buttons": {
     "addToCart": "Додати до кошика",
     "viewInCart": "Подивитись в кошику",
     "checkout": "Підтвердження замовлення",
     "confirm": "Підтвердити",
-    "returnToCart": "Повернутися до корзини"
+    "returnToCart": "Повернутися до кошика"
   },
   "favourites": {
     "emptyMessage": "Зберігайте свої улюблені товари тут"
@@ -64,7 +64,8 @@
     "camera": "Камера",
     "zoom": "Зум",
     "cell": "Cell",
-    "capacity": "Пам'ять"
+    "capacity": "Вбудована пам'ять",
+    "capacityOnCard": "Пам'ять"
   },
   "cart": {
     "emptyCart": "Ваш кошик порожній",

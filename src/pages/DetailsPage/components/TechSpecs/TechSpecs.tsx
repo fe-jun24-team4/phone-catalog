@@ -22,6 +22,10 @@ export const TechSpecs: FC<Props> = ({ product }) => {
         {Object.entries(techSpecs).map(([key, value]) => {
           const descriptionContent = getDescriptionContent(value);
 
+          if (value === undefined) {
+            return null;
+          }
+
           return (
             <div key={key} className={styles.specs_box}>
               <div className={styles.specs}>{t(`detailsPage.${key}`)}</div>

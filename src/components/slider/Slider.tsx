@@ -16,19 +16,9 @@ import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
 
 interface Settings {
-  slidesPerView: number;
+  slidesPerView: number | 'auto';
   spaceBetween: number;
   delay: number;
-  breakpoints?: {
-    640: {
-      slidesPerView: number;
-      spaceBetween: number;
-    };
-    1200: {
-      slidesPerView: number;
-      spaceBetween: number;
-    };
-  };
 }
 
 interface SliderProps {
@@ -49,7 +39,7 @@ export const Slider: FC<Props> = ({ slider }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const { sliders, settings, sliderHeader, width } = slider;
-  const { slidesPerView, breakpoints, spaceBetween, delay } = settings;
+  const { slidesPerView, spaceBetween, delay } = settings;
 
   const handleSwiperInit = (swiper: SwiperCore) => {
     swiperRef.current = swiper;
@@ -95,16 +85,7 @@ export const Slider: FC<Props> = ({ slider }) => {
           loop
           spaceBetween={spaceBetween}
           slidesPerView={slidesPerView}
-          breakpoints={{
-            640: {
-              slidesPerView: breakpoints?.['640'].slidesPerView ?? 1,
-              spaceBetween: breakpoints?.['640'].spaceBetween ?? 0,
-            },
-            1200: {
-              slidesPerView: breakpoints?.['1200'].slidesPerView ?? 1,
-              spaceBetween: breakpoints?.['640'].spaceBetween ?? 0,
-            },
-          }}
+          centeredSlides={true}
           autoplay={{
             delay: delay,
             disableOnInteraction: false,
@@ -115,7 +96,7 @@ export const Slider: FC<Props> = ({ slider }) => {
           })}
         >
           {sliders.map((slide, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className={classnames({ [styles.slideWidth]: width })}>
               {typeof slide === 'string' ? (
                 <div className={styles.img}>
                   <img src={slide} alt="slide" />

@@ -30,19 +30,9 @@ export const DetailsPage = () => {
   const recommendedSlider = {
     sliders: recommendedData,
     settings: {
-      slidesPerView: 1,
-      spaceBetween: 10,
+      slidesPerView: 'auto',
+      spaceBetween: 16,
       delay: 2500,
-      breakpoints: {
-        640: {
-          slidesPerView: 2.5,
-          spaceBetween: 16,
-        },
-        1200: {
-          slidesPerView: 4,
-          spaceBetween: 16,
-        },
-      },
     },
     sliderHeader: {
       title: t('sliderTitles.youMayAlsoLike'),

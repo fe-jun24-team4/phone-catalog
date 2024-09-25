@@ -58,6 +58,7 @@
     "processor": "Processor",
     "ram": "RAM",
     "capacity": "Built in memory",
+    "capacityOnCard": "Capacity",
     "camera": "Camera",
     "zoom": "Zoom",
     "cell": "Cell",

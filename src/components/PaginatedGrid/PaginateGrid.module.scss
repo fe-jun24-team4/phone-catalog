@@ -12,8 +12,20 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(1, minmax(300px, 1fr));
   gap: 40px 16px;
+
+  @include onTabletAndUp {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+
+  @include onLaptopAndUp {
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+  }
 }
 
 .gridItem {
@@ -41,7 +53,9 @@
 .productEnterActive {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
 }
 
 .productExit {
@@ -52,5 +66,7 @@
 .productExitActive {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 300ms ease-in, transform 300ms ease-in;
+  transition:
+    opacity 300ms ease-in,
+    transform 300ms ease-in;
 }

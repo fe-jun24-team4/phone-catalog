@@ -48,7 +48,7 @@ export const TotalCost: FC<TotalCostProps> = ({ order }) => {
 
         <div className={styles.line} />
 
-        <ButtonPrimary title="Checkout" onClick={handleCheckout} />
+        <ButtonPrimary title={t('buttons.checkout')} onClick={handleCheckout} />
       </div>
     </div>
   );

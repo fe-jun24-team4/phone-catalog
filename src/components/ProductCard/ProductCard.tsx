@@ -75,7 +75,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </div>
 
             <div className={styles.specItem}>
-              <p className={styles.specLabel}>{t('detailsPage.capacity')}</p>
+              <p className={styles.specLabel}>{t('detailsPage.capacityOnCard')}</p>
 
               <p className={styles.specValue}>{capacity}</p>
             </div>
@@ -90,7 +90,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <div className={styles.actions}>
           <ButtonPrimary
-            title={isInCart ? 'View in cart' : 'Add to cart'}
+            title={isInCart ? t('buttons.viewInCart') : t('buttons.addToCart')}
             selected={isInCart}
             onClick={handleAddToCart}
           />

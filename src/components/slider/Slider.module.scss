@@ -35,22 +35,35 @@
 
 .responsiveSwiper {
   width: 100%;
+  border-radius: 8px;
 
   @include onLaptopAndUp {
-    max-width: 1040px;
+    max-width: 1090px;
     width: 100%;
   }
 
   &.width {
     padding: 25px 10px;
 
-    display: flex;
-    align-items: center;
+    @media (min-width: 540px) {
+      mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 1) 55px,
+        rgba(0, 0, 0, 1) calc(100% - 55px),
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
 
     @include onLaptopAndUp {
       max-width: 100%;
     }
   }
+}
+
+.slideWidth {
+  max-width: 300px;
+  width: 100%;
 }
 
 .img {
