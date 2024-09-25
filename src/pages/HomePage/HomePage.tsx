@@ -7,6 +7,10 @@ import { useTranslation } from 'react-i18next';
 import { useFetchNewest } from '../../hooks/useFetchNewest';
 import { useFetchHotPrices } from '../../hooks/useFetchHotPrices';
 
+import banner1 from './img/banner_1.jpg';
+import banner2 from './img/banner_2.jpg';
+import banner3 from './img/banner_3.jpg';
+
 export const HomePage = () => {
   const { t } = useTranslation();
 
@@ -14,11 +18,7 @@ export const HomePage = () => {
   const hotPrices = useFetchHotPrices('phones', 10);
 
   const bannerSlider = {
-    sliders: [
-      'src/pages/HomePage/img/banners/banner-1-large.png',
-      'src/pages/HomePage/img/banners/banner-1-large.png',
-      'src/pages/HomePage/img/banners/banner-1-large.png',
-    ],
+    sliders: [banner1, banner2, banner3],
     settings: {
       slidesPerView: 1,
       spaceBetween: 0,

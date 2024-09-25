@@ -38,7 +38,7 @@
   }
 
   &.width {
-    padding: 25px 15px;
+    padding: 25px 10px;
 
     display: flex;
     align-items: stretch;
@@ -112,6 +112,8 @@
 
   border-radius: 48px;
   border: 1px solid var(--colorElements);
+  background-color: transparent;
+  color: var(--colorPrimary);
 
   @include before {
     content: '\e902';
