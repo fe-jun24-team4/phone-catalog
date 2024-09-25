@@ -120,7 +120,7 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
             onChange={emailValidator.setValue}
           />
 
-          <div className={styles.shipToMargin}>
+          <div key={t('cart.shipTo')} className={styles.shipToMargin}>
             <Input.Dropdown label={t('cart.shipTo')} options={shippingOptions} />
           </div>
 
