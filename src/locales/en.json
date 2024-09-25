@@ -94,7 +94,8 @@
     "shipTo": "Ship to:",
     "creditCard": "Credit card number",
     "expiryDate": "Expiration date",
-    "cvv": "CVC"
+    "cvv": "CVC",
+    "thanks": "Thank you for your purchase!"
   },
   "footer": {
     "github": "GitHub",

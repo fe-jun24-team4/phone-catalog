@@ -94,7 +94,8 @@
     "shipTo": "Доставка до",
     "creditCard": "Кредитна карта",
     "expiryDate": "Дата завершення",
-    "cvv": "CVC"
+    "cvv": "CVC",
+    "thanks": "Дякуємо за покупку!"
   },
   "footer": {
     "github": "GitHub",

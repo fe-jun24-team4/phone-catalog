@@ -1,7 +1,7 @@
 import styles from './TextInput.module.scss';
 import cn from 'classnames';
 
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import React from 'react';
 
 type TextInputProps = {
@@ -22,12 +22,17 @@ export const TextInput = ({
   onChange = () => {},
 }: TextInputProps) => {
   const [value, setValue] = useState(defaultValue);
+
   const ref = useRef<HTMLInputElement>(null);
 
   const handleValueChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     onChange(event.target.value);
   };
+
+  useEffect(() => {
+    onChange(value);
+  }, []);
 
   const focusInput = () => {
     if (ref.current) {

@@ -1,7 +1,7 @@
 import styles from './FormatImput.module.scss';
 import cn from 'classnames';
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 
 type Props = {
@@ -20,7 +20,7 @@ export const FormatInput = ({
   placeholder,
   charset = /^.$/,
   label,
-  error,
+  error = '',
   onChange = () => {},
 }: Props) => {
   const formatArr: CharData[] = format.split('').map(char => {
@@ -42,6 +42,16 @@ export const FormatInput = ({
     ? data.findLastIndex(([_, isInput, isEntered]) => isInput && isEntered)
     : -1;
 
+  const handleValueChange = (finalData: CharData[]) => {
+    const joinedData = finalData.map(([char]) => char).join('');
+
+    onChange(joinedData);
+  };
+
+  useEffect(() => {
+    handleValueChange(data);
+  }, []);
+
   const focusInput = () => {
     if (!isFocused) {
       setIsFocused(true);
@@ -52,7 +62,7 @@ export const FormatInput = ({
     if (isFocused) {
       setIsFocused(false);
 
-      onChange(data.map(([char]) => char).join(''));
+      handleValueChange(data);
     }
   };
 
@@ -91,7 +101,7 @@ export const FormatInput = ({
       }
     });
 
-    changePromise.then(next => onChange(next.map(([char]) => char).join(''))).catch(() => {});
+    changePromise.then(handleValueChange);
   };
 
   return (
