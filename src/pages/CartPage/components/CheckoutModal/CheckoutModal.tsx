@@ -20,6 +20,7 @@ import {
   validateName,
 } from '../../../../utils/validation';
 import { useTranslation } from 'react-i18next';
+import { Validator } from '../../../../types/Validator';
 
 type CheckoutModalProps = {
   onConfirm?: () => void;
@@ -35,7 +36,6 @@ type Errors = {
   cardExpiration: string;
 };
 
-// TODO: disable confirm on errors
 export const CheckoutModal = ({}: CheckoutModalProps) => {
   const { t } = useTranslation();
   const {
@@ -103,6 +103,13 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
     cardExpiration: t('cart.errors.expiryDate'),
   });
 
+  const creditCardValidator = new Validator(
+    s => (validateCardNumber(s) ? t('cart.errors.creditCard') : null),
+    300,
+  );
+
+  const 
+
   const handleFirstNameChange = handleChangeOf('firstName', validateFirstNameDebounced);
   const handleLastNameChange = handleChangeOf('lastName', validateLastNameDebounced);
   const handleEmailChange = handleChangeOf('email', validateEmailDebounced);
@@ -112,6 +119,16 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
     'cardExpiration',
     validateCardExpirationDebounced,
   );
+
+  const handleConfirm = () => {
+    if (Object.values(errors).every(error => !error)) {
+      setIsVisible(false);
+    }
+  };
+
+  const handleCancel = () => {
+    setIsVisible(false);
+  };
 
   return (
     <div ref={ref} className={cn(styles.container, { [styles.isVisible]: isVisible })}>
@@ -178,8 +195,8 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
         <div className={styles.separator} />
 
         <div className={styles.buttons}>
-          <ButtonPrimary title={t('buttons.confirm')} onClick={() => setIsVisible(false)} />
-          <ButtonPrimary title={t('buttons.returnToCart')} onClick={() => setIsVisible(false)} />
+          <ButtonPrimary title={t('buttons.confirm')} onClick={handleConfirm} />
+          <ButtonPrimary title={t('buttons.returnToCart')} onClick={handleCancel} />
         </div>
       </div>
     </div>

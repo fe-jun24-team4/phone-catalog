@@ -3,13 +3,14 @@ import cn from 'classnames';
 
 import React, { useRef, useState } from 'react';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
+import { Validator } from '../../../types/Validator';
 
 type Props = {
   format: string;
   placeholder: string;
   charset?: RegExp;
   label?: string;
-  error?: string;
+  validator?: Validator;
   onChange?: (value: string) => void;
 };
 
@@ -20,7 +21,7 @@ export const FormatInput = ({
   placeholder,
   charset = /^.$/,
   label,
-  error,
+  validator = new Validator(() => null, 0),
   onChange = () => {},
 }: Props) => {
   const formatArr: CharData[] = format.split('').map(char => {
@@ -42,6 +43,13 @@ export const FormatInput = ({
     ? data.findLastIndex(([_, isInput, isEntered]) => isInput && isEntered)
     : -1;
 
+  const handleValueChange = (finalData: CharData[]) => {
+    const joinedData = finalData.map(([char]) => char).join('');
+
+    validator.setValue(joinedData);
+    onChange(joinedData);
+  };
+
   const focusInput = () => {
     if (!isFocused) {
       setIsFocused(true);
@@ -52,7 +60,7 @@ export const FormatInput = ({
     if (isFocused) {
       setIsFocused(false);
 
-      onChange(data.map(([char]) => char).join(''));
+      handleValueChange(data);
     }
   };
 
@@ -91,13 +99,13 @@ export const FormatInput = ({
       }
     });
 
-    changePromise.then(next => onChange(next.map(([char]) => char).join(''))).catch(() => {});
+    changePromise.then(handleValueChange);
   };
 
   return (
     <div
       ref={ref}
-      className={cn(styles.container, { [styles.isError]: error })}
+      className={cn(styles.container, { [styles.isError]: validator.isError() })}
       onClick={focusInput}
     >
       {label && <label className={styles.label}>{label}</label>}
@@ -122,7 +130,7 @@ export const FormatInput = ({
         ))}
       </div>
 
-      <span className={styles.error}>{error}</span>
+      <span className={styles.error}>{validator.error}</span>
     </div>
   );
 };
