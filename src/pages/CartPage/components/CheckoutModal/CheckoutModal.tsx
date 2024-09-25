@@ -100,60 +100,28 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
   };
 
   return (
-   <div className={cn(styles.checkoutModal, { [styles.isVisible]: isVisible })}>
-    <div ref={ref} className={styles.container}>
-      <form className={styles.form}>
-        <Input.Text
-          key={t('cart.placeholders.name')}
-          placeholder={t('cart.placeholders.name')}
-          error={snoose ? '' : firstNameValidator.error}
-          onChange={firstNameValidator.setValue}
-        />
-        <Input.Text
-          placeholder={t('cart.placeholders.surname')}
-          error={snoose ? '' : lastNameValidator.error}
-          onChange={lastNameValidator.setValue}
-        />
-        <Input.Text
-          placeholder={t('cart.placeholders.email')}
-          error={snoose ? '' : emailValidator.error}
-          onChange={emailValidator.setValue}
-        />
-
-        <div className={styles.shipToMargin}>
-          <Input.Dropdown label={t('cart.shipTo')} options={shippingOptions} />
-        </div>
-
-        <Input.Format
-          label={t('cart.creditCard')}
-          format="....-....-....-...."
-          placeholder="X"
-          charset={/[0-9]/}
-          error={snoose ? '' : cardNumberValidator.error}
-          onChange={cardNumberValidator.setValue}
-        />
-
-        <div className={styles.cvcAndExpDate}>
-          <Input.Format
-            label={t('cart.expiryDate')}
-            format="../.."
-            placeholder="X"
-            charset={/[0-9]/}
-            error={snoose ? '' : expDateValidator.error}
-            onChange={expDateValidator.setValue}
+    <div className={cn(styles.checkoutModal, { [styles.isVisible]: isVisible })}>
+      <div ref={ref} className={styles.container}>
+        <form className={styles.form}>
+          <Input.Text
+            key={t('cart.placeholders.name')}
+            placeholder={t('cart.placeholders.name')}
+            error={snoose ? '' : firstNameValidator.error}
+            onChange={firstNameValidator.setValue}
+          />
+          <Input.Text
+            placeholder={t('cart.placeholders.surname')}
+            error={snoose ? '' : lastNameValidator.error}
+            onChange={lastNameValidator.setValue}
           />
           <Input.Text
             placeholder={t('cart.placeholders.email')}
-            error={errors.email}
-            onChange={handleEmailChange}
+            error={snoose ? '' : emailValidator.error}
+            onChange={emailValidator.setValue}
           />
 
           <div className={styles.shipToMargin}>
-            <Input.Dropdown
-              key={t('cart.shipTo')}
-              label={t('cart.shipTo')}
-              options={shippingOptions}
-            />
+            <Input.Dropdown label={t('cart.shipTo')} options={shippingOptions} />
           </div>
 
           <Input.Format
@@ -161,8 +129,8 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
             format="....-....-....-...."
             placeholder="X"
             charset={/[0-9]/}
-            error={snoose ? '' : cvcValidator.error}
-            onChange={cvcValidator.setValue}
+            error={snoose ? '' : cardNumberValidator.error}
+            onChange={cardNumberValidator.setValue}
           />
 
           <div className={styles.cvcAndExpDate}>
@@ -171,8 +139,8 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
               format="../.."
               placeholder="X"
               charset={/[0-9]/}
-              error={errors.cardExpiration}
-              onChange={handleExpirationDateChange}
+              error={snoose ? '' : expDateValidator.error}
+              onChange={expDateValidator.setValue}
             />
 
             <Input.Format
@@ -180,8 +148,8 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
               format="..."
               placeholder="X"
               charset={/[0-9]/}
-              error={errors.cardCvc}
-              onChange={handleCvcChange}
+              error={snoose ? '' : cvcValidator.error}
+              onChange={cvcValidator.setValue}
             />
           </div>
         </form>
@@ -198,8 +166,8 @@ export const CheckoutModal = ({}: CheckoutModalProps) => {
           <div className={styles.separator} />
 
           <div className={styles.buttons}>
-            <ButtonPrimary title={t('buttons.confirm')} onClick={() => setIsVisible(false)} />
-            <ButtonPrimary title={t('buttons.returnToCart')} onClick={() => setIsVisible(false)} />
+            <ButtonPrimary title={t('buttons.confirm')} onClick={handleConfirm} />
+            <ButtonPrimary title={t('buttons.returnToCart')} onClick={handleCancel} />
           </div>
         </div>
       </div>
