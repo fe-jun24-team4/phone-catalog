@@ -45,14 +45,14 @@ export const themeDark = Object.freeze<ColorTheme>({
   background: '#323542',
   backgroundOnHover: '#0f1121',
 
-  elements: '#3b3e4a',
+  elements: '#6b6f80',
   icons: '#4a4d58',
 
   primary: '#f1f2f9',
   secondary: '#75767f',
 
   accentPrimary: '#e8e9ee',
-  accentSecondary: '#f4ba47',
+  accentSecondary: '#27c49a',
 });
 
 export const themes = [themeLight, themeDark];
