@@ -57,11 +57,11 @@
     "resolution": "Resolution",
     "processor": "Processor",
     "ram": "RAM",
-    "memory": "Built in memory",
+    "capacity": "Built in memory",
     "camera": "Camera",
     "zoom": "Zoom",
     "cell": "Cell",
-    "capacity": "Capacity"
+    "memory": "Capacity"
   },
   "cart": {
     "emptyCart": "Your cart is empty",
