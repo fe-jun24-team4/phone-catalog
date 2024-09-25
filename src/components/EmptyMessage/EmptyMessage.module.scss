@@ -1,0 +1,33 @@
+@import '../../styles/generals/index.scss';
+
+.emptyMessage {
+  text-align: center;
+  font-size: $fontSizeMedium;
+  color: $themePurplePrimary;
+  margin-top: 20px;
+
+  @include onTabletAndUp {
+    font-size: $fontSizeBig;
+    margin-top: 50px;
+  }
+}
+
+.icon {
+  font-size: $fontSizeMedium;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: bounce 2s infinite;
+
+  @include onTabletAndUp {
+    font-size: $fontSizeBig;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

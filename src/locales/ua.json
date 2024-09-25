@@ -25,6 +25,9 @@
     "confirm": "Підтвердити",
     "returnToCart": "Повернутися до корзини"
   },
+  "favourites": {
+    "emptyMessage": "Зберігайте свої улюблені товари тут"
+  },
   "home": {
     "categories": {
       "title": "Товари за категоріями",

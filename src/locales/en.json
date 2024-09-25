@@ -25,6 +25,9 @@
     "confirm": "Confirm",
     "returnToCart": "Return to cart"
   },
+  "favourites": {
+    "emptyMessage": "Keep your favorite items here"
+  },
   "home": {
     "categories": {
       "title": "Shop by category",
