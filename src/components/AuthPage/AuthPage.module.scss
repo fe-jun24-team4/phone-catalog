@@ -1,0 +1,47 @@
+@import '../../styles/generals/index.scss';
+
+.authPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $themePurpleWhite;
+  }
+  
+  .authCard {
+    background-color: $themePurpleWhite;
+    border-radius: 8px;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    padding: 2rem;
+    min-width: 320px;
+    text-align: center;
+    width: 400px;
+  }
+  
+  .errorMessage {
+    color: red;
+    margin-top: 1rem;
+  }
+  
+  button {
+    border-radius: 48px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    width: 100%;
+
+    @include onHover {
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    
+        // something *needs* to be done on hover in dark mode, and we are not using this color anyway
+        background-color: var(--colorAccentSecondary);
+      }
+  }
+
+  
+  
+//   button:hover {
+//     background-color: #0056b3;
+//   }
+
+  
+  

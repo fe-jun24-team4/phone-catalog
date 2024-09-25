@@ -11,6 +11,7 @@ type TextInputProps = {
   placeholder?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
+  type?: string;
 };
 
 export const TextInput = ({
@@ -20,6 +21,7 @@ export const TextInput = ({
   placeholder,
   defaultValue = '',
   onChange = () => {},
+  type = '',
 }: TextInputProps) => {
   const [value, setValue] = useState(defaultValue);
   const ref = useRef<HTMLInputElement>(null);
@@ -40,7 +42,7 @@ export const TextInput = ({
       {label && <label className={styles.label}>{label}</label>}
 
       <input
-        type={email ? 'email' : 'text'}
+        type={email ? 'email' : type || 'text'}
         ref={ref}
         className={styles.input}
         placeholder={placeholder}

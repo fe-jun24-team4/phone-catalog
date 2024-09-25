@@ -4,12 +4,13 @@ import React from 'react';
 import { FC } from 'react';
 
 export interface Props {
+  children: string;
   title: string;
   selected?: boolean;
   onClick?: () => void;
 }
 
-const ButtonPrimary: FC<Props> = ({ title, selected, onClick = () => {} }) => {
+const ButtonPrimary: FC<Props> = ({ children, title, selected, onClick = () => {} }) => {
   return (
     <button
       className={classNames(styles.buttonPrimary, {
@@ -17,7 +18,7 @@ const ButtonPrimary: FC<Props> = ({ title, selected, onClick = () => {} }) => {
       })}
       onClick={onClick}
     >
-      {title}
+      {children}
     </button>
   );
 };

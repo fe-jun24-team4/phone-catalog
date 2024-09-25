@@ -1,11 +1,12 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
 import { FavouritesContextProvider } from '../pages/FavouritesPage/context/FavouritesContext';
 import { CartContextProvider } from '../pages/CartPage/context/CartContext';
 import { ThemeContextProvider } from '../context/ThemeContext';
+import AuthPage from './AuthPage/AuthPage';
 
 export function App() {
   return (
@@ -18,7 +19,7 @@ export function App() {
             </header>
 
             <main className="page">
-              <Outlet />
+              <AuthPage />
             </main>
 
             <Footer />
