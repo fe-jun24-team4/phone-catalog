@@ -4,6 +4,7 @@ import React from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import { PaginationControls } from './PaginationControls';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useSearchParams } from 'react-router-dom';
 import { updateSearchParams } from '../../utils/updateSearchParams';
 import { PAGE } from '../../utils/constants/urlSearchParams';
@@ -38,11 +39,24 @@ export const PaginatedGrid = ({ products, perPage }: Props) => {
   return (
     <div className={styles.container}>
       <ol className={styles.grid}>
-        {productsOnPage.map(product => (
-          <li key={product.id} className={styles.gridItem}>
-            <ProductCard product={product} />
-          </li>
-        ))}
+        <TransitionGroup component={null}>
+          {productsOnPage.map(product => (
+            <CSSTransition
+              key={product.id}
+              timeout={500}
+              classNames={{
+                enter: styles.productEnter,
+                enterActive: styles.productEnterActive,
+                exit: styles.productExit,
+                exitActive: styles.productExitActive,
+              }}
+            >
+              <li className={styles.gridItem}>
+                <ProductCard product={product} />
+              </li>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </ol>
 
       {!fitsOnOnePage && (
