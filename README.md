@@ -17,7 +17,7 @@ This is a group project, intended to practice teamwork and collective problem so
 1. Run `npm i`
 1. Run `git checkout -b <my-feature-name>`
 1. Run `npm run dev` to start a server
-1. Implement your feature, following the [Codebase rules](codebase-rules.md)
+1. Implement your feature, following the [Codebase rules](codestyle.md)
 1. Commit and push your changes
 1. Move your task to `review` column on ClickUp
 1. Notify your team, that your task is ready for a review
