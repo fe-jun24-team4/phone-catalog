@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a group project, intended to practice teamwork and collective problem solving.
+An e-commerce app, created by a team of 6 in a span of 2 weeks. It sports modern design and a robust set of features, including theme and language toggle, saving user preferences and generally guiding customers to completing their purchases.
 
 ### Technologies:
 
